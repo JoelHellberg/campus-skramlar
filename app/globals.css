@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+h1 {
+  font-family: var(--font-lily-script-one);
+  font-size: 5rem;
+}
+
+h2 {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: xx-large;
+}

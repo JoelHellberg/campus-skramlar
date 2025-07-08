@@ -1,6 +1,6 @@
 export default function Hello() {
   return (
-    <div className="w-screen bg-[#FFF0D9] px-20 py-15 flex flex-col">
+    <div className="w-full bg-[#FFF0D9] px-20 py-15 flex flex-col">
       {/* Wrapper */}
       <div className="relative w-full">
         {/* Logo & Text */}

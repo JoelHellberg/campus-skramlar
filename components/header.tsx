@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <div className="w-full py-4 px-20 bg-[#FFF0D9] flex">
+    <div className="w-full py-4 px-15 bg-[#FFF0D9] flex">
       {/* Left side */}
       <div
         className="w-5/12"

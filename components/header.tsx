@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 export default function Header() {
   return (
@@ -6,23 +6,31 @@ export default function Header() {
       <div
         className="flex w-8/12 items-center justify-between px-10 ml-10 [&>h2]:cursor-pointer
 
-    [&>h2]:relative
-    [&>h2::after]:content-['']
-    [&>h2::after]:absolute
-    [&>h2::after]:left-0
-    [&>h2::after]:-bottom-0
-    [&>h2::after]:w-full
-    [&>h2::after]:h-[2px]
-    [&>h2::after]:bg-black
-    [&>h2::after]:scale-x-0
-    [&>h2::after]:origin-left
-    [&>h2::after]:transition-transform
-    [&>h2:hover::after]:scale-x-100"
+    [&>*]:relative
+    [&>*::after]:content-['']
+    [&>*::after]:absolute
+    [&>*::after]:left-0
+    [&>*::after]:-bottom-0
+    [&>*::after]:w-full
+    [&>*::after]:h-[2px]
+    [&>*::after]:bg-black
+    [&>*::after]:scale-x-0
+    [&>*::after]:origin-left
+    [&>*::after]:transition-transform
+    [&>*:hover::after]:scale-x-100"
       >
-        <h2>Bidra</h2>
-        <h2>Bössor</h2>
-        <h2>Kontakt</h2>
-        <h2>Tack</h2>
+        <a href="#about">
+          <h2>Bidra</h2>
+        </a>
+        <a href="#piggyBanks">
+          <h2>Bössor</h2>
+        </a>
+        <a href="#group">
+          <h2>Kontakt</h2>
+        </a>
+        <a href="#thanks">
+          <h2>Tack</h2>
+        </a>
       </div>
     </div>
   );

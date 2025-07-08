@@ -1,6 +1,6 @@
 
 export default function PiggyBanks() {
   return (
-    <div> Piggy Banks </div>
+    <div id="piggyBanks"> Piggy Banks </div>
   );
 }

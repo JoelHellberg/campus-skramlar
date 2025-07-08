@@ -1,6 +1,6 @@
 
 export default function Group() {
   return (
-    <div> Group </div>
+    <div id="#group"> Group </div>
   );
 }

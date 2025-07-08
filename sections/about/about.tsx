@@ -3,7 +3,7 @@ import Goal from "./goal";
 
 export default function About() {
   return (
-    <div className="w-full bg-[url('/tempAbout.png')] bg-cover">
+    <div id="about" className="w-full bg-[url('/tempAbout.png')] bg-cover">
       <img
         src={"/vectorGraphics/beigeTransition.svg"}
         alt=""

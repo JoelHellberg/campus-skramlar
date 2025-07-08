@@ -1,6 +1,6 @@
 
 export default function Thanks() {
   return (
-    <div> Thanks </div>
+    <div id="#thanks"> Thanks </div>
   );
 }

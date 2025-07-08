@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import Hello from "@/sections/hello/hello";
-import About from "@/sections/about";
+import About from "@/sections/about/about";
 import PiggyBanks from "@/sections/piggyBanks";
 import Group from "@/sections/group";
 import Members from "@/sections/members";

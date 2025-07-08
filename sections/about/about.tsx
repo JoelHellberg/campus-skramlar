@@ -1,3 +1,6 @@
+import Contribute from "./contribute";
+import Goal from "./goal";
+
 export default function About() {
   return (
     <div className="w-full bg-[url('/tempAbout.png')]">
@@ -6,7 +9,12 @@ export default function About() {
         alt=""
         className="w-full"
       />
-      About
+
+      <div className="flex justify-center items-center gap-80 py-15">
+        <Goal />
+        <Contribute />
+      </div>
+
       <img
         src={"/vectorGraphics/greenTransition.svg"}
         alt=""

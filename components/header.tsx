@@ -7,7 +7,7 @@ export default function Header() {
       <div className="w-5/12">
         <img
           src={"/vectorGraphics/simplisticHouse.svg"}
-          className="h-12 cursor-pointer"
+          className="h-11 cursor-pointer"
           onClick={() => window.location.reload()}
         />
       </div>

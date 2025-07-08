@@ -36,7 +36,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  ${inter.variable} ${lilyScriptOne.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable}  ${inter.variable} ${lilyScriptOne.variable} antialiased
+        overscroll-none`}
       >
         {children}
       </body>

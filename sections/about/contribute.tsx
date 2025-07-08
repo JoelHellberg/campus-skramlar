@@ -1,3 +1,5 @@
+import Cloud from "./cloud"
+
 export default function Contribute() {
   return (
     <div className="relative w-fit">
@@ -13,10 +15,7 @@ export default function Contribute() {
       items-center justify-center
       w-lg h-64"
       >
-        <div className="absolute top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 w-60 h-50 bg-[url('/vectorGraphics/cloud.svg')] bg-contain bg-no-repeat bg-center z-20
-        flex items-center justify-center text-center p-5" >
-        <h2 className="!text-2xl !font-bold">Hur kan du bidra?</h2>
-        </div>
+        <Cloud/>
         <div className="flex">
           <div className="flex flex-col-reverse">
             <img
@@ -37,8 +36,9 @@ export default function Contribute() {
               Är du en förening eller företag som vill sammarbeta med oss?
               <br />
               <br />
-              Hör gärna av dig till oss på: forening@campusskramlar.se
-              foretag@campusskramlar.se
+              Hör gärna av dig till oss på: 
+              <br />forening@campusskramlar.se
+              <br />foretag@campusskramlar.se
             </p>
           </div>
         </div>

@@ -2,19 +2,9 @@
 
 export default function Header() {
   return (
-    <div className="w-full py-4 px-15 bg-[#FFF0D9] flex">
-      {/* Left side */}
-      <div className="w-5/12">
-        <img
-          src={"/vectorGraphics/simplisticHouse.svg"}
-          className="h-11 cursor-pointer"
-          onClick={() => window.location.reload()}
-        />
-      </div>
-
-      {/* Right side */}
+    <div className="w-full py-4 px-15 bg-[#FFF0D9] flex justify-center">
       <div
-        className="flex w-7/12 items-center justify-between px-10 ml-10 [&>h2]:cursor-pointer
+        className="flex w-8/12 items-center justify-between px-10 ml-10 [&>h2]:cursor-pointer
 
     [&>h2]:relative
     [&>h2::after]:content-['']

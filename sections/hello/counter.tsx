@@ -8,7 +8,7 @@ type Props = {
 
 export default function Counter(props : Props) {
   const [count, setCount] = useState(0);
-  const duration = 4000; // in ms
+  const duration = 3000; // in ms
 
   useEffect(() => {
     const startTime = performance.now();

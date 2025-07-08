@@ -10,7 +10,7 @@ export default function Hello() {
             className="-mt-14 text-[#ACCAB2] flex flex-col items-center"
             style={{
               textShadow:
-                "-5px 5px 0 white, -10px 10px 0 #D06224, -15px 15px 0 #8A8635",
+                "-5px 5px 0 white, -12px 12px 0 #D06224, -18px 18px 0 #8A8635",
             }}
           >
             <h1>11 000 kr</h1>

@@ -2,9 +2,7 @@ export default function Header() {
   return (
     <div className="w-full py-4 px-15 bg-[#FFF0D9] flex">
       {/* Left side */}
-      <div
-        className="w-5/12"
-      >
+      <div className="w-5/12">
         <img
           src={"/vectorGraphics/simplisticHouse.svg"}
           alt=""
@@ -14,9 +12,7 @@ export default function Header() {
 
       {/* Right side */}
       <div
-        className="flex w-7/12 items-center justify-between px-10 ml-10
-        text-black
-    [&>h2]:cursor-pointer
+        className="flex w-7/12 items-center justify-between px-10 ml-10 [&>h2]:cursor-pointer
 
     [&>h2]:relative
     [&>h2::after]:content-['']

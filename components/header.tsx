@@ -1,3 +1,5 @@
+"use client"
+
 export default function Header() {
   return (
     <div className="w-full py-4 px-15 bg-[#FFF0D9] flex">
@@ -5,8 +7,8 @@ export default function Header() {
       <div className="w-5/12">
         <img
           src={"/vectorGraphics/simplisticHouse.svg"}
-          alt=""
           className="h-12 cursor-pointer"
+          onClick={() => window.location.reload()}
         />
       </div>
 

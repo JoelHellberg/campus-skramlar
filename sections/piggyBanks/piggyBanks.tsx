@@ -31,8 +31,20 @@ export default function PiggyBanks() {
       <div className="w-full flex items-center justify-center text-center text-[#707070] mt-2">
         <h4 className="!text-3xl">(Klicka på en bössa för att se mer)</h4>
       </div>
-      <div>
-        <PiggyBank />
+      <div className="flex justify-between w-full py-10">
+        <PiggyBank position={0} />
+        <PiggyBank position={1}/>
+        <PiggyBank position={2}/>
+      </div>
+      <div className="flex justify-between w-full py-10">
+        <PiggyBank position={3}/>
+        <PiggyBank position={4}/>
+        <PiggyBank position={5}/>
+      </div>
+      <div className="flex justify-between w-full py-10">
+        <PiggyBank position={6}/>
+        <PiggyBank position={7}/>
+        <PiggyBank position={8}/>
       </div>
     </div>
   );

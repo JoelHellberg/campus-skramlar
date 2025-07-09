@@ -1,6 +1,6 @@
 
 export default function Members() {
   return (
-    <div> Members </div>
+    <div className="w-full"> Members </div>
   );
 }

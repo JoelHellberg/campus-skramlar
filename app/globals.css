@@ -28,3 +28,8 @@ h2 {
   font-weight: 600;
   font-size: xx-large;
 }
+
+h4 {
+  font-family: var(--font-caveat);
+  font-weight: 600;
+}

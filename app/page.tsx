@@ -1,3 +1,4 @@
+
 import Header from "@/components/header";
 import Hello from "@/sections/hello/hello";
 import About from "@/sections/about/about";
@@ -15,12 +16,14 @@ export default function Home() {
       <Header />
       <Hello />
       <About />
+      <div className="mx-20 my-10">
       <PiggyBanks />
       <Group />
       <Members />
       <History />
       <Thanks />
       <Sponsors />
+      </div>
       <Footer />
     </div>
   );

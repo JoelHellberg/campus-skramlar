@@ -6,18 +6,18 @@ export default function Header() {
       <div
         className="flex w-8/12 items-center justify-between px-10 ml-10 [&>h2]:cursor-pointer
 
-    [&>*]:relative
-    [&>*::after]:content-['']
-    [&>*::after]:absolute
-    [&>*::after]:left-0
-    [&>*::after]:-bottom-0
-    [&>*::after]:w-full
-    [&>*::after]:h-[2px]
-    [&>*::after]:bg-black
-    [&>*::after]:scale-x-0
-    [&>*::after]:origin-left
-    [&>*::after]:transition-transform
-    [&>*:hover::after]:scale-x-100"
+    [&>a]:relative
+    [&>a::after]:content-['']
+    [&>a::after]:absolute
+    [&>a::after]:left-0
+    [&>a::after]:-bottom-0
+    [&>a::after]:w-full
+    [&>a::after]:h-[2px]
+    [&>a::after]:bg-black
+    [&>a::after]:scale-x-0
+    [&>a::after]:origin-left
+    [&>a::after]:transition-transform
+    [&>a:hover::after]:scale-x-100"
       >
         <a href="#about">
           <h2>Bidra</h2>

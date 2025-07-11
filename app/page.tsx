@@ -4,7 +4,7 @@ import Hello from "@/sections/hello/hello";
 import About from "@/sections/about/about";
 import PiggyBanks from "@/sections/piggyBanks/piggyBanks";
 import Group from "@/sections/group";
-import Members from "@/sections/members";
+import Members from "@/sections/members/members";
 import History from "@/sections/history";
 import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
@@ -22,7 +22,7 @@ export default function Home() {
           <PiggyBanks />
         </div>
         <Group />
-        <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl shadow-2xl">
+        <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl">
           <Members />
           <History />
           <Thanks />

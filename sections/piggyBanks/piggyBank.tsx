@@ -14,7 +14,7 @@ export default function PiggyBank(props: Props) {
   const secondaryColor = colors[(column + 1) % 3]
   const thirdColor = colors[(column + 2) % 3]
   return (
-    <div className="relative w-full">
+    <div className="relative w-full cursor-pointer">
       {/* Backdrop */}
       <div
         className="absolute top-3 left-3 w-full aspect-video outline-1 outline-[#EAC891] -z-10 shadow-2xl rounded-xs"

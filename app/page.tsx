@@ -5,7 +5,7 @@ import About from "@/sections/about/about";
 import PiggyBanks from "@/sections/piggyBanks/piggyBanks";
 import Group from "@/sections/group";
 import Members from "@/sections/members/members";
-import History from "@/sections/history";
+import History from "@/sections/history/history";
 import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";

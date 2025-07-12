@@ -11,10 +11,10 @@ export default function Group() {
         <h1>Projektgruppen 2025</h1>
       </div>
       <div className="relative mt-10 w-2/3">
-        <div className="absolute -inset-6 bg-white -z-1 shadow-2xl rounded-md" />
+        <div className="absolute -inset-6 bg-white -z-1 shadow-2xl/55 rounded-md" />
         <img
           src="/photos/gruppbild.png"
-          className="w-full -mb-[5vw] shadow-2xl rounded-md"
+          className="w-full -mb-[5vw] shadow-xl/55 rounded-md"
         />
       </div>
       <PaperTear className="w-full h-[5vw] rotate-180" />

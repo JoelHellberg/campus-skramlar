@@ -6,13 +6,14 @@ type Props = {
 
 export default function Paper(props: Props) {
   const text = props.amount + " kronor";
-  // Alternates between rotate-4 and rotate-3, reversing direction every 4th
-  const rotation = `${props.position % 4 === 0 ? '-' : ''}rotate-${props.position % 2 === 0 ? 4 : 3}`;
-  console.log(rotation);
-
+  // Alternates between rotate-3, -rotate-4 & rotate-4
+  const rotationClasses = ["rotate-3", "-rotate-4", "rotate-4"];
+  const rotation = rotationClasses[props.position % 3];
 
   return (
-    <div className={`bg-white shadow-xl p-5 rounded-2xl flex flex-col w-fit ${rotation}`}>
+    <div
+      className={`bg-[#FFFCF8] p-5 flex flex-col w-fit ${rotation} rounded-b-2xl rounded-tl-lg rounded-tr-sm paper-shadow`}
+    >
       {/* rubrik */}
       <div className="flex flex-row-reverse">
         <div className="flex flex-col items-end">
@@ -30,9 +31,11 @@ export default function Paper(props: Props) {
       <div className="flex">
         {/* Vänstra sidan */}
         <div className="flex flex-col flex-1 w-48">
-          <p className="paper-text-two underline">Campus Skramlar samlar in</p>
+          <p className="paper-text-two underline">Campus Skramlar <br/> samlar in</p>
           <p className="paper-text-two underline">{text}</p>
-          <p className="paper-text-three break-words">blablablablablabla blablablablablabla</p>
+          <p className="paper-text-three break-words">
+            blablablablablabla blablablablablabla
+          </p>
         </div>
 
         {/* Divider */}
@@ -40,7 +43,9 @@ export default function Paper(props: Props) {
 
         {/* Högersidan */}
         <div className="flex">
-          <p className="paper-text-three w-16 break-words">blablablablablablablablablablablabla</p>
+          <p className="paper-text-three w-16 break-words">
+            blablablablablablablablablablablabla
+          </p>
         </div>
       </div>
     </div>

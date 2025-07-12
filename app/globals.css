@@ -52,3 +52,10 @@ p {
   font-family: var(--font-redacted-script);
   font-weight: 300;
 }
+
+.paper-shadow {
+  box-shadow:
+    inset 0 2px 3px rgba(0, 0, 0, 0.5),       /* upper shadow */
+    inset -8px 0 5px -5px rgba(0, 0, 0, 0.5), /* inner right shadow */
+    0 10px 15px -3px rgba(0, 0, 0, 0.3);      /* outer shadow */
+}

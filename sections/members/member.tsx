@@ -21,7 +21,7 @@ export default function Member(props: Props) {
     <div className="w-full flex flex-col items-center p-5">
       <div
         className={
-          "relative flex flex-col w-4/5 aspect-[9/10] bg-white p-6 shadow-2xl " +
+          "relative flex flex-col w-4/5 aspect-[9/10] bg-white p-6 shadow-2xl/30 " +
           angle
         }
       >
@@ -47,7 +47,7 @@ export default function Member(props: Props) {
 
       {/* Namn och postlapp */}
       <div className="relative w-4/5 my-10 px-10 py-5">
-        <div className="absolute inset-2 -z-1 shadow-2xl" />
+        <div className="absolute inset-2 -z-1 shadow-xl/20" />
         <Papersheet className="absolute inset-0 w-full  h-full -z-1" />
         <p className="font-bold">{props.post}</p>
         <p>{props.mail}</p>

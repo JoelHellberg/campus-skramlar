@@ -17,14 +17,14 @@ export default function PiggyBank(props: Props) {
     <div className="relative w-full cursor-pointer">
       {/* Backdrop */}
       <div
-        className="absolute top-3 left-3 w-full aspect-video outline-1 outline-[#EAC891] -z-10 shadow-2xl rounded-xs"
+        className="absolute top-3 left-3 w-full aspect-video outline-1 outline-[#EAC891] -z-10 shadow-xl/30 rounded-xs"
         style={{ backgroundColor: mainColor }}
       />
 
       {/* Main content */}
       <div
         className={
-          "w-full aspect-video bg-[#E9A762] outline-1 shadow-2xl rounded-tl-xl rounded-br-xl rounded-tr-xs rounded-bl-xs"
+          "w-full aspect-video bg-[#E9A762] outline-1 shadow-xl/10 rounded-tl-xl rounded-br-xl rounded-tr-xs rounded-bl-xs"
         }
         style={{ outlineColor: mainColor }}
       >

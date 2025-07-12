@@ -24,8 +24,8 @@ export default function History() {
       </div>
       <div className="flex flex-wrap justify-center gap-12 w-full py-15">
         {years.map((team, i) => (
-          <div key={i} className="flex justify-center w-[30%] py-2">
-            <Paper year={team.year} amount={team.amount} />
+          <div key={i} className="flex justify-center w-[30%] py-4">
+            <Paper year={team.year} amount={team.amount} position={i}/>
           </div>
         ))}
       </div>

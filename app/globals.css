@@ -37,3 +37,18 @@ h4 {
 p {
   font-family: var(--font-inter);
 }
+
+.paper-text-one {
+  font-family: var(--font-londrina-sketch);
+  font-size: xx-large;
+}
+
+.paper-text-two {
+  font-family: var(--font-cabin-sketch);
+  font-weight: 700;
+}
+
+.paper-text-three {
+  font-family: var(--font-redacted-script);
+  font-weight: 300;
+}

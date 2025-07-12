@@ -21,9 +21,21 @@ export default function Member(props: Props) {
     <div className="w-full flex flex-col items-center p-5">
       <div
         className={
-          "flex flex-col w-4/5 aspect-[9/10] bg-white p-6 shadow-2xl " + angle
+          "relative flex flex-col w-4/5 aspect-[9/10] bg-white p-6 shadow-2xl " +
+          angle
         }
       >
+        {/* Vänstra tejpen */}
+        <div
+          className="absolute top-0 left-0 translate-x-[-20%] translate-y-[20%] -rotate-45 w-1/2 aspect-[3/1]
+        bg-gradient-to-r from-[#C6AB8F33] via-[#C6AB8F80] to-[#C6AB8F33]"
+        />
+        {/* Högra tejpen */}
+        <div
+          className="absolute top-0 right-0 translate-x-[20%] translate-y-[20%] rotate-[38deg] w-1/2 aspect-[3/1]
+        bg-gradient-to-r from-[#C6AB8F33] via-[#C6AB8F80] to-[#C6AB8F33]"
+        />
+
         <img
           src={imgSrc}
           className="w-full aspect-square bg-blue-400 object-cover"
@@ -32,6 +44,8 @@ export default function Member(props: Props) {
           <h4>{props.name}</h4>
         </div>
       </div>
+
+      {/* Namn och postlapp */}
       <div className="relative w-4/5 my-10 px-10 py-5">
         <div className="absolute inset-2 -z-1 shadow-2xl" />
         <Papersheet className="absolute inset-0 w-full  h-full -z-1" />

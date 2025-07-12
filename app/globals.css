@@ -33,3 +33,7 @@ h4 {
   font-family: var(--font-caveat);
   font-weight: 600;
 }
+
+p {
+  font-family: var(--font-inter);
+}

@@ -1,23 +1,23 @@
 const members = [
-  { name: "Lovisa Granlund", post: "Projektledare", mail: "blabla" },
-  { name: "Joel Hellberg", post: "Vice Projektledare & Webb", mail: "blabla" },
+  { name: "Lovisa Granlund", post: "Projektledare", mail: "skramlarmail@gmail.com" },
+  { name: "Joel Hellberg", post: "Vice Projektledare & Webb", mail: "skramlarmail@gmail.com" },
   {
     name: "Ebba Norén Arvidsson",
     post: "Kassör & Sekreterare",
-    mail: "blabla",
+    mail: "skramlarmail@gmail.com",
   },
 
-  { name: "Johanna Dahl", post: "Företagskontakt", mail: "blabla" },
-  { name: "Ludwig Boge", post: "Föreningskontakt & Fotograf", mail: "blabla" },
-  { name: "Elsa Rabe", post: "Föreningskontakt", mail: "blabla" },
+  { name: "Johanna Dahl", post: "Företagskontakt", mail: "skramlarmail@gmail.com" },
+  { name: "Ludwig Boge", post: "Föreningskontakt & Fotograf", mail: "skramlarmail@gmail.com" },
+  { name: "Elsa Rabe", post: "Föreningskontakt", mail: "skramlarmail@gmail.com" },
 
-  { name: "Mirna Abboud", post: "Eventansvarig", mail: "blabla" },
-  { name: "Hilda Åhberg Rosell", post: "Eventansvarig", mail: "blabla" },
-  { name: "Cornelia Johnson", post: "Marknadsföringsansvarig", mail: "blabla" },
+  { name: "Mirna Abboud", post: "Eventansvarig", mail: "skramlarmail@gmail.com" },
+  { name: "Hilda Åhberg Rosell", post: "Eventansvarig", mail: "skramlarmail@gmail.com" },
+  { name: "Cornelia Johnson", post: "Marknadsföringsansvarig", mail: "skramlarmail@gmail.com" },
 
-  { name: "Helena Ejsing", post: "Formgivare", mail: "blabla" },
-  { name: "Anna Lyrander", post: "Formgivare", mail: "blabla" },
-  { name: "Stina Bard", post: "Formgivare", mail: "blabla" },
+  { name: "Helena Ejsing", post: "Formgivare", mail: "skramlarmail@gmail.com" },
+  { name: "Anna Lyrander", post: "Formgivare", mail: "skramlarmail@gmail.com" },
+  { name: "Stina Bard", post: "Formgivare", mail: "skramlarmail@gmail.com" },
 ];
 import Member from "./member";
 

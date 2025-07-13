@@ -55,7 +55,7 @@ import Member from "./member";
 
 export default function Members() {
   return (
-    <div className="flex flex-wrap justify-center gap-12 w-full py-15">
+    <div id="members" className="flex flex-wrap justify-center gap-12 w-full py-15">
       {members.map((member, i) => (
         <div key={i} className="w-[30%] py-2">
           <Member

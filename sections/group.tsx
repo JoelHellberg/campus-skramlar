@@ -4,7 +4,7 @@ console.log("paperTear structure: ", PaperTear);
 
 export default function Group() {
   return (
-    <div id="group" className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center">
       <PaperTear className="w-full h-[5vw]" />
       <div className="relative my-10 px-10 py-5">
         <Papersheet className="absolute inset-0 w-full  h-full -z-1" />

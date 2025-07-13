@@ -25,7 +25,7 @@ export default function Header() {
         <a href="#piggyBanks">
           <h2>Bössor</h2>
         </a>
-        <a href="#group">
+        <a href="#members">
           <h2>Kontakt</h2>
         </a>
         <a href="#thanks">

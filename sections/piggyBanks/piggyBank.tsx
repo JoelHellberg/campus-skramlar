@@ -30,7 +30,7 @@ export default function PiggyBank(props: Props) {
         style={{ outlineColor: mainColor }}
       >
         {/* logo */}
-        <div className="absolute w-1/2 h-full flex items-center p-2">
+        <div className="absolute w-1/2 h-full flex items-center p-2 ml-2">
           <img src="/logo.svg" alt="logo" className="w-full" />
         </div>
         {/* logo shadow */}
@@ -38,11 +38,13 @@ export default function PiggyBank(props: Props) {
 
         {/* Bössans rubrik */}
         <div
-          className="absolute w-full h-full flex flex-col justify-center items-end px-2 text-white text-shadow-2xl"
-          style={{ textShadow: "3px 3px 0 " + mainColor }}
+          className="absolute w-full h-full flex flex-col justify-center items-end pr-8 text-white text-shadow-2xl"
+          style={{
+            textShadow: `0 4px 10px rgba(0,0,0,0.25), -3px 4px 0 ${mainColor}`,
+          }}
         >
-          <h2 className="mr-4 !font-bold">Demo</h2>
-          <h2>Bössa</h2>
+          <h2 className="mr-4 !font-bold !text-5xl">Demo</h2>
+          <h2 className="!text-5xl mt-3">Bössa</h2>
         </div>
         {/* Positionering av summan */}
         <div className="absolute -top-6">

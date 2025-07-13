@@ -26,7 +26,7 @@ export default function PiggyBanks() {
         </div>
         {/* Rubrik */}
         <div className="flex grow items-center justify-center text-center">
-          <h4 className="!text-4xl">Bössor</h4>
+          <h3 className="!text-5xl">Bössor</h3>
         </div>
         {/* Div runt nålen så vi kan veta när alla nålar försvunnit */}
         <div onClick={handleNeedleClick}>
@@ -35,8 +35,8 @@ export default function PiggyBanks() {
       </div>
 
       {/* "Underrubrik" */}
-      <div className="w-full flex items-center justify-center text-center text-[#707070] mt-2">
-        <h4 className="!text-3xl">(Klicka på en bössa för att se mer)</h4>
+      <div className="w-full flex items-center justify-center text-center text-[#707070] mt-4">
+        <h3 className="!text-4xl">(Klicka på en bössa för att se mer)</h3>
       </div>
       {/* Positionering av alla bössor */}
       <div className="flex flex-wrap justify-center gap-12 w-full py-15">

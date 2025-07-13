@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Lily_Script_One, Caveat, Londrina_Sketch, Cabin_Sketch, Redacted_Script } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Lily_Script_One, Caveat, Londrina_Sketch, Cabin_Sketch, Redacted_Script, Marck_Script } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,6 +25,12 @@ const inter = Inter({
 
 const caveat = Caveat({
   variable: "--font-caveat",
+  subsets: ["latin"],
+});
+
+const marcScript = Marck_Script({
+  variable: "--font-marc-script",
+  weight: ["400"],
   subsets: ["latin"],
 });
 
@@ -59,8 +65,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  ${inter.variable} ${lilyScriptOne.variable} ${caveat.variable} ${londrinaSketch.variable} ${cabinSketch.variable} ${redactedScript.variable} antialiased
-        overscroll-none`}
+        className={`${geistSans.variable} ${geistMono.variable}  ${inter.variable} ${lilyScriptOne.variable} ${caveat.variable} ${londrinaSketch.variable} ${cabinSketch.variable} ${redactedScript.variable} ${marcScript.variable} 
+        antialiased overscroll-none`}
       >
         {children}
       </body>

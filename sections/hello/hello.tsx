@@ -2,7 +2,7 @@ import Counter from "./counter";
 
 export default function Hello() {
   return (
-    <div className="w-full bg-[#FFF0D9] px-20 py-15 flex flex-col">
+    <div className="w-full bg-[#FFF0D9] px-20 py-16 pb-20 flex flex-col">
       {/* Wrapper */}
       <div className="relative w-full">
         {/* Logo & Text */}
@@ -12,9 +12,9 @@ export default function Hello() {
             {/* Loggan */}
             <img src="/logo.svg" alt="logo" className="w-82" />
             {/* Logo frame */}
-            <div className="absolute -inset-4 rounded-full -z-10 bg-white"/>
+            <div className="absolute -inset-4 rounded-full -z-10 bg-white" />
             {/* Logo shadow */}
-            <div className="absolute -inset-4 top-5 rounded-full -z-20 bg-black opacity-20"/>
+            <div className="absolute -inset-4 top-5 rounded-full -z-20 bg-black opacity-20" />
           </div>
           {/* Mängden pengar insamlat */}
           <div
@@ -30,10 +30,21 @@ export default function Hello() {
         </div>
 
         {/* Beige Overlay to dimm gif intensity */}
-        <div className="absolute inset-0 bg-[#FFF0D9] opacity-50 z-10" />
 
         {/* GIF */}
-        <img src="/animation.gif" alt="" className="w-full relative z-0" />
+        <div className="relative w-fit">
+          {/* White Background */}
+          <img
+            src="/animationBackground.svg"
+            className="absolute top-1/2 w-full left-1/2 -translate-x-1/2 -translate-y-1/2 scale-103"
+          />
+
+          {/* The Animated GIF */}
+          <img src="/animation.gif" alt="" className="w-full relative z-0" />
+
+          {/* Beige overlay */}
+          <div className="absolute -inset-10 bg-[#FFF0D9] opacity-50"/>
+        </div>
       </div>
     </div>
   );

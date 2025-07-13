@@ -48,7 +48,7 @@ export default function Member(props: Props) {
 
       {/* Post och mail lapp */}
       <div className="relative w-4/5 my-10 px-10 py-5">
-        <div className="absolute inset-2 -z-1 shadow-xl/20" />
+        <div className="absolute inset-4 -z-1 shadow-2xl/20" />
         <Papersheet className="absolute inset-0 w-full  h-full -z-1" />
         <p className="font-bold">{props.post}</p>
         <p>{props.mail}</p>

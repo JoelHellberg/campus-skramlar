@@ -29,6 +29,10 @@ h2 {
   font-size: xx-large;
 }
 
+h3 {
+  font-family: var(--font-marc-script);
+}
+
 h4 {
   font-family: var(--font-caveat);
   font-weight: 600;

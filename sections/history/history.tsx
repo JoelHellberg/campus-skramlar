@@ -35,7 +35,7 @@ export default function History() {
               initial={{ scale: "200%", rotate: "-130deg" }}
               whileInView={{ scale: "100%", rotate: 0 }}
               transition={{ duration: 0.4, ease: "easeIn" }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <Paper year={team.year} amount={team.amount} position={i} />
             </motion.div>

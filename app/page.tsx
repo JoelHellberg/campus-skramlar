@@ -11,6 +11,7 @@ import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
 
 export default function Home() {
+  // Sammanställning av innehållet som utgör hela sidan
   return (
     <div>
       <Header />
@@ -18,15 +19,20 @@ export default function Home() {
       <About />
 
       <div className="mx-20 my-10">
+        {/* Övre sidan av det "rivna pappret" */}
         <div className="relative z-10 w-full bg-[#FFF0D9] rounded-t-3xl">
           <PiggyBanks />
         </div>
+
         <Group />
+
+        {/* Nedre sidan av det "rivna pappret" */}
         <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl">
           <Members />
           <History />
           <Thanks />
         </div>
+
         <Sponsors />
       </div>
       <Footer />

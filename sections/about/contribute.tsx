@@ -16,7 +16,9 @@ export default function Contribute() {
       w-lg h-64"
       >
         <Cloud/>
+        {/* Main content */}
         <div className="flex">
+          {/* Icon positioned on the bottom left */}
           <div className="flex flex-col-reverse">
             <img
               src="/vectorGraphics/icon2Dummy.png"
@@ -24,6 +26,7 @@ export default function Contribute() {
               className="w-30"
             />
           </div>
+          {/* Text positionerad på högersidan */}
           <div className="flex flex-col flex-1 justify-center items-center text-center -ml-3">
             <p className="italic text-xs text-[#7E7E7E] p-3 z-1">
               Du som privatperson kan hjälpa till på massor av olika sätt! Du

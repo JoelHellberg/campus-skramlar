@@ -4,6 +4,7 @@ import PiggyBank from "./piggyBank";
 
 export default function PiggyBanks() {
   const [amountOfNeedles, setAmountOfNeedles] = useState(2);
+  // Tillfällig dummy lista för att generera 8st bössor
   const items = [0, 1, 2, 3, 4, 5, 6, 7];
 
   function handleNeedleClick() {
@@ -19,19 +20,25 @@ export default function PiggyBanks() {
   return (
     <div id="piggyBanks" className="px-10 py-10">
       <div className="flex">
+        {/* Div runt nålen så vi kan veta när alla nålar försvunnit */}
         <div onClick={handleNeedleClick}>
           <NeedleDot />
         </div>
+        {/* Rubrik */}
         <div className="flex grow items-center justify-center text-center">
           <h4 className="!text-4xl">Bössor</h4>
         </div>
+        {/* Div runt nålen så vi kan veta när alla nålar försvunnit */}
         <div onClick={handleNeedleClick}>
           <NeedleDot />
         </div>
       </div>
+
+      {/* "Underrubrik" */}
       <div className="w-full flex items-center justify-center text-center text-[#707070] mt-2">
         <h4 className="!text-3xl">(Klicka på en bössa för att se mer)</h4>
       </div>
+      {/* Positionering av alla bössor */}
       <div className="flex flex-wrap justify-center gap-12 w-full py-15">
         {items.map((_, i) => (
           <div key={i} className="w-[30%] py-2">
@@ -43,10 +50,12 @@ export default function PiggyBanks() {
   );
 }
 
+/* Separat funktion för nålen */
 function NeedleDot() {
   const [isVisible, setIsVisible] = useState(true);
   return (
     <div className="relative">
+      {/* Animation för att på "coolare" sätt ta bort nålen när den klickas på */}
       <AnimatePresence>
         {isVisible && (
           <motion.div

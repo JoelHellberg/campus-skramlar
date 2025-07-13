@@ -35,17 +35,18 @@ export default function Member(props: Props) {
           className="absolute top-0 right-0 translate-x-[20%] translate-y-[20%] rotate-[38deg] w-1/2 aspect-[3/1]
         bg-gradient-to-r from-[#C6AB8F33] via-[#C6AB8F80] to-[#C6AB8F33]"
         />
-
+        {/* Profilbild */}
         <img
           src={imgSrc}
           className="w-full aspect-square bg-blue-400 object-cover"
         />
+        {/* Namn */}
         <div className="w-full flex-1 flex justify-center items-center text-center pt-3">
           <h4 className="!text-3xl">{props.name}</h4>
         </div>
       </div>
 
-      {/* Namn och postlapp */}
+      {/* Post och mail lapp */}
       <div className="relative w-4/5 my-10 px-10 py-5">
         <div className="absolute inset-2 -z-1 shadow-xl/20" />
         <Papersheet className="absolute inset-0 w-full  h-full -z-1" />

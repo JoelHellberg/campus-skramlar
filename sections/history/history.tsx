@@ -11,6 +11,7 @@ const years = [
 export default function History() {
   return (
     <div className="w-full">
+      {/* Rubrik & Hjärtan */}
       <div className="flex items-center justify-center text-center">
         <img src="\vectorGraphics\heart.svg" className="" />
         <h2
@@ -22,6 +23,7 @@ export default function History() {
         </h2>
         <img src="\vectorGraphics\heart.svg" className="" />
       </div>
+      {/* Positionering av tidningarna */}
       <div className="flex flex-wrap justify-center gap-12 w-full py-15">
         {years.map((team, i) => (
           <div key={i} className="flex justify-center w-[30%] py-4">

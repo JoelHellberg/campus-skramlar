@@ -6,7 +6,7 @@ type Props = {
 
 export default function Paper(props: Props) {
   const text = props.amount + " kronor";
-  // Alternates between rotate-3, -rotate-4 & rotate-4
+  // Alternates the rotation between rotate-3, -rotate-4 & rotate-4
   const rotationClasses = ["rotate-3", "-rotate-4", "rotate-4"];
   const rotation = rotationClasses[props.position % 3];
 
@@ -17,10 +17,10 @@ export default function Paper(props: Props) {
       {/* rubrik */}
       <div className="flex flex-row-reverse">
         <div className="flex flex-col items-end">
-          <p className="paper-text-two">{props.year}</p>
-          <p className="paper-text-three">blabla</p>
+          <p className="sketch-text-two">{props.year}</p>
+          <p className="squiggly-font">blabla</p>
         </div>
-        <p className="paper-text-one flex flex-1">Nyheter</p>
+        <p className="sketch-text-one flex flex-1">Nyheter</p>
       </div>
 
       {/* "Dividers" */}
@@ -31,9 +31,9 @@ export default function Paper(props: Props) {
       <div className="flex">
         {/* Vänstra sidan */}
         <div className="flex flex-col flex-1 w-48">
-          <p className="paper-text-two underline">Campus Skramlar <br/> samlar in</p>
-          <p className="paper-text-two underline">{text}</p>
-          <p className="paper-text-three break-words">
+          <p className="sketch-text-two underline">Campus Skramlar <br/> samlar in</p>
+          <p className="sketch-text-two underline">{text}</p>
+          <p className="squiggly-font break-words">
             blablablablablabla blablablablablabla
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function Paper(props: Props) {
 
         {/* Högersidan */}
         <div className="flex">
-          <p className="paper-text-three w-16 break-words">
+          <p className="squiggly-font w-16 break-words">
             blablablablablablablablablablablabla
           </p>
         </div>

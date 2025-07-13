@@ -8,8 +8,10 @@ type Props = {
 
 export default function Counter(props : Props) {
   const [count, setCount] = useState(0);
+  // Definiera här hur lång tid effekten ska ta
   const duration = 3000; // in ms
 
+  // Funktionen som gör att summan räknas upp till från 0 kr
   useEffect(() => {
     const startTime = performance.now();
 

@@ -7,7 +7,16 @@ export default function Hello() {
       <div className="relative w-full">
         {/* Logo & Text */}
         <div className="flex flex-col items-center justify-center absolute inset-0 z-20">
-          <img src="/logo.svg" alt="logo" className="w-82" />
+          {/* Div för logga & bakgrund */}
+          <div className="relative -z-10">
+            {/* Loggan */}
+            <img src="/logo.svg" alt="logo" className="w-82" />
+            {/* Logo frame */}
+            <div className="absolute -inset-4 rounded-full -z-10 bg-white"/>
+            {/* Logo shadow */}
+            <div className="absolute -inset-4 top-5 rounded-full -z-20 bg-black opacity-20"/>
+          </div>
+          {/* Mängden pengar insamlat */}
           <div
             className="-mt-10 text-[#ACCAB2] flex flex-col items-center"
             style={{
@@ -15,14 +24,9 @@ export default function Hello() {
                 "-5px 5px 0 white, -12px 12px 0 #D06224, -18px 18px 0 #8A8635",
             }}
           >
-            <Counter target={11000}/>
+            <Counter target={11000} />
             <h1 className="!text-6xl">Insamlat</h1>
           </div>
-        </div>
-
-        {/* Logo shadow */}
-        <div className="flex items-center justify-center absolute inset-0 z-15">
-          <div className="h-82 w-82 -mt-22 rounded-full bg-black opacity-20" />
         </div>
 
         {/* Beige Overlay to dimm gif intensity */}

@@ -15,6 +15,7 @@ export default function Goal() {
           LiUs STUDENTDRIVNA INSAMLING!
         </h2>
         <div className="flex">
+          {/* Rubrik och brödtext placerad på högersidan */}
           <div className="flex flex-col flex-1 justify-center items-center text-center">
             <h2 className="!text-2xl !font-bold">Vad är vårt mål?</h2>
             <p className="italic text-xs text-[#7E7E7E] p-3 z-1">
@@ -24,6 +25,7 @@ export default function Goal() {
               roligt på vägen!
             </p>
           </div>
+          {/* Icon positioned on the bottom right */}
           <div className="flex flex-col-reverse -ml-8">
             <img
               src="/vectorGraphics/icon1Dummy.png"

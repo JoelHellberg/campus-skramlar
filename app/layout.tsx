@@ -53,7 +53,7 @@ const redactedScript = Redacted_Script({
 });
 
 export const metadata: Metadata = {
-  title: "Campus Skramlar",
+  title: "Campus Skramlar - Linköpings Universitet för Musikhjälpen!",
   description: "Hemsidan för studentföreningen Campus Skramlar",
 };
 

@@ -12,7 +12,7 @@ export default function Paper(props: Props) {
 
   return (
     <div
-      className={`bg-[#FFFCF8] p-5 flex flex-col w-fit ${rotation} rounded-b-2xl rounded-tl-lg rounded-tr-sm paper-shadow`}
+      className={`bg-[#FFFCF8] p-5 flex flex-col w-fit ${rotation} rounded-b-2xl rounded-tl-lg rounded-tr-sm paper-shadow cursor-default`}
     >
       {/* rubrik */}
       <div className="flex flex-row-reverse">

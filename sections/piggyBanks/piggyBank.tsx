@@ -15,10 +15,12 @@ export default function PiggyBank(props: Props) {
   const secondaryColor = colors[(column + 1) % 3];
   const thirdColor = colors[(column + 2) % 3];
   return (
-    <div className="relative w-full cursor-pointer">
+    <div className="relative w-full cursor-pointer 
+    transform transition-transform duration-300 hover:scale-105 group">
       {/* Backdrop */}
       <div
-        className="absolute top-3 left-3 w-full aspect-video outline-1 outline-[#EAC891] -z-10 shadow-xl/30 rounded-xs"
+        className="absolute top-3 left-3 w-full aspect-video outline-1 outline-[#EAC891] -z-10 shadow-xl/30 rounded-xs
+        transform transition-shadow duration-300 group-hover:shadow-2xl/55"
         style={{ backgroundColor: mainColor }}
       />
 

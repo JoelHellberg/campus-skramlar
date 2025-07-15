@@ -17,7 +17,7 @@ export default function PiggyBank(props: Props) {
   const secondaryColor = colors[(column + 1) % 3];
   const thirdColor = colors[(column + 2) % 3];
   return (
-    <Link href={"/?bossa=" + props.position} scroll={false}>
+    <Link href={"/?bossa=" + props.position + "&hex=%23" + mainColor.slice(1)} scroll={false}>
       <div
         className="relative w-full cursor-pointer 
     transform transition-transform duration-300 hover:scale-105 group"

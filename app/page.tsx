@@ -9,7 +9,7 @@ import History from "@/sections/history/history";
 import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
-import Bossa from "@/components/popups/bossa";
+import Bossa from "@/components/popups/bossa/bossa";
 
 export default function Home() {
   // Sammanställning av innehållet som utgör hela sidan

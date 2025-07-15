@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 // PiggyBank.tsx
 type Props = {
   position: number;
@@ -15,52 +17,56 @@ export default function PiggyBank(props: Props) {
   const secondaryColor = colors[(column + 1) % 3];
   const thirdColor = colors[(column + 2) % 3];
   return (
-    <div className="relative w-full cursor-pointer 
-    transform transition-transform duration-300 hover:scale-105 group">
-      {/* Backdrop */}
+    <Link href={"/?bossa=" + props.position} scroll={false}>
       <div
-        className="absolute top-3 left-3 w-full aspect-video outline-1 outline-[#EAC891] -z-10 shadow-xl/30 rounded-xs
-        transform transition-shadow duration-300 group-hover:shadow-2xl/55"
-        style={{ backgroundColor: mainColor }}
-      />
-
-      {/* Main content */}
-      <div
-        className={
-          "w-full aspect-video bg-[#E9A762] outline-1 shadow-xl/10 rounded-tl-xl rounded-br-xl rounded-tr-xs rounded-bl-xs"
-        }
-        style={{ outlineColor: mainColor }}
+        className="relative w-full cursor-pointer 
+    transform transition-transform duration-300 hover:scale-105 group"
       >
-        {/* logo */}
-        <div className="absolute w-1/2 h-full flex items-center p-2 ml-2">
-          <img src="/logo.svg" alt="logo" className="w-full" />
-        </div>
-        {/* logo shadow */}
-        <div className="absolute w-1/2 h-full bg-gradient-to-r from-[#E9A76266] to-[#E9A762FF] z-0 rounded-tl-xl" />
-
-        {/* Bössans rubrik */}
+        {/* Backdrop */}
         <div
-          className="absolute w-full h-full flex flex-col justify-center items-end pr-8 text-white text-shadow-2xl"
-          style={{
-            textShadow: `0 4px 10px rgba(0,0,0,0.25), -3px 4px 0 ${mainColor}`,
-          }}
+          className="absolute top-3 left-3 w-full aspect-video outline-1 outline-[#EAC891] -z-10 shadow-xl/30 rounded-xs
+        transform transition-shadow duration-300 group-hover:shadow-2xl/55"
+          style={{ backgroundColor: mainColor }}
+        />
+
+        {/* Main content */}
+        <div
+          className={
+            "w-full aspect-video bg-[#E9A762] outline-1 shadow-xl/10 rounded-tl-xl rounded-br-xl rounded-tr-xs rounded-bl-xs"
+          }
+          style={{ outlineColor: mainColor }}
         >
-          <h2 className="mr-4 !font-bold !text-5xl">Demo</h2>
-          <h2 className="!text-5xl mt-3">Bössa</h2>
-        </div>
-        {/* Positionering av summan */}
-        <div className="absolute -top-6">
-          <h1
-            className="!text-5xl text-[#ACCAB2] ml-8"
+          {/* logo */}
+          <div className="absolute w-1/2 h-full flex items-center p-2 ml-2">
+            <img src="/logo.svg" alt="logo" className="w-full" />
+          </div>
+          {/* logo shadow */}
+          <div className="absolute w-1/2 h-full bg-gradient-to-r from-[#E9A76266] to-[#E9A762FF] z-0 rounded-tl-xl" />
+
+          {/* Bössans rubrik */}
+          <div
+            className="absolute w-full h-full flex flex-col justify-center items-end pr-8 text-white text-shadow-2xl"
             style={{
-              textShadow: "3px 3px 0" + thirdColor,
-              color: secondaryColor,
+              textShadow: `0 4px 10px rgba(0,0,0,0.25), -3px 4px 0 ${mainColor}`,
             }}
           >
-            11000 kr
-          </h1>
+            <h2 className="mr-4 !font-bold !text-5xl">Demo</h2>
+            <h2 className="!text-5xl mt-3">Bössa</h2>
+          </div>
+          {/* Positionering av summan */}
+          <div className="absolute -top-6">
+            <h1
+              className="!text-5xl text-[#ACCAB2] ml-8"
+              style={{
+                textShadow: "3px 3px 0" + thirdColor,
+                color: secondaryColor,
+              }}
+            >
+              11000 kr
+            </h1>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

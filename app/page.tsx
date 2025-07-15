@@ -9,11 +9,16 @@ import History from "@/sections/history/history";
 import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
+import Bossa from "@/components/popUps/bossa";
 
 export default function Home() {
   // Sammanställning av innehållet som utgör hela sidan
   return (
     <div>
+      {/* Pop Ups */}
+      <Bossa/>
+
+      {/* Main Content */}
       <Header />
       <Hello />
       <About />

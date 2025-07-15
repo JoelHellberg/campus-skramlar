@@ -32,10 +32,10 @@ export default function History() {
         {years.map((team, i) => (
           <div key={i} className="flex justify-center w-[30%] py-4">
             <motion.div
-              initial={{ scale: "200%", rotate: "-130deg" }}
+              initial={{ scale: "150%", rotate: "-130deg" }}
               whileInView={{ scale: "100%", rotate: 0 }}
               transition={{ duration: 0.4, ease: "easeIn" }}
-              viewport={{ once: true, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               <Paper year={team.year} amount={team.amount} position={i} />
             </motion.div>

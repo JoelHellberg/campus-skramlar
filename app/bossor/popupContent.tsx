@@ -1,7 +1,35 @@
 import { useState } from "react";
+import generator from "generate-password";
+import supabase from "../supabase/supabaseClient";
+
+function generatePassword() {
+  const password = generator.generate({
+    length: 16,
+    numbers: true,
+    symbols: true,
+    uppercase: true,
+    strict: true,
+  });
+  return password;
+}
 
 export default function PopupContent() {
   const [name, setName] = useState("");
+
+  const create = async () => {
+    if (name) {
+      const { data, error } = await supabase
+        .from("bossorPrivate")
+        .insert([{ forenings_namn: name, password: generatePassword() }])
+        .select();
+
+      if (error) {
+        console.error("Error inserting:", error.message);
+      } else {
+        console.log("Inserted data:", data);
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -21,6 +49,7 @@ export default function PopupContent() {
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-green-500 hover:bg-green-600 cursor-pointer"
         }`}
+        onClick={() => create()}
       >
         Skapa
       </button>

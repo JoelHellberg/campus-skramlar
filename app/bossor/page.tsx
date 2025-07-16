@@ -78,13 +78,13 @@ function ForeningsRad(props: ForeningsProps) {
     <div className="flex bg-white">
       <div className="outline-2 p-2 rounded-l">
         <p>
-          <span className="font-bold">Förening:</span> {"Föreningsnamn blabla"}
+          <span className="font-bold">Förening: </span> {props.name}
         </p>
       </div>
-      <div className="outline-2 p-2 rounded-r-2xl">
+      <div className="outline-2 p-2 rounded-r">
         <p>
-          <span className="font-bold">Lösenord:</span>{" "}
-          {"ajkhsdk1237bhjhjsad989"}
+          <span className="font-bold">Lösenord: </span>
+          {props.password}
         </p>
       </div>
     </div>

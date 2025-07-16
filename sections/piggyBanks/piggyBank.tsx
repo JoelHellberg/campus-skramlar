@@ -2,6 +2,7 @@ import Link from "next/link";
 
 // PiggyBank.tsx
 type Props = {
+  bossa: { forenings_namn: string; pengar_insamlat: number };
   position: number;
 };
 
@@ -17,7 +18,10 @@ export default function PiggyBank(props: Props) {
   const secondaryColor = colors[(column + 1) % 3];
   const thirdColor = colors[(column + 2) % 3];
   return (
-    <Link href={"/?bossa=" + props.position + "&hex=%23" + mainColor.slice(1)} scroll={false}>
+    <Link
+      href={"/?bossa=" + props.position + "&hex=%23" + mainColor.slice(1)}
+      scroll={false}
+    >
       <div
         className="relative w-full cursor-pointer 
     transform transition-transform duration-300 hover:scale-105 group"
@@ -50,7 +54,9 @@ export default function PiggyBank(props: Props) {
               textShadow: `0 4px 10px rgba(0,0,0,0.25), -3px 4px 0 ${mainColor}`,
             }}
           >
-            <h2 className="mr-4 !font-bold !text-5xl">Demo</h2>
+            <h2 className="mr-4 !font-bold !text-5xl">
+              {props.bossa.forenings_namn}s
+            </h2>
             <h2 className="!text-5xl mt-3">Bössa</h2>
           </div>
           {/* Positionering av summan */}
@@ -62,7 +68,7 @@ export default function PiggyBank(props: Props) {
                 color: secondaryColor,
               }}
             >
-              11000 kr
+              {props.bossa.pengar_insamlat} kr
             </h1>
           </div>
         </div>

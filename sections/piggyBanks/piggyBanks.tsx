@@ -1,8 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PiggyBank from "./piggyBank";
+import supabase from "@/app/supabase/supabaseClient";
 
 export default function PiggyBanks() {
+  const [fetchError, setFetchError]: any = useState(null);
+  const [bossor, setBossor]: any = useState(null);
+
+  useEffect(() => {
+    const fetchPiggyBanks = async () => {
+      const { data, error } = await supabase.from("bossorGeneral").select();
+      if (error) {
+        setFetchError("Could not fetch the piggy bank");
+        setBossor(null);
+        console.log(error);
+      }
+      if (data) {
+        setBossor(data);
+        console.log("Smoothies are: ", data);
+        setFetchError(null);
+      }
+    };
+    fetchPiggyBanks();
+  }, []);
+
   const [amountOfNeedles, setAmountOfNeedles] = useState(2);
   // Tillfällig dummy lista för att generera 8st bössor
   const items = [0, 1, 2, 3, 4, 5, 6, 7];
@@ -19,6 +40,7 @@ export default function PiggyBanks() {
 
   return (
     <div id="piggyBanks" className="px-10 py-10">
+      {fetchError && <p>{fetchError}</p>}
       <div className="flex">
         {/* Div runt nålen så vi kan veta när alla nålar försvunnit */}
         <div onClick={handleNeedleClick}>
@@ -40,11 +62,15 @@ export default function PiggyBanks() {
       </div>
       {/* Positionering av alla bössor */}
       <div className="flex flex-wrap justify-center gap-12 w-full py-15">
-        {items.map((_, i) => (
-          <div key={i} className="w-[30%] py-2">
-            <PiggyBank position={i} />
-          </div>
-        ))}
+        {bossor && (
+          <>
+            {bossor.map((bossa: any, index: number) => (
+              <div key={index} className="w-[30%] py-2">
+                <PiggyBank bossa={bossa} position={index} />
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

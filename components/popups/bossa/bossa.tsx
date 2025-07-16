@@ -67,7 +67,7 @@ function LeftSide({ mainColor }: LeftSideProps) {
         <img src="\vectorGraphics\heart.svg" className="w-40" />
         <div className="p-5">
           <h1 className="!text-5xl !font-bold">
-            Demo har samlat in 11 000 kr
+            Demo har samlat in &nbsp;11&nbsp;000&nbsp;kr
           </h1>
           <p>
             <span className="underline">Swisha 50 kr till 0704433668</span> för

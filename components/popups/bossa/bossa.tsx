@@ -8,13 +8,15 @@ export default function Bossa() {
   const searchParams = useSearchParams();
   const bossa = searchParams.get("bossa");
   const color = searchParams.get("hex");
+  const foreningsNamn = searchParams.get("name");
+  const collectedSum = searchParams.get("sum");
   console.log("color is: " + color);
   const onCloseFunc = () => {
     router.replace("/", { scroll: false });
   };
   return (
     <>
-      {bossa && color && (
+      {bossa && color && foreningsNamn && collectedSum && (
         <Modal onClose={onCloseFunc}>
           <div className="relative w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-3xl shadow-2xl">
             {/* Backdrop */}
@@ -31,13 +33,13 @@ export default function Bossa() {
                 textShadow: "-5px 5px 0 " + color,
               }}
             >
-              Demos Bössa (nr: {bossa})
+              {foreningsNamn}s Bössa (nr: {bossa})
             </h1>
             {/* Main Content */}
             <div className="flex p-10 h-full w-full -mt-15">
               {/* Vänstra sidan */}
               <div className="h-full w-2/3">
-                <LeftSide mainColor={color} />
+                <LeftSide foreningsNamn={foreningsNamn} sumCollected={collectedSum} mainColor={color} />
               </div>
               <div
                 className="h-5/6 m-auto w-1 mx-10"
@@ -56,10 +58,12 @@ export default function Bossa() {
 }
 
 type LeftSideProps = {
+  foreningsNamn: string;
+  sumCollected: string;
   mainColor: string;
 };
 
-function LeftSide({ mainColor }: LeftSideProps) {
+function LeftSide({ foreningsNamn, sumCollected, mainColor }: LeftSideProps) {
   return (
     <div className="flex flex-col h-full">
       {/* Ovanför */}
@@ -67,7 +71,7 @@ function LeftSide({ mainColor }: LeftSideProps) {
         <img src="\vectorGraphics\heart.svg" className="w-40" />
         <div className="p-5">
           <h1 className="!text-5xl !font-bold">
-            Demo har samlat in &nbsp;11&nbsp;000&nbsp;kr
+            {foreningsNamn} har samlat in &nbsp;{sumCollected}&nbsp;kr
           </h1>
           <p>
             <span className="underline">Swisha 50 kr till 0704433668</span> för

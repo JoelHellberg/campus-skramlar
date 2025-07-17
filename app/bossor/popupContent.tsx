@@ -17,17 +17,48 @@ export default function PopupContent() {
   const [name, setName] = useState("");
 
   const create = async () => {
-    if (name) {
-      const { data, error } = await supabase
-        .from("bossorPrivate")
-        .insert([{ forenings_namn: name, password: generatePassword() }])
-        .select();
+    if (!name) return;
 
-      if (error) {
-        console.error("Error inserting:", error.message);
-      } else {
-        console.log("Inserted data:", data);
-      }
+    // First insert into bossorPrivate
+    const { data: privateData, error: privateError } = await supabase
+      .from("bossorPrivate")
+      .insert([{ forenings_namn: name, password: generatePassword() }])
+      .select();
+
+    if (privateError) {
+      console.error(
+        "Error inserting into bossorPrivate:",
+        privateError.message
+      );
+      return;
+    }
+
+    console.log("Inserted into bossorPrivate:", privateData);
+
+    // Optional: get the ID from the first insert if needed
+    const privateId = privateData?.[0]?.id;
+
+    // Then insert into bossorDetailed
+    const { data: detailedData, error: detailedError } = await supabase
+      .from("bossorDetailed")
+      .insert([
+        {
+          id: privateId,
+          phone_number: 0,
+          swish_sum: 0,
+          description: "",
+          // Possibly: bossor_private_id: privateId
+        },
+      ])
+      .select();
+
+    if (detailedError) {
+      console.error(
+        "Error inserting into bossorDetailed:",
+        detailedError.message
+      );
+    } else {
+      console.log("Inserted into bossorDetailed:", detailedData);
     }
   };
 

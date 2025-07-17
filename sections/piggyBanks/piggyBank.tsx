@@ -19,7 +19,16 @@ export default function PiggyBank(props: Props) {
   const thirdColor = colors[(column + 2) % 3];
   return (
     <Link
-      href={"/?bossa=" + props.position + "&hex=%23" + mainColor.slice(1)}
+      href={
+        "/?bossa=" +
+        props.position +
+        "&hex=%23" +
+        mainColor.slice(1) +
+        "&name=" +
+        props.bossa.forenings_namn +
+        "&sum=" +
+        props.bossa.pengar_insamlat
+      }
       scroll={false}
     >
       <div

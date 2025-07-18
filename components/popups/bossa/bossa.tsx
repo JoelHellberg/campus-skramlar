@@ -5,6 +5,7 @@ import Update from "./update";
 import { useEffect, useState } from "react";
 import { BossaDetailed } from "@/app/_lib/types";
 import { fetchBossaDetailed } from "@/app/_lib/supabase/clientFunctions";
+import { motion } from "framer-motion";
 
 export default function Bossa() {
   const router = useRouter();
@@ -81,7 +82,7 @@ function LeftSide({
   const [details, setDetails] = useState<BossaDetailed>();
   useEffect(() => {
     const fetchDetails = async () => {
-      const data : BossaDetailed = await fetchBossaDetailed(foreningsId);
+      const data: BossaDetailed = await fetchBossaDetailed(foreningsId);
       setDetails(data);
     };
     fetchDetails();
@@ -97,19 +98,29 @@ function LeftSide({
             {foreningsNamn} har samlat in &nbsp;{sumCollected}&nbsp;kr
           </h1>
           {details?.swish_sum != 0 && details?.phone_number && (
-            <p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1.0 }}
+              transition={{ duration: 0.5, ease: "easeIn" }}
+            >
               <span className="underline">
                 Swisha {details?.swish_sum} kr till {details?.phone_number}
               </span>{" "}
               för att vara med och tävla i {foreningsNamn}s bössa!
-            </p>
+            </motion.p>
           )}
         </div>
       </div>
       <div className="w-full h-1 my-6" style={{ backgroundColor: mainColor }} />
       {/* Nedanför */}
       <div className="flex flex-1 max-h-full overflow-y-auto">
-        <p>{details?.description}</p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1.0 }}
+          transition={{ duration: 0.5, ease: "easeIn" }}
+        >
+          {details?.description}
+        </motion.p>
       </div>
     </div>
   );

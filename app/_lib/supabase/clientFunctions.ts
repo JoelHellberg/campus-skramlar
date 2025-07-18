@@ -27,7 +27,7 @@ export async function fetchBossaGeneral(
   return bossaGeneral;
 }
 
-export async function fetchBossaDetailed(foreningsId: string) {
+export async function fetchBossaDetailed(foreningsId: string) : Promise<BossaDetailed> {
   const bossaDetailed = (await fetchDataRow(
     "bossorDetailed",
     foreningsId

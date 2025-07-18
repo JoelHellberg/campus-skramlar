@@ -54,11 +54,11 @@ export async function updateBossorGeneral(
 export async function updateBossorDetailed(
   foreningsId: string,
   swishSum: number,
-  swishNumber: number,
+  swishNumber: string,
   description: string
 ) {
   const isValidInput =
-    foreningsId && description && swishSum != 0 && swishNumber != 0;
+    foreningsId && description && swishNumber && swishSum != 0;
 
   if (isValidInput) {
     updateDataTable("bossorDetailed", foreningsId, {

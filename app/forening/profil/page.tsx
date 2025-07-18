@@ -1,21 +1,42 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useBossaData } from "../_lib/data";
-import { createPiggybank } from "../_lib/serverFunctions";
+import {
+  createPiggybank,
+  updateBossorDetailed,
+  updateBossorGeneral,
+} from "../_lib/serverFunctions";
 
 export default function Home() {
   const initialize = useBossaData((state) => state.initialize);
   const foreningsId = useBossaData((state) => state.foreningsId);
   const foreningsNamn = useBossaData((state) => state.foreningsNamn);
-  
+  const moneyCollected = useBossaData((state) => state.moneyCollected);
+  const swishSum = useBossaData((state) => state.swishSum);
+  const swishNumber = useBossaData((state) => state.swishNumber);
+  const description_in = useBossaData((state) => state.description);
+
   const [name, setName] = useState<string>(foreningsNamn);
-  const [sum, setSum] = useState<number>(0);
-  const [number, setNumber] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
+  const [sum, setSum] = useState<number>(swishSum);
+  const [number, setNumber] = useState<string>(swishNumber);
+  const [description, setDescription] = useState<string>(description_in);
 
   useEffect(() => {
     initialize();
   }, []);
+
+  const updateProfile = () => {
+    if (name !== foreningsNamn) {
+      updateBossorGeneral(foreningsId, foreningsNamn, moneyCollected);
+    }
+    if (
+      sum !== swishSum ||
+      number !== swishNumber ||
+      description !== description_in
+    ) {
+      updateBossorDetailed(foreningsId, sum, number, description);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">
@@ -76,7 +97,10 @@ export default function Home() {
         />
       </div>
       {foreningsNamn ? (
-        <button className={"px-4 py-2 rounded text-white bg-black"}>
+        <button
+          className={"px-4 py-2 rounded text-white bg-black"}
+          onClick={() => updateProfile()}
+        >
           Spara
         </button>
       ) : (

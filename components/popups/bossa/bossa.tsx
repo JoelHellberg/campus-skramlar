@@ -75,7 +75,7 @@ function LeftSide({ foreningsNamn, sumCollected, mainColor }: LeftSideProps) {
           </h1>
           <p>
             <span className="underline">Swisha 50 kr till 0704433668</span> för
-            att vara med och tävla i Demos bössa!
+            att vara med och tävla i {foreningsNamn}s bössa!
           </p>
         </div>
       </div>

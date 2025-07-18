@@ -1,15 +1,21 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useBossaData } from "../_lib/data";
 import { createPiggybank } from "../_lib/serverFunctions";
 
 export default function Home() {
-  const foreningsId = localStorage.getItem("foreningsId");
+  const initialize = useBossaData((state) => state.initialize);
+  const foreningsId = useBossaData((state) => state.foreningsId);
   const foreningsNamn = useBossaData((state) => state.foreningsNamn);
+  
   const [name, setName] = useState<string>(foreningsNamn);
   const [sum, setSum] = useState<number>(0);
   const [number, setNumber] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+
+  useEffect(() => {
+    initialize();
+  }, []);
 
   return (
     <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">

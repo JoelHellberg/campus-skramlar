@@ -1,3 +1,5 @@
+"use server";
+import "server-only";
 import { getSupabaseAdmin } from "@/app/_lib/supabase/supabaseAdmin";
 
 export async function updateDataTable<T extends object>(

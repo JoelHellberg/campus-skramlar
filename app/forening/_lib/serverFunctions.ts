@@ -1,5 +1,5 @@
 "use server";
-import { updateDataTable, insertDataRow } from "./databaseFunctions";
+import { updateDataTable, insertDataRow } from "./adminFunctions";
 
 export async function createPiggybank(
   foreningsId: string | null,

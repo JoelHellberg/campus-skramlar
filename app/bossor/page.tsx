@@ -3,7 +3,7 @@
 import DefaultPopup from "@/components/popups/defaultPopup";
 import Link from "next/link";
 import PopupContent from "./popupContent";
-import supabase from "@/app/supabase/supabaseClient";
+import supabase from "@/app/_lib/supabase/supabaseClient";
 import { useEffect, useState } from "react";
 
 export default function Home() {

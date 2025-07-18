@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { logIn } from "@/app/supabase/accountFunctions";
+import { logIn } from "@/app/_lib/supabase/accountFunctions";
 
 export default function Home() {
   const [email, setUsername] = useState("");

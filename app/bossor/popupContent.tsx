@@ -1,6 +1,6 @@
 import { useState } from "react";
 import generator from "generate-password";
-import supabase from "../supabase/supabaseClient";
+import supabase from "../_lib/supabase/supabaseClient";
 
 function generatePassword() {
   const password = generator.generate({

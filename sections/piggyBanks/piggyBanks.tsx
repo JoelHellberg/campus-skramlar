@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PiggyBank from "./piggyBank";
-import supabase from "@/app/supabase/supabaseClient";
+import supabase from "@/app/_lib/supabase/supabaseClient";
 
 export default function PiggyBanks() {
   const [fetchError, setFetchError]: any = useState(null);

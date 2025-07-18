@@ -2,10 +2,17 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import supabase from "../_lib/supabase/supabaseClient";
+import { useBossaData } from "./_lib/data";
+
+type bossaGeneral = {
+  forenings_namn: string;
+  pengar_insamlat: number;
+};
 
 export default function Home() {
   const [fetchError, setFetchError]: any = useState(null);
-  const [bossaGeneral, setBossaGeneral]: any = useState(null);
+  const [bossaGeneral, setBossaGeneral] = useState<bossaGeneral | null>(null);
+  const updateBossaGeneral = useBossaData((state) => state.setBossaGeneral);
 
   useEffect(() => {
     const fetchPiggyBanks = async () => {
@@ -22,9 +29,16 @@ export default function Home() {
         }
         if (data) {
           if (data.length !== 0) {
-            setBossaGeneral(data);
-            console.log("Smoothies are: ", data);
-            setFetchError(null);
+            const formatted_data = data[0] as bossaGeneral | undefined;
+            if (formatted_data) {
+              setBossaGeneral(formatted_data);
+              updateBossaGeneral(
+                formatted_data.forenings_namn,
+                formatted_data.pengar_insamlat
+              );
+              console.log("Smoothies are: ", data);
+              setFetchError(null);
+            }
           }
         }
       }

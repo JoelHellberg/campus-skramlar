@@ -5,6 +5,7 @@ import Link from "next/link";
 import PopupContent from "./popupContent";
 import supabase from "@/app/_lib/supabase/supabaseClient";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   return (
@@ -22,16 +23,17 @@ export default function Home() {
         <h2>Bössor: </h2>
         <ForeningarDisplay />
         <Link href="/bossor/?nyBossa=true">
-            <div className="bg-white h-fit p-3 rounded-xl outline-4">
-              <h2>Skapa ny bössa</h2>
-            </div>
-          </Link>
+          <div className="bg-white h-fit p-3 rounded-xl outline-4">
+            <h2>Skapa ny bössa</h2>
+          </div>
+        </Link>
       </div>
     </>
   );
 }
 
 function ForeningarDisplay() {
+  const router = useRouter();
   const [fetchError, setFetchError]: any = useState(null);
   const [foreningar, setForeningar]: any = useState(null);
 
@@ -44,9 +46,12 @@ function ForeningarDisplay() {
         console.log(error);
       }
       if (data) {
-        setForeningar(data);
-        console.log("Smoothies are: ", data);
-        setFetchError(null);
+        if (data.length == 0) {
+        } else {
+          setForeningar(data);
+          console.log("Smoothies are: ", data);
+          setFetchError(null);
+        }
       }
     };
     fetchForeningar();
@@ -77,7 +82,9 @@ type ForeningsProps = {
 };
 function ForeningsRad(props: ForeningsProps) {
   return (
-    <div className={"flex " + (props.isActive ? "bg-green-300" : "bg-yellow-200")}>
+    <div
+      className={"flex " + (props.isActive ? "bg-green-300" : "bg-yellow-200")}
+    >
       <div className="outline-2 p-2 rounded-l">
         <p>
           <span className="font-bold">Förening: </span> {props.name}

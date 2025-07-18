@@ -2,7 +2,7 @@ import Link from "next/link";
 
 // PiggyBank.tsx
 type Props = {
-  bossa: { forenings_namn: string; pengar_insamlat: number };
+  bossa: { id: string; forenings_namn: string; pengar_insamlat: number };
   position: number;
 };
 
@@ -21,7 +21,7 @@ export default function PiggyBank(props: Props) {
     <Link
       href={
         "/?bossa=" +
-        props.position +
+        props.bossa.id +
         "&hex=%23" +
         mainColor.slice(1) +
         "&name=" +

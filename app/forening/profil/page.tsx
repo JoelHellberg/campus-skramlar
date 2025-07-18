@@ -1,6 +1,16 @@
-import Link from "next/link";
+"use client";
+import { useState } from "react";
+import { useBossaData } from "../_lib/data";
+import { createPiggybank } from "../_lib/serverFunctions";
 
 export default function Home() {
+  const foreningsId = localStorage.getItem("foreningsId");
+  const foreningsNamn = useBossaData((state) => state.foreningsNamn);
+  const [name, setName] = useState<string>(foreningsNamn);
+  const [sum, setSum] = useState<number>(0);
+  const [number, setNumber] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+
   return (
     <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">
       <h1>profil</h1>
@@ -14,15 +24,35 @@ export default function Home() {
           <label htmlFor="name" className="block mb-2 font-medium">
             Namn på föreningen:
           </label>
-          <input type="text" placeholder="Skriv namnet här" />
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Skriv namnet här"
+          />
           <label htmlFor="name" className="block mb-2 font-medium">
             Swish summa:
           </label>
-          <input type="text" placeholder="Skriv namnet här" />
+          <input
+            type="number"
+            value={sum}
+            onChange={(e) => setSum(Number(e.target.value))}
+            placeholder="Skriv namnet här"
+          />
           <label htmlFor="name" className="block mb-2 font-medium">
             Swish nummer:
           </label>
-          <input type="text" placeholder="Skriv namnet här" />
+          <input
+            type="tel"
+            value={number}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (/^[\d+]*$/.test(value)) {
+                setNumber(value);
+              }
+            }}
+            placeholder="Skriv namnet här"
+          />
         </div>
       </div>
       <div className="bg-white p-5">
@@ -33,11 +63,39 @@ export default function Home() {
           id="description"
           name="description"
           rows={5}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           placeholder="Skriv din beskrivning här..."
           className="w-full p-3 border rounded-lg resize-y"
         />
       </div>
-      <button className={"px-4 py-2 rounded text-white bg-black"}>Skapa</button>
+      {foreningsNamn ? (
+        <button className={"px-4 py-2 rounded text-white bg-black"}>
+          Spara
+        </button>
+      ) : (
+        <button
+          className={"px-4 py-2 rounded text-white bg-black"}
+          onClick={async () => {
+            try {
+              await createPiggybank(
+                foreningsId,
+                name,
+                0,
+                sum,
+                number,
+                description
+              );
+              // e.g. show success message or redirect
+            } catch (error) {
+              console.error("Failed to create piggy bank:", error);
+              // Optionally show a toast or alert
+            }
+          }}
+        >
+          Skapa
+        </button>
+      )}
     </div>
   );
 }

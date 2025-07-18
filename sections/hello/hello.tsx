@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Counter from "./counter";
 
 export default function Hello() {
@@ -10,11 +11,36 @@ export default function Hello() {
           {/* Div för logga & bakgrund */}
           <div className="relative -z-10">
             {/* Loggan */}
-            <img src="/logo.svg" alt="logo" className="w-82" />
+            <motion.img
+              initial={{ scale: "80%" }}
+              animate={{ scale: "100%" }}
+              transition={{
+                type: "spring",
+                stiffness: 400, // higher = snappier
+                damping: 10,
+              }}
+              src="/logo.svg"
+              alt="logo"
+              className="w-82"
+            />
             {/* Logo frame */}
-            <div className="absolute -inset-4 rounded-full -z-10 bg-white" />
+            <motion.div
+              initial={{ scale: "80%" }}
+              animate={{ scale: "100%" }}
+              transition={{
+                type: "spring",
+                stiffness: 400, // higher = snappier
+                damping: 5,
+              }}
+              className="absolute -inset-4 rounded-full -z-10 bg-white"
+            />
             {/* Logo shadow */}
-            <div className="absolute -inset-4 top-5 rounded-full -z-20 bg-black opacity-20" />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.2 }}
+              transition={{ duration: 2.0, ease: "easeInOut" }}
+              className="absolute -inset-4 top-5 rounded-full -z-20 bg-black"
+            />
           </div>
           {/* Mängden pengar insamlat */}
           <div
@@ -32,7 +58,12 @@ export default function Hello() {
         {/* Beige Overlay to dimm gif intensity */}
 
         {/* GIF */}
-        <div className="relative w-fit">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2.0, ease: "easeInOut" }}
+          className="relative w-fit"
+        >
           {/* White Background */}
           <img
             src="/animationBackground.svg"
@@ -43,8 +74,8 @@ export default function Hello() {
           <img src="/animation.gif" alt="" className="w-full relative z-0" />
 
           {/* Beige overlay */}
-          <div className="absolute -inset-10 bg-[#FFF0D9] opacity-50"/>
-        </div>
+          <div className="absolute -inset-10 bg-[#FFF0D9] opacity-50" />
+        </motion.div>
       </div>
     </div>
   );

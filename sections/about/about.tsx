@@ -1,8 +1,15 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Contribute from "./contribute";
 import Goal from "./goal";
+import { useRef } from "react";
 
 export default function About() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [200, -200]);
   return (
     <div
       id="about"
@@ -33,10 +40,17 @@ export default function About() {
       </motion.div>
 
       {/* Main Content */}
-      <div className="flex justify-center items-center gap-[15vw] py-20">
+      <motion.div
+        ref={ref}
+        style={{ y }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1}}
+        transition={{ duration: 0.4, ease: "easeIn" }} // Go over, then in
+        className="flex justify-center items-center gap-[15vw] py-20"
+      >
         <Goal />
         <Contribute />
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -4,16 +4,18 @@ import DefaultPopup from "@/components/popups/defaultPopup";
 import Link from "next/link";
 import PopupContent from "./popupContent";
 import supabase from "@/app/_lib/supabase/supabaseClient";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   return (
     <>
       {/* Popup */}
-      <DefaultPopup popupRef="nyBossa" title="Skapa ny bössa">
-        <PopupContent />
-      </DefaultPopup>
+      <Suspense fallback={null}>
+        <DefaultPopup popupRef="nyBossa" title="Skapa ny bössa">
+          <PopupContent />
+        </DefaultPopup>
+      </Suspense>
 
       {/* Page Content */}
       <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">

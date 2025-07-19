@@ -31,7 +31,7 @@ async function encrypt(payload: any) {
     .sign(key);
 }
 
-export async function decrypt(token: string | undefined) {
+async function decrypt(token: string | undefined) {
   if (!token) return null;
 
   try {

@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react";
 import generator from "generate-password";
 import supabase from "../_lib/supabase/supabaseClient";

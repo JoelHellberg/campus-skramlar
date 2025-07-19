@@ -1,4 +1,6 @@
+import { BossaDetailed } from "@/app/_lib/types";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 // PiggyBank.tsx
 type Props = {
@@ -17,6 +19,7 @@ export default function PiggyBank(props: Props) {
   const mainColor = colors[column];
   const secondaryColor = colors[(column + 1) % 3];
   const thirdColor = colors[(column + 2) % 3];
+
   return (
     <Link
       href={
@@ -63,7 +66,7 @@ export default function PiggyBank(props: Props) {
               textShadow: `0 4px 10px rgba(0,0,0,0.25), -3px 4px 0 ${mainColor}`,
             }}
           >
-            <h2 className="mr-4 !font-bold !text-5xl">
+            <h2 className="inline-block mr-4 !font-bold !text-5xl text-left max-w-7/12 [text-indent:-2rem]">
               {props.bossa.forenings_namn}s
             </h2>
             <h2 className="!text-5xl mt-3">Bössa</h2>

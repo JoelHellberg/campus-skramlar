@@ -3,6 +3,8 @@
 import { SignJWT, jwtVerify } from "jose";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { fetchDataRow } from "./supabase/adminFunctions";
+import { BossaPrivate } from "./types";
 
 const secret = process.env.SECRET;
 if (!secret) {
@@ -21,7 +23,7 @@ const SESSION_COOKIE = {
   duration: 24 * 60 * 60 * 1000, // 1 day
 } as const;
 
-export async function encrypt(payload: any) {
+async function encrypt(payload: any) {
   return new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -42,37 +44,66 @@ export async function decrypt(token: string | undefined) {
   }
 }
 
+// Checks if there exists an account with the specified password
+async function checkPassword(password: string): Promise<string | null> {
+  const bossaPrivate = (await fetchDataRow(
+    "bossorPrivate",
+    "password",
+    password
+  )) as BossaPrivate | null;
+  if (bossaPrivate) {
+    return bossaPrivate.id as string;
+  }
+  return null;
+}
+
 // -- Creating a session cookie
 
-export async function createSession(userId: string) {
-  try {
-    const expires = new Date(Date.now() + SESSION_COOKIE.duration);
-    const session = await encrypt({ userId, expires });
+export async function createSession(password: string): Promise<string | null> {
+  const id = await checkPassword(password);
+  if (id) {
+    try {
+      const expires = new Date(Date.now() + SESSION_COOKIE.duration);
+      const sessionData = {
+        id: id,
+        password: password,
+        expires: expires,
+      };
+      const session = await encrypt(sessionData);
 
-    const cookieStore = await cookies();
-    cookieStore.set(SESSION_COOKIE.name, session, {
-      ...SESSION_COOKIE.options,
-      expires,
-    });
-  } catch (error) {
-    console.error("Error creating session:", error);
-    throw new Error("Error creating session");
+      const cookieStore = await cookies();
+      cookieStore.set(SESSION_COOKIE.name, session, {
+        ...SESSION_COOKIE.options,
+        expires,
+      });
+      return id;
+    } catch (error) {
+      console.error("Error creating session:", error);
+      throw new Error("Error creating session");
+    }
   }
+  return null;
 }
 
 // -- Verifying users & accounts
 
-export async function verifySession() {
+export async function verifySession(): Promise<string | null> {
   const cookieStore = await cookies();
   const sessionCookie = cookieStore.get(SESSION_COOKIE.name)?.value;
 
   const session = await decrypt(sessionCookie);
-
-  if (!session || !session.userId) {
-    redirect("/");
+  if (session) {
+    const password = session.password as string | null;
+    if (password) {
+      const cookieId = session.password;
+      const id = checkPassword(password);
+      if(id == cookieId) {
+        return id;
+      }
+    }
   }
 
-  return { userId: session.userId };
+  return null;
 }
 
 // -- Deleting the session cookies

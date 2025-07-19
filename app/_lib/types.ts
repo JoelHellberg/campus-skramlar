@@ -10,3 +10,10 @@ export type BossaDetailed = {
   swish_sum: number;
   description: string;
 };
+
+export type BossaPrivate = {
+  id: string;
+  password: string;
+  forenings_namn: number;
+  active: boolean;
+};

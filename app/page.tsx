@@ -10,13 +10,16 @@ import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
 import Bossa from "@/components/popups/bossa/bossa";
+import { Suspense } from "react";
 
 export default function Home() {
   // Sammanställning av innehållet som utgör hela sidan
   return (
     <div>
       {/* Popups */}
-      <Bossa/>
+      <Suspense fallback={null}>
+        <Bossa />
+      </Suspense>
 
       {/* Main Content */}
       <Header />

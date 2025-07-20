@@ -10,7 +10,7 @@ export default function LogInPopup() {
   const signIn = async () => {
     const status = await logIn(email, password);
     if (status) {
-      window.location.href = "/bossor";
+      window.location.href = "/admin";
     } else {
       setMessage("Failed to sign in!");
     }

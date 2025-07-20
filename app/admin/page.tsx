@@ -21,7 +21,7 @@ export default function Home() {
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
-        router.push("/bossor/?logIn=true");
+        router.push("/admin/?logIn=true");
       }
     };
     checkAuth();
@@ -39,13 +39,13 @@ export default function Home() {
       {/* Page Content */}
       <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">
         <div className="flex">
-          <h1>/bossor</h1>
+          <h1>/admin</h1>
         </div>
         {isLoggedIn && (
           <>
             <h2>Bössor: </h2>
             <ForeningarDisplay />
-            <Link href="/bossor/?nyBossa=true">
+            <Link href="/admin/?nyBossa=true">
               <div className="bg-white h-fit p-3 rounded-xl outline-4">
                 <h2>Skapa ny bössa</h2>
               </div>

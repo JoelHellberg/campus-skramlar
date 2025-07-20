@@ -6,6 +6,8 @@ import {
   updateBossorDetailed,
   updateBossorGeneral,
 } from "../_lib/serverFunctions";
+import Link from "next/link";
+import ForeningHeader from "../components/foreningHeader";
 
 export default function Home() {
   const initialize = useBossaData((state) => state.initialize);
@@ -49,56 +51,65 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1>/forening/profil</h1>
-      <div className="flex">
-        <div className="bg-[#FFF0D9] p-5 flex flex-col items-center text-center rounded-full">
-          Byt
-          <br />
-          profilbild
+      <ForeningHeader/>
+      <div className="flex flex-col gap-10 items-center">
+        <h1>/forening/profil</h1>
+        <div className="flex h-52">
+          <div
+            className="bg-[#FFF0D9] p-5 flex flex-col items-center text-center justify-center rounded-full outline-4 mr-10 shadow-xl/30 cursor-pointer
+            transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25 font-bold"
+            style={{ width: "100%", aspectRatio: "1 / 1" }}
+          >
+            Byt
+            <br />
+            profilbild
+          </div>
+          <Details
+            name={name}
+            setNameFunc={setName}
+            sum={sum}
+            setSumFunc={setSum}
+            number={number}
+            setNumberFunc={setNumber}
+          />
         </div>
-        <Details
-          name={name}
-          setNameFunc={setName}
-          sum={sum}
-          setSumFunc={setSum}
-          number={number}
-          setNumberFunc={setNumber}
+        <Description
+          description={description}
+          setDescriptionFunc={setDescription}
         />
+        {foreningsNamn ? (
+          <button
+            className="px-16 py-3 rounded-xl text-black bg-[#D06224] outline-4 w-fit font-bold shadow-xl/30 text-shadow-sm cursor-pointer 
+            transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
+            onClick={() => updateProfile()}
+          >
+            Spara
+          </button>
+        ) : (
+          <button
+            className="px-16 py-3 rounded-xl text-black bg-[#D06224] outline-4 w-fit font-bold shadow-xl/30 text-shadow-sm cursor-pointer 
+            transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
+            onClick={async () => {
+              try {
+                await createPiggybank(
+                  foreningsId,
+                  name,
+                  0,
+                  sum,
+                  number,
+                  description
+                );
+                // e.g. show success message or redirect
+              } catch (error) {
+                console.error("Failed to create piggy bank:", error);
+                // Optionally show a toast or alert
+              }
+            }}
+          >
+            Skapa
+          </button>
+        )}
       </div>
-      <Description
-        description={description}
-        setDescriptionFunc={setDescription}
-      />
-      {foreningsNamn ? (
-        <button
-          className={"px-4 py-2 rounded text-white bg-black"}
-          onClick={() => updateProfile()}
-        >
-          Spara
-        </button>
-      ) : (
-        <button
-          className={"px-4 py-2 rounded text-white bg-black"}
-          onClick={async () => {
-            try {
-              await createPiggybank(
-                foreningsId,
-                name,
-                0,
-                sum,
-                number,
-                description
-              );
-              // e.g. show success message or redirect
-            } catch (error) {
-              console.error("Failed to create piggy bank:", error);
-              // Optionally show a toast or alert
-            }
-          }}
-        >
-          Skapa
-        </button>
-      )}
     </div>
   );
 }
@@ -114,8 +125,8 @@ type DetailsProps = {
 
 function Details(props: DetailsProps) {
   return (
-    <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4">
-      <label htmlFor="name" className="block mb-2 font-medium">
+    <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4 shadow-xl/25">
+      <label htmlFor="name" className="block mb-2 font-bold">
         Namn på föreningen:
       </label>
       <input
@@ -127,7 +138,7 @@ function Details(props: DetailsProps) {
       />
       <div className="flex my-4">
         <div className="mr-4">
-          <label htmlFor="name" className="block mb-2 font-medium">
+          <label htmlFor="name" className="block mb-2 font-bold">
             Swish summa:
           </label>
           <input
@@ -139,7 +150,7 @@ function Details(props: DetailsProps) {
           />
         </div>
         <div>
-          <label htmlFor="name" className="block mb-2 font-medium">
+          <label htmlFor="name" className="block mb-2 font-bold">
             Swish nummer:
           </label>
           <input
@@ -166,8 +177,8 @@ type DescriptionProps = {
 };
 function Description(props: DescriptionProps) {
   return (
-    <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4">
-      <label htmlFor="name" className="block mb-2 font-medium">
+    <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4 w-full shadow-xl/25">
+      <label htmlFor="name" className="block mb-2 font-bold">
         Bössans beskrivning
       </label>
       <textarea

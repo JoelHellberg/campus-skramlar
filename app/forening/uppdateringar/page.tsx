@@ -1,8 +1,10 @@
 import Link from "next/link";
+import ForeningHeader from "../components/foreningHeader";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center bg-[#EDA277] min-h-screen">
+      <ForeningHeader/>
       <h1>/forening/uppdateringar</h1>
       <div className="bg-white p-5">
         <label htmlFor="name" className="block mb-2 font-medium">

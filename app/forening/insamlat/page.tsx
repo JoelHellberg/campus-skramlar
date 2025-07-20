@@ -13,18 +13,25 @@ export default function Home() {
     initialize();
   }, []);
 
+  useEffect(() => {
+    if (moneyCollected) {
+      setSum(moneyCollected);
+    }
+  }, [moneyCollected]);
+
   return (
-    <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen text-center">
-      <h1>Ange hur mycket pengar ni har i er bössa nedanför:</h1>
-      <div className="bg-white p-5 text-left">
+    <div className="flex flex-col items-center bg-[#ACCAB2] min-h-screen text-center">
+      <h1>/forening/insamlat</h1>
+      <div className="bg-[#FFF0D9] p-5 text-left outline-4 rounded-2xl">
         <label htmlFor="name" className="block mb-2 font-medium">
-          Summa:
+          Ange hur mycket pengar ni har i er bössa nedanför:
         </label>
         <input
           type="number"
           value={sum}
           onChange={(e) => setSum(Number(e.target.value))}
           placeholder="Skriv namnet här"
+          className="bg-white w-full outline-1 rounded-sm"
         />
       </div>
       <button

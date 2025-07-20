@@ -25,6 +25,15 @@ export default function Home() {
     initialize();
   }, []);
 
+  useEffect(() => {
+    if (foreningsNamn) {
+      setName(foreningsNamn);
+      setSum(swishSum);
+      setNumber(swishNumber);
+      setDescription(description_in);
+    }
+  }, [foreningsNamn]);
+
   const updateProfile = () => {
     if (name !== foreningsNamn) {
       updateBossorGeneral(foreningsId, foreningsNamn, moneyCollected);
@@ -39,63 +48,27 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">
-      <h1>profil</h1>
+    <div className="flex flex-col items-center">
+      <h1>/forening/profil</h1>
       <div className="flex">
-        <div className="bg-white p-5 flex flex-col items-center text-center rounded-full">
+        <div className="bg-[#FFF0D9] p-5 flex flex-col items-center text-center rounded-full">
           Byt
           <br />
           profilbild
         </div>
-        <div className="bg-white p-5">
-          <label htmlFor="name" className="block mb-2 font-medium">
-            Namn på föreningen:
-          </label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Skriv namnet här"
-          />
-          <label htmlFor="name" className="block mb-2 font-medium">
-            Swish summa:
-          </label>
-          <input
-            type="number"
-            value={sum}
-            onChange={(e) => setSum(Number(e.target.value))}
-            placeholder="Skriv namnet här"
-          />
-          <label htmlFor="name" className="block mb-2 font-medium">
-            Swish nummer:
-          </label>
-          <input
-            type="tel"
-            value={number}
-            onChange={(e) => {
-              const value = e.target.value;
-              if (/^[\d+]*$/.test(value)) {
-                setNumber(value);
-              }
-            }}
-            placeholder="Skriv namnet här"
-          />
-        </div>
-      </div>
-      <div className="bg-white p-5">
-        <label htmlFor="name" className="block mb-2 font-medium">
-          Bössans beskrivning
-        </label>
-        <textarea
-          id="description"
-          name="description"
-          rows={5}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Skriv din beskrivning här..."
-          className="w-full p-3 border rounded-lg resize-y"
+        <Details
+          name={name}
+          setNameFunc={setName}
+          sum={sum}
+          setSumFunc={setSum}
+          number={number}
+          setNumberFunc={setNumber}
         />
       </div>
+      <Description
+        description={description}
+        setDescriptionFunc={setDescription}
+      />
       {foreningsNamn ? (
         <button
           className={"px-4 py-2 rounded text-white bg-black"}
@@ -126,6 +99,86 @@ export default function Home() {
           Skapa
         </button>
       )}
+    </div>
+  );
+}
+
+type DetailsProps = {
+  name: string;
+  setNameFunc: (value: string) => void;
+  sum: number;
+  setSumFunc: (value: number) => void;
+  number: string;
+  setNumberFunc: (value: string) => void;
+};
+
+function Details(props: DetailsProps) {
+  return (
+    <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4">
+      <label htmlFor="name" className="block mb-2 font-medium">
+        Namn på föreningen:
+      </label>
+      <input
+        type="text"
+        value={props.name}
+        onChange={(e) => props.setNameFunc(e.target.value)}
+        placeholder="Skriv namnet här"
+        className="bg-white p-1 outline-1 rounded-sm w-full"
+      />
+      <div className="flex my-4">
+        <div className="mr-4">
+          <label htmlFor="name" className="block mb-2 font-medium">
+            Swish summa:
+          </label>
+          <input
+            type="number"
+            value={props.sum}
+            onChange={(e) => props.setSumFunc(Number(e.target.value))}
+            placeholder="Skriv namnet här"
+            className="bg-white p-1 outline-1 rounded-sm w-30"
+          />
+        </div>
+        <div>
+          <label htmlFor="name" className="block mb-2 font-medium">
+            Swish nummer:
+          </label>
+          <input
+            type="tel"
+            value={props.number}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (/^[\d+]*$/.test(value)) {
+                props.setNumberFunc(value);
+              }
+            }}
+            placeholder="Skriv namnet här"
+            className="bg-white p-1 outline-1 rounded-sm"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type DescriptionProps = {
+  description: string;
+  setDescriptionFunc: (value: string) => void;
+};
+function Description(props: DescriptionProps) {
+  return (
+    <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4">
+      <label htmlFor="name" className="block mb-2 font-medium">
+        Bössans beskrivning
+      </label>
+      <textarea
+        id="description"
+        name="description"
+        rows={5}
+        value={props.description}
+        onChange={(e) => props.setDescriptionFunc(e.target.value)}
+        placeholder="Skriv din beskrivning här..."
+        className="w-full p-3 border rounded-lg resize-y bg-white"
+      />
     </div>
   );
 }

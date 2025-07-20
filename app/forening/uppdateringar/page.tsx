@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">
-      <h1>uppdateringar</h1>
+    <div className="flex flex-col items-center bg-[#EDA277] min-h-screen">
+      <h1>/forening/uppdateringar</h1>
       <div className="bg-white p-5">
         <label htmlFor="name" className="block mb-2 font-medium">
           Skriv ditt inlägg nedanför:

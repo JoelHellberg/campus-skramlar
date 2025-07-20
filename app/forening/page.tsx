@@ -40,11 +40,13 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">
-        <h1>/forening</h1>
+        <h1 className="mt-10">/forening</h1>
+        <div className="mt-16 flex flex-col gap-10 w-fit text-center font-semibold">
         {isLoggedIn && (
           <>
             <Link
-              className="px-4 py-2 rounded bg-[#8A8635] text-white"
+              className="px-4 py-3 rounded-xl bg-[#8A8635] text-white border-4 border-black text-shadow-sm/30 shadow-xl/40
+              transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
               href="/forening/profil"
             >
               Profil
@@ -52,13 +54,15 @@ export default function Home() {
             {foreningsNamn && (
               <>
                 <Link
-                  className="px-4 py-2 rounded bg-[#ACCAB2] text-black"
+                  className="px-16 py-3 rounded-xl bg-[#ACCAB2] text-black border-4 text-shadow-sm shadow-xl/40
+                  transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
                   href="/forening/insamlat"
                 >
                   Insamlat
                 </Link>
                 <Link
-                  className="px-4 py-2 rounded bg-[#D06224] text-black"
+                  className="px-4 py-3 rounded-xl bg-[#D06224] text-black border-4 text-shadow-sm shadow-xl/40
+                  transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
                   href="/forening/uppdateringar"
                 >
                   Uppdateringar
@@ -67,6 +71,7 @@ export default function Home() {
             )}
           </>
         )}
+        </div>
       </div>
     </>
   );

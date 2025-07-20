@@ -37,7 +37,7 @@ export default function Bossa() {
                 textShadow: "-5px 5px 0 " + color,
               }}
             >
-              {foreningsNamn}s Bössa (nr: {bossa})
+              {foreningsNamn}s Bössa
             </h1>
             {/* Main Content */}
             <div className="flex p-10 h-full w-full -mt-15">

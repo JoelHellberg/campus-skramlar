@@ -5,7 +5,7 @@ export default function Hello() {
   return (
     <div className="w-full bg-[#FFF0D9] px-20 py-16 pb-20 flex flex-col">
       {/* Wrapper */}
-      <div className="relative w-full">
+      <div className="relative w-full flex">
         {/* Logo & Text */}
         <div className="flex flex-col items-center justify-center absolute inset-0 z-20">
           {/* Div för logga & bakgrund */}
@@ -62,7 +62,7 @@ export default function Hello() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2.0, ease: "easeInOut" }}
-          className="relative w-fit"
+          className="relative w-full"
         >
           {/* White Background */}
           <img

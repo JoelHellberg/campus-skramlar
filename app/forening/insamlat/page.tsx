@@ -24,7 +24,7 @@ export default function Home() {
     <div className="flex flex-col items-center bg-[#ACCAB2] min-h-screen text-center gap-10">
       <ForeningHeader />
       <h1>/forening/insamlat</h1>
-      <div className="bg-[#FFF0D9] p-10 text-left outline-4 rounded-2xl">
+      <div className="bg-[#FFF0D9] p-10 text-left outline-4 rounded-2xl shadow-xl/25">
         <label htmlFor="name" className="block mb-2 font-bold text-3xl w-100">
           Ange hur mycket pengar ni har i er bössa nedanför:
         </label>
@@ -33,7 +33,7 @@ export default function Home() {
           value={sum}
           onChange={(e) => setSum(Number(e.target.value))}
           placeholder="Skriv namnet här"
-          className="bg-white w-100 outline-1 rounded-sm text-6xl my-5"
+          className="bg-white w-100 outline-1 rounded-sm text-6xl my-5 p-3"
         />
       </div>
       <button

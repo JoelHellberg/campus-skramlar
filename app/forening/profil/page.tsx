@@ -51,7 +51,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      <ForeningHeader/>
+      <ForeningHeader />
       <div className="flex flex-col gap-10 items-center">
         <h1>/forening/profil</h1>
         <div className="flex h-52">
@@ -60,9 +60,11 @@ export default function Home() {
             transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25 font-bold"
             style={{ width: "100%", aspectRatio: "1 / 1" }}
           >
-            Byt
-            <br />
-            profilbild
+            <h2 className="!text-3xl">
+              Byt
+              <br />
+              Profilbild
+            </h2>
           </div>
           <Details
             name={name}
@@ -99,6 +101,7 @@ export default function Home() {
                   number,
                   description
                 );
+                window.location.href = "/forening";
                 // e.g. show success message or redirect
               } catch (error) {
                 console.error("Failed to create piggy bank:", error);

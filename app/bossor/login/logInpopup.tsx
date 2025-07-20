@@ -1,12 +1,23 @@
 "use client";
-import { useState } from "react";
 import { logIn } from "@/app/_lib/supabase/accountFunctions";
+import DefaultPopup from "@/components/popups/defaultPopup";
+import { useState } from "react";
 
-export default function Home() {
+export default function LogInPopup() {
   const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const signIn = async () => {
+    const status = await logIn(email, password);
+    if (status) {
+      window.location.href = "/bossor";
+    } else {
+      setMessage("Failed to sign in!");
+    }
+  };
   return (
-    <div className="flex flex-col w-full justify-center">
+    <DefaultPopup popupRef_in="logIn" title="Sign in" close={false}>
+      <p>{message}</p>
       <label htmlFor="Email:" className="block mb-2 font-medium">
         Email:
       </label>
@@ -34,10 +45,10 @@ export default function Home() {
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-green-500 hover:bg-green-600 cursor-pointer"
         }`}
-        onClick={() => logIn(email, password)}
+        onClick={() => signIn()}
       >
         Logga in
       </button>
-    </div>
+    </DefaultPopup>
   );
 }

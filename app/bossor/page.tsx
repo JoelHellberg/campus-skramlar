@@ -6,13 +6,32 @@ import PopupContent from "./popupContent";
 import supabase from "@/app/_lib/supabase/supabaseClient";
 import { Suspense, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import LogInPopup from "./login/logInpopup";
 
 export default function Home() {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  useEffect(() => {
+    const checkAuth = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+        router.push("/bossor/?logIn=true");
+      }
+    };
+    checkAuth();
+  }, []);
   return (
     <>
       {/* Popup */}
       <Suspense fallback={null}>
-        <DefaultPopup popupRef="nyBossa" title="Skapa ny bössa">
+        <LogInPopup />
+        <DefaultPopup popupRef_in="nyBossa" title="Skapa ny bössa">
           <PopupContent />
         </DefaultPopup>
       </Suspense>
@@ -22,13 +41,17 @@ export default function Home() {
         <div className="flex">
           <h1>/bossor</h1>
         </div>
-        <h2>Bössor: </h2>
-        <ForeningarDisplay />
-        <Link href="/bossor/?nyBossa=true">
-          <div className="bg-white h-fit p-3 rounded-xl outline-4">
-            <h2>Skapa ny bössa</h2>
-          </div>
-        </Link>
+        {isLoggedIn && (
+          <>
+            <h2>Bössor: </h2>
+            <ForeningarDisplay />
+            <Link href="/bossor/?nyBossa=true">
+              <div className="bg-white h-fit p-3 rounded-xl outline-4">
+                <h2>Skapa ny bössa</h2>
+              </div>
+            </Link>
+          </>
+        )}
       </div>
     </>
   );

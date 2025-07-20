@@ -7,8 +7,9 @@ export const logIn = async (email: string, password: string) => {
   });
 
   if (error) {
-    console.error("Login failed:", error.message);
+    console.log("Login failed:", error.message);
   } else {
     console.log("Login successful:", data);
+    return "success";
   }
 };

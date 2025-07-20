@@ -1,24 +1,22 @@
 "use client";
 import { createSession } from "@/app/_lib/authentication";
-import { useRouter } from "next/navigation";
+import DefaultPopup from "@/components/popups/defaultPopup";
 import { useState } from "react";
 
-export default function Home() {
+export default function LogInPopup() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const router = useRouter();
   const signIn = async () => {
     const foreningsId = (await createSession(password)) as string | null;
     if (foreningsId) {
       localStorage.setItem("foreningsId", foreningsId);
-      router.push("/forening");
-    }
-    else {
-      setMessage("Failed to sign in!")
+      window.location.href = "/forening";
+    } else {
+      setMessage("Failed to sign in!");
     }
   };
   return (
-    <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen text-center">
+    <DefaultPopup popupRef_in="logIn" title="Sign in" close={false}>
       <p>{message}</p>
       <input
         suppressHydrationWarning
@@ -33,6 +31,6 @@ export default function Home() {
       >
         logga in
       </button>
-    </div>
+    </DefaultPopup>
   );
 }

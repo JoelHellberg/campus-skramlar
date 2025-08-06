@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PiggyBank from "./piggyBank";
 import supabase from "@/app/_lib/supabase/supabaseClient";
+import PiggyBank2 from "./piggyBank2";
 
 export default function PiggyBanks() {
   const [fetchError, setFetchError]: any = useState(null);
@@ -48,7 +49,7 @@ export default function PiggyBanks() {
         </div>
         {/* Rubrik */}
         <div className="flex grow items-center justify-center text-center">
-          <h3 className="!text-5xl">Bössor</h3>
+          <h3 className="!text-7xl my-5">Bössor</h3>
         </div>
         {/* Div runt nålen så vi kan veta när alla nålar försvunnit */}
         <div onClick={handleNeedleClick}>
@@ -65,8 +66,8 @@ export default function PiggyBanks() {
         {bossor && (
           <>
             {bossor.map((bossa: any, index: number) => (
-              <div key={index} className="w-[30%] py-2">
-                <PiggyBank bossa={bossa} position={index} />
+              <div key={index} className="w-[30%] py-8">
+                <PiggyBank2 bossa={bossa} position={index} />
               </div>
             ))}
           </>
@@ -94,7 +95,7 @@ function NeedleDot() {
           ></motion.div>
         )}
       </AnimatePresence>
-      <div className="bg-[#9CAF88] w-10 aspect-square rounded-full" />
+      <div className="bg-[#9CAF88] w-10 aspect-square rounded-full outline-3" />
     </div>
   );
 }

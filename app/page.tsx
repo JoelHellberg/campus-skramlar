@@ -28,14 +28,14 @@ export default function Home() {
 
       <div className="mx-20 my-10">
         {/* Övre sidan av det "rivna pappret" */}
-        <div className="relative z-10 w-full bg-[#FFF0D9] rounded-t-3xl">
+        <div className="relative z-10 w-full bg-[#FFF0D9] rounded-t-3xl border-t-3 border-l-3 border-r-3">
           <PiggyBanks />
         </div>
 
         <Group />
 
         {/* Nedre sidan av det "rivna pappret" */}
-        <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl">
+        <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl border-b-3 border-l-3 border-r-3">
           <Members />
           <History />
           <Thanks />

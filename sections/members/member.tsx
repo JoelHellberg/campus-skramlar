@@ -21,7 +21,7 @@ export default function Member(props: Props) {
     <div className="w-full flex flex-col items-center p-5">
       <div
         className={
-          "relative flex flex-col w-4/5 aspect-[9/10] bg-white p-6 shadow-2xl/30 " +
+          "relative flex flex-col w-4/5 aspect-[9/10] bg-white p-6 shadow-2xl/30 outline-4 " +
           angle
         }
       >
@@ -38,7 +38,7 @@ export default function Member(props: Props) {
         {/* Profilbild */}
         <img
           src={imgSrc}
-          className="w-full aspect-square bg-blue-400 object-cover"
+          className="w-full aspect-square bg-blue-400 object-cover outline-4"
         />
         {/* Namn */}
         <div className="w-full flex-1 flex justify-center items-center text-center pt-3">
@@ -47,10 +47,8 @@ export default function Member(props: Props) {
       </div>
 
       {/* Post och mail lapp */}
-      <div className="relative w-4/5 my-10 px-10 py-5">
-        <div className="absolute inset-4 -z-1 shadow-2xl/20" />
-        <Papersheet className="absolute inset-0 w-full  h-full -z-1" />
-        <p className="font-bold">{props.post}</p>
+      <div className="w-4/5 mt-15 mb-10 px-10 py-5 bg-white outline-4 rounded-xs">
+        <p className="font-extrabold mb-1">{props.post}</p>
         <p>{props.mail}</p>
       </div>
     </div>

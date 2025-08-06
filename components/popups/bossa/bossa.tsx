@@ -22,17 +22,17 @@ export default function Bossa() {
     <>
       {bossa && color && foreningsNamn && collectedSum && (
         <Modal onClose={onCloseFunc}>
-          <div className="relative w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-3xl shadow-2xl">
+          <div className="relative w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-3xl shadow-2xl outline-4">
             {/* Backdrop */}
             <div
               className={
-                "absolute w-full h-full rounded-3xl top-4 right-4 -z-10 shadow-2xl"
+                "absolute w-full h-full rounded-3xl top-4 right-4 -z-10 shadow-2xl outline-4"
               }
               style={{ backgroundColor: color }}
             />
 
             <h1
-              className="ml-10 -mt-15 text-white"
+              className="relative not-only:ml-10 -mt-15 text-white z-20"
               style={{
                 textShadow: "-5px 5px 0 " + color,
               }}

@@ -10,7 +10,6 @@ import ForeningHeader from "./components/foreningHeader";
 export default function Home() {
   const router = useRouter();
   const initialize = useBossaData((state) => state.initialize);
-  const foreningsId = useBossaData((state) => state.foreningsId);
   const foreningsNamn = useBossaData((state) => state.foreningsNamn);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   useEffect(() => {
@@ -19,10 +18,9 @@ export default function Home() {
 
   useEffect(() => {
     const checkIfLoggedIn = async () => {
-      if (!foreningsId) return;
       const sessionId = await verifySession();
 
-      if (sessionId == foreningsId) {
+      if (sessionId) {
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
@@ -30,7 +28,7 @@ export default function Home() {
       }
     };
     checkIfLoggedIn();
-  }, [foreningsId]);
+  }, []);
 
   return (
     <>

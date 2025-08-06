@@ -11,20 +11,21 @@ const years = [
 
 export default function History() {
   return (
-    <div className="w-full">
+    <div className="w-full p-10">
+      <div className="w-full h-fit p-10 rounded-4xl [background-image:repeating-conic-gradient(#ACCAB2_0_25%,#FFF0D9_0_50%)] [background-size:200px_200px]">
       {/* Rubrik & Hjärtan */}
       <div className="flex items-center justify-center text-center px-20">
         <img src="\vectorGraphics\heart.svg" className="w-40" />
-        <h2
-          className="flex-1 text-[#ACCAB2] font-bold !text-6xl leading-tight"
+        <h3
+          className="flex-1 text-[#1d0e05] !font-extrabold !text-6xl leading-tight mx-10 py-6 rounded-4xl bg-[#ACCAB2] shadow-xl"
           style={{
             textShadow:
-              "-0px 0px 0 black, -1px 1px 0 black, -5px 5px 0 white, -5px 5px 0 black",
+              "-0px 0px 0 white, -4px 4px 0 white, 1px -1px 0 white",
           }}
         >
-          I 5 år har Campus Skramlar tillsammans med er samlat in <br />
+          I 5 år har Campus Skramlar tillsammans med er samlat in <span> </span>
           <span className="underline">501 735 kronor</span> till musikhjälpen
-        </h2>
+        </h3>
         <img src="\vectorGraphics\heart.svg" className="w-40" />
       </div>
       {/* Positionering av tidningarna */}
@@ -41,6 +42,7 @@ export default function History() {
             </motion.div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

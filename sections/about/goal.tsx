@@ -18,7 +18,7 @@ export default function Goal() {
           {/* Rubrik och brödtext placerad på högersidan */}
           <div className="flex flex-col flex-1 justify-center items-center text-center">
             <h2 className="!text-2xl !font-bold">Vad är vårt mål?</h2>
-            <p className="italic text-xs text-[#7E7E7E] p-3 z-1">
+            <p className="italic font-bold text-xs text-[#7E7E7E] p-3 z-1">
               Vårt mål är att sammanföra alla studenter på Liu och få så mycket
               folk som möjligt att engagera sig till att samla in pengar för
               Musikhjälpen. Men självklart se till att alla har fantastiskt

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState, useTransition } from "react";
 import { useBossaData } from "../_lib/data";
 import {
   createPiggybank,
@@ -8,8 +8,14 @@ import {
 } from "../_lib/serverFunctions";
 import Link from "next/link";
 import ForeningHeader from "../components/foreningHeader";
+import Image from "next/image";
+import { convertBlobUrlToFile } from "@/app/_lib/utils";
+import { uploadImage } from "../_lib/clientFunctions";
 
 export default function Home() {
+  const imageInputRef = useRef<HTMLInputElement>(null);
+  const [imageUrl, setImageUrl] = useState<string>();
+
   const initialize = useBossaData((state) => state.initialize);
   const foreningsId = useBossaData((state) => state.foreningsId);
   const foreningsNamn = useBossaData((state) => state.foreningsNamn);
@@ -36,7 +42,37 @@ export default function Home() {
     }
   }, [foreningsNamn]);
 
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const firstFile = e.target.files[0];
+      const newImageUrl = URL.createObjectURL(firstFile);
+      setImageUrl(newImageUrl);
+    }
+  };
+
+  const [isPending, startTransition] = useTransition();
+
+  const uploadImageHandler = () => {
+    startTransition(async () => {
+      if (imageUrl) {
+        const imageFile = await convertBlobUrlToFile(imageUrl);
+        const { imageUrl: uploadedImageUrl, error } = await uploadImage({
+          file: imageFile,
+          bucket: "loggor",
+          foreningsId: foreningsId,
+        });
+        if (error) {
+          console.error(error);
+          return;
+        }
+        console.log(uploadedImageUrl);
+        setImageUrl("");
+      }
+    });
+  };
+
   const updateProfile = () => {
+    uploadImageHandler();
     if (name !== foreningsNamn) {
       updateBossorGeneral(foreningsId, foreningsNamn, moneyCollected);
     }
@@ -55,11 +91,30 @@ export default function Home() {
       <div className="flex flex-col gap-10 items-center">
         <h1>/forening/profil</h1>
         <div className="flex h-52">
+          <input
+            type="file"
+            hidden
+            multiple
+            ref={imageInputRef}
+            onChange={handleImageChange}
+            disabled={isPending}
+          />
           <div
-            className="bg-[#FFF0D9] p-5 flex flex-col items-center text-center justify-center rounded-full outline-4 mr-10 shadow-xl/30 cursor-pointer
+            className="relative bg-[#FFF0D9] p-5 flex flex-col items-center text-center justify-center rounded-2xl outline-4 mr-10 shadow-xl/30 cursor-pointer
             transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25 font-bold"
             style={{ width: "100%", aspectRatio: "1 / 1" }}
+            onClick={() => imageInputRef.current?.click()}
           >
+            <div className="absolute inset-1 m-auto overflow-hidden">
+              <img
+                src={
+                  imageUrl
+                    ? imageUrl
+                    : `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${foreningsId}.png`
+                }
+                className="h-full rounded-2xl"
+              />
+            </div>
             <h2 className="!text-3xl">
               Byt
               <br />

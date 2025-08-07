@@ -56,7 +56,15 @@ export default function PiggyBank2(props: Props) {
             </div>
             {/* logo */}
             <div className="absolute flex h-full items-center p-2 right-2">
-              <img src="/logo.svg" alt="logo" className="h-10/12 opacity-40" />
+              <img
+                src={`https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${props.bossa.id}.png`}
+                alt="logo"
+                className="h-10/12 opacity-40 rounded-2xl"
+                onError={(e) => {
+                  e.currentTarget.onerror = null; // Prevent infinite loop in case fallback fails
+                  e.currentTarget.src = "/logo.svg";
+                }}
+              />
             </div>
           </div>
 

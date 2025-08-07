@@ -61,7 +61,7 @@ export default function ({
               </div>
             </div>
             {/* Backdrop */}
-            <div className="absolute top-6 right-6 -z-10 w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4">
+            <div className="absolute top-8 right-8 -z-10 w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4">
               <div className="w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8 bg-yellow-400" />
             </div>
           </div>

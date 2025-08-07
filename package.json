@@ -11,6 +11,8 @@
   "dependencies": {
     "@headlessui/react": "^2.2.4",
     "@supabase/supabase-js": "^2.51.0",
+    "@vercel/analytics": "^1.5.0",
+    "browser-image-compression": "^2.0.2",
     "dotenv": "^17.2.0",
     "framer-motion": "^12.23.0",
     "generate-password": "^1.7.1",
@@ -19,6 +21,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "server-only": "^0.0.1",
+    "uuid": "^11.1.0",
     "zustand": "^5.0.6"
   },
   "devDependencies": {

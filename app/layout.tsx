@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next"
-import { Geist, Geist_Mono, Inter, Lily_Script_One, Caveat, Londrina_Sketch, Cabin_Sketch, Redacted_Script, Marck_Script } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import {
+  Geist,
+  Geist_Mono,
+  Inter,
+  Lily_Script_One,
+  Caveat,
+  Londrina_Sketch,
+  Cabin_Sketch,
+  Redacted_Script,
+  Marck_Script,
+} from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -71,6 +82,7 @@ export default function RootLayout({
       >
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

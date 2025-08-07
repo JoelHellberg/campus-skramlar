@@ -10,14 +10,14 @@ import Link from "next/link";
 import ForeningHeader from "../components/foreningHeader";
 import Image from "next/image";
 import { convertBlobUrlToFile } from "@/app/_lib/utils";
-import { uploadImage } from "../_lib/clientFunctions";
+import { uploadImageClient } from "../_lib/clientFunctions";
 
 export default function Home() {
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [imageUrl, setImageUrl] = useState<string>();
 
   const initialize = useBossaData((state) => state.initialize);
-  const foreningsId = useBossaData((state) => state.foreningsId);
+  const foreningsId: string = useBossaData((state) => state.foreningsId);
   const foreningsNamn = useBossaData((state) => state.foreningsNamn);
   const moneyCollected = useBossaData((state) => state.moneyCollected);
   const swishSum = useBossaData((state) => state.swishSum);
@@ -56,9 +56,8 @@ export default function Home() {
     startTransition(async () => {
       if (imageUrl) {
         const imageFile = await convertBlobUrlToFile(imageUrl);
-        const { imageUrl: uploadedImageUrl, error } = await uploadImage({
+        const { imageUrl: uploadedImageUrl, error } = await uploadImageClient({
           file: imageFile,
-          bucket: "loggor",
           foreningsId: foreningsId,
         });
         if (error) {
@@ -93,6 +92,7 @@ export default function Home() {
         <div className="flex h-52">
           <input
             type="file"
+            accept=".png"
             hidden
             multiple
             ref={imageInputRef}
@@ -108,9 +108,8 @@ export default function Home() {
             <div className="absolute inset-1 m-auto overflow-hidden">
               <img
                 src={
-                  imageUrl
-                    ? imageUrl
-                    : `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${foreningsId}.png`
+                  imageUrl ||
+                  `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${foreningsId}.png?t=${Date.now()}`
                 }
                 className="h-full rounded-2xl"
               />

@@ -1,16 +1,9 @@
 "use server";
-import { verifySession } from "@/app/_lib/authentication";
-import { updateDataTable, insertDataRow } from "./adminFunctions";
-
-async function checkAuthentication(foreningsId: string): Promise<boolean> {
-  const sessionForeningsId = await verifySession();
-  // If the session is correct and the user has supplied the correct id,
-  // then they are correctly authenticated
-  if (sessionForeningsId && sessionForeningsId == foreningsId) {
-    return true;
-  }
-  return false;
-}
+import {
+  updateDataTable,
+  insertDataRow,
+} from "./adminFunctions";
+import { checkAuthentication } from "@/app/_lib/supabase/adminFunctions";
 
 export async function createPiggybank(
   foreningsId: string,
@@ -73,3 +66,4 @@ export async function updateBossorDetailed(
     });
   }
 }
+

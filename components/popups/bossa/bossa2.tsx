@@ -58,7 +58,7 @@ export default function Bossa2() {
                       -
                     </p>
                   </div>
-                  <div className="group h-1/3 aspect-square bg-green-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"></div>
+                  <div className="group h-1/3 aspect-square bg-green-400 outline-4 rounded-full flex items-center justify-center"/>
                 </div>
                 <div className="flex-1 h-full flex flex-row-reverse items-center">
                   <h2>{foreningsNamn}s bössa</h2>

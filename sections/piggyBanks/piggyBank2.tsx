@@ -69,7 +69,7 @@ export default function PiggyBank2(props: Props) {
           >
             <h2 className="inline-block !font-bold !text-5xl text-left max-w-9/12 leading-14">
               {props.bossa.forenings_namn}s
-              <br/>
+              <br />
               Bössa
             </h2>
           </div>
@@ -89,7 +89,10 @@ export default function PiggyBank2(props: Props) {
         </div>
 
         <div
-          className="absolute w-full h-1/8 bottom-0 rounded-b-sm border-t-4 bg-[radial-gradient(circle,black_2px,transparent_2px)] [background-size:8px_8px]"
+          className="absolute w-full h-1/8 bottom-0 rounded-b-sm border-t-4 
+          [background-image:radial-gradient(circle,black_2px,transparent_2px),radial-gradient(circle,black_2px,transparent_2px)] 
+          [background-size:12px_12px] 
+          [background-position:0_0,6px_6px]"
           style={{ backgroundColor: mainColor }}
         />
         <div className="absolute w-2/12 h-1/8 bg-[#ecb67d] right-0 bottom-0 border-b-4 border-l-4 rounded-bl-full" />

@@ -1,6 +1,6 @@
 export default function Update() {
   return (
-    <div className="bg-[rgba(0,0,0,0.05)] w-2/3 p-2 rounded-xl my-2">
+    <div className="bg-white w-2/3 p-2 rounded-xl my-2 outline-2 border-b-2">
       {/* Symbol & Datum */}
       <div className="flex items-center">
         <h1>!</h1>

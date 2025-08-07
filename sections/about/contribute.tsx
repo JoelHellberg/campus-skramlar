@@ -5,7 +5,7 @@ export default function Contribute() {
     <div className="relative w-fit">
       {/* Shadow copy behind */}
       <div
-        className="absolute top-3 right-3 w-full h-full z-0 
+        className="absolute top-5 right-5 w-full h-full z-0 
                   bg-[#9CAF88] rounded-3xl outline-3"
       />
 

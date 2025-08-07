@@ -11,6 +11,7 @@ import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
 import Bossa from "@/components/popups/bossa/bossa";
 import { Suspense } from "react";
+import Bossa2 from "@/components/popups/bossa/bossa2";
 
 export default function Home() {
   // Sammanställning av innehållet som utgör hela sidan
@@ -18,7 +19,7 @@ export default function Home() {
     <div>
       {/* Popups */}
       <Suspense fallback={null}>
-        <Bossa />
+        <Bossa2 />
       </Suspense>
 
       {/* Main Content */}

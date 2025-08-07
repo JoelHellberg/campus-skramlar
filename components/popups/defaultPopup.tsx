@@ -25,23 +25,45 @@ export default function ({
     <>
       {popupRef && (
         <Modal onClose={close ? onCloseFunc : undefined}>
-          <div className="w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-3xl shadow-2xl outline-8 p-16">
-            <div className="flex w-full">
+          <div className="relative">
+            <div className="relative w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4 flex flex-col">
               {/* Header */}
-              <h1 className=" flex-1">{title}</h1>
-              {/* Closing button */}
+              <div className="w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8 bg-red-400">
               {close && (
-                <h1
-                  className="!my-0 !py-0 !text-7xl text-[#D02424] leading-none px-4 cursor-pointer
-                    transform transition-transform duration-300 hover:scale-120"
-                  onClick={onCloseFunc}
-                >
-                  x
-                </h1>
-              )}
+                <div className="w-fit h-full flex items-center gap-4">
+                  <div
+                    className="group h-1/3 aspect-square bg-red-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
+                    onClick={onCloseFunc}
+                  >
+                    <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      x
+                    </p>
+                  </div>
+                  <div
+                    className="group h-1/3 aspect-square bg-yellow-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
+                    onClick={onCloseFunc}
+                  >
+                    <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      -
+                    </p>
+                  </div>
+                  <div className="group h-1/3 aspect-square bg-green-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"></div>
+                </div>
+                )}
+                <div className="flex-1 h-full flex flex-row-reverse items-center">
+                  <h2></h2>
+                </div>
+              </div>
+              {/* Main Content */}
+              <div>
+                <h1 className=" flex-1">{title}</h1>
+                {children}
+              </div>
             </div>
-            <div className="w-5/6 h-1 bg-black mx-auto my-8" />
-            {children}
+            {/* Backdrop */}
+            <div className="absolute top-6 right-6 -z-10 w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4">
+              <div className="w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8 bg-yellow-400" />
+            </div>
           </div>
         </Modal>
       )}

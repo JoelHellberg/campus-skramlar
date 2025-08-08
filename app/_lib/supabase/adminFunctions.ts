@@ -29,6 +29,7 @@ export async function checkAuthentication(foreningsId: string): Promise<boolean>
   if (sessionForeningsId && sessionForeningsId == foreningsId) {
     return true;
   }
+  console.log("!!! User not correctly authenticated !!!")
   return false;
 }
 

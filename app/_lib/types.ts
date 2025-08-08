@@ -17,3 +17,9 @@ export type BossaPrivate = {
   forenings_namn: number;
   active: boolean;
 };
+
+export type BossaUpdate = {
+  forening_id: string;
+  created_at: Date;
+  update: string;
+};

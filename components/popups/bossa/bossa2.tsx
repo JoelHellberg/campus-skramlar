@@ -3,8 +3,11 @@ import { Modal } from "@/components/modal";
 import { useRouter, useSearchParams } from "next/navigation";
 import Update from "./update";
 import { useEffect, useState } from "react";
-import { BossaDetailed } from "@/app/_lib/types";
-import { fetchBossaDetailed } from "@/app/_lib/supabase/clientFunctions";
+import { BossaDetailed, BossaUpdate } from "@/app/_lib/types";
+import {
+  fetchBossaDetailed,
+  fetchBossaUpdates,
+} from "@/app/_lib/supabase/clientFunctions";
 import { motion } from "framer-motion";
 
 export default function Bossa2() {
@@ -20,13 +23,19 @@ export default function Bossa2() {
   };
 
   const [details, setDetails] = useState<BossaDetailed>();
+  const [updates, setUpdates] = useState<BossaUpdate[]>();
   useEffect(() => {
     if (bossa) {
       const fetchDetails = async () => {
         const data: BossaDetailed = await fetchBossaDetailed(bossa);
         setDetails(data);
       };
+      const fetchUpdates = async () => {
+        const data: BossaUpdate[] = await fetchBossaUpdates(bossa);
+        setUpdates(data);
+      };
       fetchDetails();
+      fetchUpdates();
     }
   }, [bossa]);
 
@@ -120,17 +129,26 @@ export default function Bossa2() {
                   </motion.div>
                 </div>
                 {/* Right side content */}
-                <motion.div className="flex flex-1 flex-col items-center overflow-y-auto pt-10"
-                                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.7, duration: 0.5, ease: "easeIn" }}>
-                  <Update />
-                  <Update />
-                  <Update />
-                  <Update />
-                  <Update />
-                  <Update />
-                  <Update />
+                <motion.div
+                  className="flex flex-1 flex-col items-center overflow-y-auto pt-10"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7, duration: 0.5, ease: "easeIn" }}
+                >
+                  {updates && updates.length > 0 ? (
+                    updates?.map((update: BossaUpdate, index: number) => (
+                      <Update key={index} update={update} />
+                    ))
+                  ) : (
+                    <Update
+                      update={{
+                        forening_id: "",
+                        created_at: new Date(Date.now()),
+                        update:
+                          "Här kommer du kunna se olika uppdateringar som föreningen väljer att göra så håll utkik!",
+                      }}
+                    />
+                  )}
                 </motion.div>
               </div>
             </motion.div>

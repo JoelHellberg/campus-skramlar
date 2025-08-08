@@ -144,7 +144,7 @@ function RightSide({ onClose }: RightSideProps) {
         </h1>
       </div>
 
-      {/* Scrollable content area */}
+      {/* Scrollable content area 
       <div className="flex-1 overflow-y-auto flex flex-col items-center">
         <Update />
         <Update />
@@ -154,6 +154,7 @@ function RightSide({ onClose }: RightSideProps) {
         <Update />
         <Update />
       </div>
+      */}
     </div>
   );
 }

@@ -24,6 +24,7 @@ export async function insertDataRow<T extends object>(
   data: T
 ) {
   const supabaseAdmin = await getSupabaseAdmin();
+  console.log("given data: ", data);
   const { data: detailedData, error: detailedError } = await supabaseAdmin
     .from(tableName)
     .insert(data);

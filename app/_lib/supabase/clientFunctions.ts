@@ -1,5 +1,5 @@
 import supabase from "./supabaseClient";
-import { BossaDetailed, BossaGeneral } from "../types";
+import { BossaDetailed, BossaGeneral, BossaUpdate } from "../types";
 
 // -- user functions
 
@@ -27,7 +27,9 @@ export async function fetchBossaGeneral(
   return bossaGeneral;
 }
 
-export async function fetchBossaDetailed(foreningsId: string) : Promise<BossaDetailed> {
+export async function fetchBossaDetailed(
+  foreningsId: string
+): Promise<BossaDetailed> {
   const bossaDetailed = (await fetchDataRow(
     "bossorDetailed",
     foreningsId
@@ -37,6 +39,21 @@ export async function fetchBossaDetailed(foreningsId: string) : Promise<BossaDet
     throw new Error("Failed to fetch bossorGeneral data.");
   }
   return bossaDetailed;
+}
+
+export async function fetchBossaUpdates(
+  foreningsId: string
+): Promise<BossaUpdate[]> {
+  const bossaUpdates = (await fetchDataRows(
+    "bossorUpdates",
+    "forenings_id",
+    foreningsId
+  )) as BossaUpdate[] | null;
+
+  if (!bossaUpdates) {
+    throw new Error("Failed to fetch bossorGeneral data.");
+  }
+  return bossaUpdates;
 }
 
 // -- database functions
@@ -64,5 +81,22 @@ async function fetchDataRow(tableName: string, id: string) {
     return null;
   }
 
+  return data;
+}
+
+export async function fetchDataRows(
+  tableName: string,
+  idName: string,
+  id: string
+) {
+  const { data, error } = await supabase
+    .from(tableName)
+    .select("*")
+    .eq(idName, id);
+
+  if (error) {
+    console.error(`Error fetching from ${tableName}:`, error.message);
+    return;
+  }
   return data;
 }

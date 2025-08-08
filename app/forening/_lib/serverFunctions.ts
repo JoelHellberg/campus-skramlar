@@ -1,8 +1,5 @@
 "use server";
-import {
-  updateDataTable,
-  insertDataRow,
-} from "./adminFunctions";
+import { updateDataTable, insertDataRow } from "./adminFunctions";
 import { checkAuthentication } from "@/app/_lib/supabase/adminFunctions";
 
 export async function createPiggybank(
@@ -67,3 +64,17 @@ export async function updateBossorDetailed(
   }
 }
 
+export async function uploadUpdate(foreningsId: string, updateContent: string) {
+  const isValidInput = foreningsId && updateContent;
+  const isAuthenticated = await checkAuthentication(foreningsId);
+  console.log("Before Authentication!");
+  if (isAuthenticated && isValidInput) {
+    console.log("Authentication Complete!");
+    console.log("foreningsId: ", foreningsId);
+    await insertDataRow("bossorUpdates", {
+      forenings_id: foreningsId,
+      update: updateContent,
+    });
+    console.log("Inserted");
+  }
+}

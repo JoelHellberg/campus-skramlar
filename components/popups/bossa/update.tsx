@@ -10,7 +10,7 @@ export default function Update(props: { update: BossaUpdate }) {
         <p>{new Date(props.update.created_at).toISOString().split("T")[0]}</p>
       </div>
       {/* Brödtext */}
-      <p>{props.update.update}</p>
+      <p className="break-words whitespace-pre-wrap">{props.update.update}</p>
     </div>
   );
 }

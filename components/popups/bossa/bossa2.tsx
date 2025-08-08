@@ -35,7 +35,12 @@ export default function Bossa2() {
       {bossa && color && foreningsNamn && collectedSum && (
         <Modal onClose={onCloseFunc}>
           <div className="relative">
-            <div className="relative w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4 flex flex-col">
+            <motion.div
+              className="relative w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl rounded-br-md shadow-2xl outline-4 flex flex-col"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1.0 }}
+              transition={{ duration: 0.4, ease: "backOut" }}
+            >
               {/* Header */}
               <div
                 className="w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8"
@@ -70,7 +75,12 @@ export default function Bossa2() {
                 <div className="relative h-full w-3/4 flex flex-col items-center gap-10 py-10">
                   <div className="absolute right-0 my-auto bg-black h-5/6 w-1 rounded-4xl opacity-80" />
                   {/* "Header" */}
-                  <div className="bg-orange-300 h-3/12 w-5/6 rounded-3xl outline-2 border-b-2 flex p-5 gap-5">
+                  <motion.div
+                    className="bg-orange-300 h-3/12 w-5/6 rounded-3xl outline-2 border-b-2 flex p-5 gap-5"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.5, ease: "easeIn" }}
+                  >
                     <img
                       src={`https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${bossa}.png`}
                       alt="logo"
@@ -83,8 +93,13 @@ export default function Bossa2() {
                     <h1 className="!text-5xl !font-bold my-auto">
                       {foreningsNamn} har samlat in &nbsp;{collectedSum}&nbsp;kr
                     </h1>
-                  </div>
-                  <div className="bg-orange-300 h-fit w-5/6 rounded-4xl rounded-bl-sm outline-2 border-b-2 border-r-2 p-5">
+                  </motion.div>
+                  <motion.div
+                    className="bg-orange-300 h-fit w-5/6 rounded-4xl rounded-bl-sm outline-2 border-b-2 border-r-2 p-5"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.5, ease: "easeIn" }}
+                  >
                     <p>
                       <span className="underline font-bold">
                         Swisha {details?.swish_sum} kr till{" "}
@@ -92,15 +107,23 @@ export default function Bossa2() {
                       </span>{" "}
                       för att vara med och tävla i {foreningsNamn}s bössa!
                     </p>
-                  </div>
-                  <div className="bg-orange-200 flex-1 w-5/6 rounded-3xl outline-2 p-5 overflow-y-auto max-h-full">
+                  </motion.div>
+                  <motion.div
+                    className="bg-orange-200 flex-1 w-5/6 rounded-l-3xl rounded-r-sm outline-2 p-5 overflow-y-auto max-h-full"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.7, duration: 0.5, ease: "easeIn" }}
+                  >
                     <p className="break-words whitespace-pre-wrap">
                       {details?.description}
                     </p>
-                  </div>
+                  </motion.div>
                 </div>
                 {/* Right side content */}
-                <div className="flex flex-1 flex-col items-center overflow-y-auto pt-10">
+                <motion.div className="flex flex-1 flex-col items-center overflow-y-auto pt-10"
+                                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.7, duration: 0.5, ease: "easeIn" }}>
                   <Update />
                   <Update />
                   <Update />
@@ -108,16 +131,21 @@ export default function Bossa2() {
                   <Update />
                   <Update />
                   <Update />
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
             {/* Backdrop */}
-            <div className="absolute top-8 right-8 -z-10 w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4">
+            <motion.div
+              className="absolute top-8 right-8 -z-10 w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4"
+              initial={{ scale: 0.9 }} // Start below, invisible
+              animate={{ scale: 1.0 }} // Move up, fade in
+              transition={{ delay: 0.1, duration: 0.4, ease: "backOut" }} // Go over, then in
+            >
               <div
                 className="w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8"
                 style={{ backgroundColor: color }}
               ></div>
-            </div>
+            </motion.div>
           </div>
         </Modal>
       )}

@@ -145,7 +145,7 @@ export default function Bossa2() {
                         forening_id: "",
                         created_at: new Date(Date.now()),
                         update:
-                          "Här kommer du kunna se olika uppdateringar som föreningen väljer att göra så håll utkik!",
+                          "(Här kommer du kunna se olika uppdateringar som föreningen väljer att göra så håll utkik!)",
                       }}
                     />
                   )}

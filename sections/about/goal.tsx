@@ -4,13 +4,18 @@ export default function Goal() {
       {/* Shadow copy behind */}
       <div
         className="absolute top-5 right-5 w-full h-full z-0 
-                  bg-[#D44220] rounded-3xl outline-3"
+                  bg-[#D44220] rounded-3xl outline-3
+                  [background-image:radial-gradient(circle,black_2px,transparent_2px),radial-gradient(circle,black_2px,transparent_2px)] 
+          [background-size:8px_8px] 
+          [background-position:0_0,4px_4px]"
       />
 
       {/* Real content */}
-      <div className="relative z-10 flex flex-col bg-white outline-4 rounded-3xl p-4
+      <div
+        className="relative z-10 flex flex-col bg-white outline-4 rounded-3xl p-4
       items-center justify-center
-      w-lg h-64">
+      w-lg h-64"
+      >
         <h2 className="!text-lg !font-bold mb-4 text-[#ACCAB2]">
           LiUs STUDENTDRIVNA INSAMLING!
         </h2>

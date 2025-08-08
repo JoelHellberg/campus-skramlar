@@ -1,3 +1,8 @@
+"use client";
+import { fetchAllIds } from "@/app/_lib/supabase/clientFunctions";
+import supabase from "@/app/_lib/supabase/supabaseClient";
+import { useEffect, useState } from "react";
+
 const logos = [
   "dummySponsor1",
   "dummySponsor2",
@@ -10,6 +15,37 @@ const logos = [
 ];
 
 export default function Thanks() {
+  const [logoUrls, setLogoUrl] = useState<string[]>();
+
+  useEffect(() => {
+    const fetchIds = async () => {
+      const data = (await fetchAllIds("bossorGeneral")) as string[] | null;
+      if (data) {
+        console.log("id data: ", data)
+        var urlList: string[] = [];
+        for (const bossa of data) {
+          console.log("bossa data: ", bossa)
+          const url = `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${bossa}.png`;
+          if (await urlExists(url)) {
+            urlList.push(url);
+          }
+        }
+        setLogoUrl(urlList);
+      }
+    };
+    fetchIds();
+  }, []);
+
+  async function urlExists(url: string): Promise<boolean> {
+    try {
+      const response = await fetch(url, { method: "HEAD" });
+      return response.ok; // true if status is 200–299
+    } catch (error) {
+      console.error("Error checking URL:", error);
+      return false;
+    }
+  }
+
   return (
     <div id="thanks" className="w-full py-24 flex justify-center">
       {/* Outline div 1 */}
@@ -24,11 +60,12 @@ export default function Thanks() {
             </h1>
             {/* Positionering av loggor */}
             <div className="flex flex-wrap justify-center gap-12 w-full p-15">
-              {logos.map((logoName, i) => (
-                <div key={i} className="flex justify-center w-[30%] p-6">
-                  <img src={"/logos/" + logoName + ".png"} />
-                </div>
-              ))}
+              {logoUrls &&
+                logoUrls.map((logoUrl, i) => (
+                  <div key={i} className="flex justify-center w-[30%] p-6">
+                    <img src={logoUrl} />
+                  </div>
+                ))}
             </div>
           </div>
         </div>

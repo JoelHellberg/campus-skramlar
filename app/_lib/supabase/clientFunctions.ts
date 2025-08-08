@@ -100,3 +100,15 @@ export async function fetchDataRows(
   }
   return data;
 }
+
+export async function fetchAllIds(tableName: string) {
+  const { data, error } = await supabase.from(tableName).select("id");
+
+  if (error) {
+    console.error("Error fetching IDs:", error.message);
+    return [];
+  }
+
+  // Extract just the IDs into a flat list
+  return data.map((row) => row.id);
+}

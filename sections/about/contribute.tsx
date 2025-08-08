@@ -6,7 +6,10 @@ export default function Contribute() {
       {/* Shadow copy behind */}
       <div
         className="absolute top-5 right-5 w-full h-full z-0 
-                  bg-[#9CAF88] rounded-3xl outline-3"
+                  bg-[#9CAF88] rounded-3xl outline-3
+                  [background-image:radial-gradient(circle,black_2px,transparent_2px),radial-gradient(circle,black_2px,transparent_2px)] 
+          [background-size:8px_8px] 
+          [background-position:0_0,4px_4px]"
       />
 
       {/* Real content */}

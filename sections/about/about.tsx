@@ -9,7 +9,7 @@ export default function About() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [200, -200]);
+  const y = useTransform(scrollYProgress, [0, 1], [-500, 500]);
   return (
     <div
       id="about"
@@ -19,13 +19,19 @@ export default function About() {
     >
       {/* Animated background */}
       <motion.div
-        className="absolute flex inset-0 flex-col justify-between
-        w-full 
-        bg-[url('/tempAbout.png')] bg-cover"
+        className="absolute flex inset-0 flex-col justify-between overflow-hidden
+        w-full"
         initial={{ opacity: 0.2, y: 200 }} // Start below, invisible
         animate={{ opacity: 1, y: 0 }} // Move up, fade in
         transition={{ duration: 0.8, ease: "backOut" }} // Go over, then in
       >
+        <motion.div
+          className="absolute flex inset-0 flex-col justify-between my-auto
+        w-full aspect-square
+        bg-[url('/tempAbout.png')] bg-contain"
+          ref={ref}
+          style={{ y }}
+        />
         {/* Den beiga och gröna övvergången mellan "hello" och "piggyBanks" */}
         <img
           src={"/vectorGraphics/beigeTransition.svg"}
@@ -42,9 +48,8 @@ export default function About() {
       {/* Main Content */}
       <motion.div
         ref={ref}
-        style={{ y }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1}}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeIn" }} // Go over, then in
         className="flex justify-center items-center gap-[15vw] py-20"
       >

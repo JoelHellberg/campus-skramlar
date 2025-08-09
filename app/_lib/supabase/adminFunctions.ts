@@ -57,9 +57,6 @@ export async function uploadBufferToSupabase({
     contentType: `image/${fileExtension}`,
   });
 
-  console.log("Upload error:", error);
-console.log("Upload data:", data);
-
   if (error) {
     return { imageUrl: "", error: "Upload failed" };
   }

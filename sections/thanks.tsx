@@ -1,18 +1,7 @@
 "use client";
 import { fetchAllIds } from "@/app/_lib/supabase/clientFunctions";
-import supabase from "@/app/_lib/supabase/supabaseClient";
 import { useEffect, useState } from "react";
 
-const logos = [
-  "dummySponsor1",
-  "dummySponsor2",
-  "dummySponsor3",
-  "dummySponsor4",
-  "dummySponsor5",
-  "dummySponsor6",
-  "dummySponsor7",
-  "dummySponsor8",
-];
 
 export default function Thanks() {
   const [logoUrls, setLogoUrl] = useState<string[]>();
@@ -21,7 +10,6 @@ export default function Thanks() {
     const fetchIds = async () => {
       const data = (await fetchAllIds("bossorGeneral")) as string[] | null;
       if (data) {
-        console.log("id data: ", data)
         var urlList: string[] = [];
         for (const bossa of data) {
           console.log("bossa data: ", bossa)

@@ -40,42 +40,53 @@ export default function PiggyBank(props: Props) {
       >
         {/* Backdrop */}
         <div
-          className="absolute top-3 left-3 w-full aspect-video outline-1 outline-[#EAC891] -z-10 shadow-xl/30 rounded-xs
+          className="absolute top-0 left-0 w-full aspect-video outline-4 -rotate-6 -z-10 shadow-xl/30 rounded-sm
         transform transition-shadow duration-300 group-hover:shadow-2xl/55"
           style={{ backgroundColor: mainColor }}
         />
-
         {/* Main content */}
         <div
           className={
-            "w-full aspect-video bg-[#E9A762] outline-1 shadow-xl/10 rounded-tl-xl rounded-br-xl rounded-tr-xs rounded-bl-xs"
+            "w-full aspect-video bg-[#ecb67d] outline-4 shadow-xl/10 rounded-lg"
           }
-          style={{ outlineColor: mainColor }}
         >
-          {/* logo */}
-          <div className="absolute w-1/2 h-full flex items-center p-2 ml-2">
-            <img src="/logo.svg" alt="logo" className="w-full" />
+          <div className="absolute h-full w-full flex justify-center">
+            <div className="w-11/12 h-2/12 border-b-4 border-dashed border-[#dba56b] flex justify-center items-center">
+              <div className="h-2/12 aspect-[6/1] bg-[#a19f9f] rounded-sm outline-1 outline-[#c7c7c7]" />
+            </div>
+            {/* logo */}
+            <div className="absolute flex h-full items-center p-2 right-2">
+              <img
+                src={`https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${props.bossa.id}.png`}
+                alt="logo"
+                className="h-10/12 opacity-40 rounded-2xl"
+                onError={(e) => {
+                  e.currentTarget.onerror = null; // Prevent infinite loop in case fallback fails
+                  e.currentTarget.src = "/logo.svg";
+                }}
+              />
+            </div>
           </div>
-          {/* logo shadow */}
-          <div className="absolute w-1/2 h-full bg-gradient-to-r from-[#E9A76266] to-[#E9A762FF] z-0 rounded-tl-xl" />
 
           {/* Bössans rubrik */}
           <div
-            className="absolute w-full h-full flex flex-col justify-center items-end pr-8 text-white text-shadow-2xl"
+            className="absolute w-full h-full flex flex-col justify-center pl-8 text-white text-shadow-2xl"
             style={{
-              textShadow: `0 4px 10px rgba(0,0,0,0.25), -3px 4px 0 ${mainColor}`,
+              textShadow: `0 4px 10px rgba(0,0,0,0.25), -3px 4px 0 ${secondaryColor}`,
             }}
           >
-            <h2 className="inline-block mr-4 !font-bold !text-5xl text-left max-w-7/12 [text-indent:-2rem]">
+            <h2 className="inline-block !font-bold !text-5xl text-left max-w-9/12 leading-14">
               {props.bossa.forenings_namn}s
+              <br />
+              Bössa
             </h2>
-            <h2 className="!text-5xl mt-3">Bössa</h2>
           </div>
           {/* Positionering av summan */}
-          <div className="absolute -top-6">
+          <div className="absolute -top-6 right-0">
             <h1
-              className="!text-5xl text-[#ACCAB2] ml-8"
+              className="!text-5xl text-[#ACCAB2] mr-8"
               style={{
+                WebkitTextStroke: "2px black",
                 textShadow: "3px 3px 0" + thirdColor,
                 color: secondaryColor,
               }}
@@ -84,6 +95,15 @@ export default function PiggyBank(props: Props) {
             </h1>
           </div>
         </div>
+
+        <div
+          className="absolute w-full h-1/8 bottom-0 rounded-b-sm border-t-4 
+          [background-image:radial-gradient(circle,black_2px,transparent_2px),radial-gradient(circle,black_2px,transparent_2px)] 
+          [background-size:12px_12px] 
+          [background-position:0_0,6px_6px]"
+          style={{ backgroundColor: mainColor }}
+        />
+        <div className="absolute w-2/12 h-1/8 bg-[#ecb67d] right-0 bottom-0 border-b-4 border-l-4 rounded-bl-full" />
       </div>
     </Link>
   );

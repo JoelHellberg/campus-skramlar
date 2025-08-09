@@ -1,7 +1,6 @@
 import { PaperTear } from "@/assets/vectorGraphics";
 import { Papersheet } from "@/assets/vectorGraphics";
 import { motion } from "framer-motion";
-console.log("paperTear structure: ", PaperTear);
 
 export default function Group() {
   return (

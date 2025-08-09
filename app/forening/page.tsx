@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import { useBossaData } from "./_lib/data";
-import LogInPopup from "./login/logInpopup";
+import LogInPopup from "./popups/logInpopup";
 import { verifySession } from "../_lib/authentication";
 import { useRouter } from "next/navigation"; // ✅ correct for App Router
 import ForeningHeader from "./components/foreningHeader";

@@ -11,7 +11,6 @@ type Props = {
 export default function Member(props: Props) {
   var angle = "-rotate-3";
   const imgName = props.name.replace(/\s+/g, "");
-  console.log(imgName);
   const imgSrc = "/photos/" + imgName + ".png";
   const posIsEven = props.position % 2 != 0;
   if (posIsEven) {

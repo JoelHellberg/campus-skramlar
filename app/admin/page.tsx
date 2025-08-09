@@ -1,12 +1,11 @@
 "use client";
 
-import DefaultPopup from "@/components/popups/defaultPopup";
 import Link from "next/link";
-import PopupContent from "./popupContent";
+import PopupContent from "./popups/nyBossaPopup";
 import supabase from "@/app/_lib/supabase/supabaseClient";
 import { Suspense, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import LogInPopup from "./login/logInpopup";
+import LogInPopup from "./popups/logInPopup";
 
 export default function Home() {
   const router = useRouter();
@@ -31,9 +30,7 @@ export default function Home() {
       {/* Popup */}
       <Suspense fallback={null}>
         <LogInPopup />
-        <DefaultPopup popupRef_in="nyBossa" title="Skapa ny bössa">
-          <PopupContent />
-        </DefaultPopup>
+        <PopupContent />
       </Suspense>
 
       {/* Page Content */}
@@ -58,7 +55,6 @@ export default function Home() {
 }
 
 function ForeningarDisplay() {
-  const router = useRouter();
   const [fetchError, setFetchError]: any = useState(null);
   const [foreningar, setForeningar]: any = useState(null);
 
@@ -74,7 +70,6 @@ function ForeningarDisplay() {
         if (data.length == 0) {
         } else {
           setForeningar(data);
-          console.log("Smoothies are: ", data);
           setFetchError(null);
         }
       }

@@ -1,10 +1,8 @@
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function ForeningHeader() {
   const router = useRouter();
   const pathname = usePathname();
-  console.log("pathname: ", pathname);
   const handleClick = () => {
     pathname == "/forening"
       ? router.push(`${pathname}?signOut=true`)

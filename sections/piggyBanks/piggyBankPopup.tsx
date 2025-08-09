@@ -1,7 +1,7 @@
 "use client";
 import { Modal } from "@/components/modal";
 import { useRouter, useSearchParams } from "next/navigation";
-import Update from "./update";
+import Update from "../../components/popups/update";
 import { useEffect, useState } from "react";
 import { BossaDetailed, BossaUpdate } from "@/app/_lib/types";
 import {
@@ -10,14 +10,13 @@ import {
 } from "@/app/_lib/supabase/clientFunctions";
 import { motion } from "framer-motion";
 
-export default function Bossa2() {
+export default function PiggyBankPopup() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const bossa = searchParams.get("bossa");
   const color = searchParams.get("hex");
   const foreningsNamn = searchParams.get("name");
   const collectedSum = searchParams.get("sum");
-  console.log("color is: " + color);
   const onCloseFunc = () => {
     router.replace("/", { scroll: false });
   };

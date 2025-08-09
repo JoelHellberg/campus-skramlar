@@ -1,7 +1,6 @@
 import { BossaUpdate } from "@/app/_lib/types";
 
 export default function Update(props: { update: BossaUpdate }) {
-  console.log("state of props: ", props);
   return (
     <div className="bg-white w-2/3 p-5 rounded-xl my-2 outline-2 border-b-2">
       {/* Symbol & Datum */}

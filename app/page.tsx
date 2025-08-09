@@ -9,22 +9,20 @@ import History from "@/sections/history/history";
 import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
-import Bossa from "@/components/popups/bossa/bossa";
 import { Suspense, useEffect, useState } from "react";
-import Bossa2 from "@/components/popups/bossa/bossa2";
-import LoadingSimple from "@/components/loadingSimple";
 import Loading from "@/components/loading";
+import PiggyBankPopup from "@/sections/piggyBanks/piggyBankPopup";
 
 export default function Home() {
   // Sammanställning av innehållet som utgör hela sidan
   return (
     <>
-      <Loading/>
+      <Loading />
 
       <div>
         {/* Popups */}
         <Suspense fallback={null}>
-          <Bossa2 />
+          <PiggyBankPopup />
         </Suspense>
 
         {/* Main Content */}

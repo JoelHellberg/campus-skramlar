@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PiggyBank from "./piggyBank";
 import supabase from "@/app/_lib/supabase/supabaseClient";
-import PiggyBank2 from "./piggyBank2";
 
 export default function PiggyBanks() {
   const [fetchError, setFetchError]: any = useState(null);
@@ -18,7 +17,6 @@ export default function PiggyBanks() {
       }
       if (data) {
         setBossor(data);
-        console.log("Smoothies are: ", data);
         setFetchError(null);
       }
     };
@@ -67,7 +65,7 @@ export default function PiggyBanks() {
           <>
             {bossor.map((bossa: any, index: number) => (
               <div key={index} className="w-[30%] py-8">
-                <PiggyBank2 bossa={bossa} position={index} />
+                <PiggyBank bossa={bossa} position={index} />
               </div>
             ))}
           </>

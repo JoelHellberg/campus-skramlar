@@ -4,12 +4,11 @@ import ForeningHeader from "../components/foreningHeader";
 import { Suspense, useEffect, useState, useTransition } from "react";
 import { uploadUpdate } from "../_lib/serverFunctions";
 import { useBossaData } from "../_lib/data";
-import Update from "@/components/popups/bossa/update";
+import Update from "@/components/popups/update";
 import { BossaUpdate } from "@/app/_lib/types";
 import { fetchBossaUpdates } from "@/app/_lib/supabase/clientFunctions";
 import LoadingSimple from "@/components/loadingSimple";
 import Loading from "@/components/loading";
-import { useRouter } from "next/navigation";
 
 
 export default function Home() {
@@ -25,7 +24,6 @@ export default function Home() {
     setUpdates(data);
   };
   useEffect(() => {
-    console.log("(in Effect) foreningsId is: ", foreningsId);
     if (foreningsId) {
       fetchUpdates();
     }

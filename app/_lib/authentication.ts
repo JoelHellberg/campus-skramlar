@@ -88,20 +88,15 @@ export async function createSession(password: string): Promise<string | null> {
 // -- Verifying users & accounts
 
 export async function verifySession(): Promise<string | null> {
-  console.log("Verifying session!")
   const cookieStore = await cookies();
   const sessionCookie = cookieStore.get(SESSION_COOKIE.name)?.value;
 
   const session = await decrypt(sessionCookie);
   if (session) {
-    console.log("session: ", session)
     const password = session.password as string | null;
     if (password) {
-      console.log("password: ", password)
       const cookieId = session.id;
-      console.log("cookieId: ", cookieId)
       const id = await checkPassword(password);
-      console.log("id: ", id)
       if(id == cookieId) {
         return id;
       }

@@ -27,8 +27,6 @@ export async function POST(req: NextRequest) {
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
   const fileName = file.name;
-  console.log("filename", fileName);
-  console.log("foreningsId", foreningsId);
 
   const { imageUrl, error } = await uploadBufferToSupabase({
   buffer,

@@ -116,6 +116,4 @@ export async function verifySession(): Promise<string | null> {
 export async function deleteSession() {
   const cookieStore = await cookies();
   cookieStore.delete(SESSION_COOKIE.name);
-
-  redirect("/");
 }

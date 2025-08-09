@@ -7,6 +7,7 @@ import { verifySession } from "../_lib/authentication";
 import { useRouter } from "next/navigation"; // ✅ correct for App Router
 import ForeningHeader from "./components/foreningHeader";
 import Loading from "@/components/loading";
+import SignOutPopup from "./popups/signOutPopup";
 
 export default function Home() {
   const router = useRouter();
@@ -37,6 +38,7 @@ export default function Home() {
       {/* Popups */}
       <Suspense fallback={null}>
         <LogInPopup />
+        <SignOutPopup />
       </Suspense>
 
       {/* Main Content */}

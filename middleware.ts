@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
     const session = await verifySession();
 
     if (!session) {
-      return NextResponse.redirect(new URL("/forening/login", request.nextUrl));
+      return NextResponse.redirect(new URL("/forening", request.nextUrl));
     }
   }
 

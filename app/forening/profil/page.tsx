@@ -88,7 +88,7 @@ export default function Home() {
     <div className="flex flex-col items-center">
       <ForeningHeader />
       <div className="flex flex-col gap-10 items-center">
-        <h1>/forening/profil</h1>
+        <h1 className="text-[#FFF0D9]">/forening/profil</h1>
         <div className="flex h-52">
           <input
             type="file"

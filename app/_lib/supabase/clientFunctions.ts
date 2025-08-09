@@ -53,7 +53,15 @@ export async function fetchBossaUpdates(
   if (!bossaUpdates) {
     throw new Error("Failed to fetch bossorGeneral data.");
   }
-  return bossaUpdates;
+
+  const sortedUpdates = bossaUpdates.map((u) => ({
+    ...u,
+    created_at: new Date(u.created_at), // convert string to Date
+  }));
+
+  sortedUpdates.sort((a, b) => b.created_at.getTime() - a.created_at.getTime());
+
+  return sortedUpdates;
 }
 
 // -- database functions

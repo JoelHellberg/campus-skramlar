@@ -1,5 +1,12 @@
 "use client";
-import { ChangeEvent, useEffect, useRef, useState, useTransition } from "react";
+import {
+  ChangeEvent,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
 import { useBossaData } from "../_lib/data";
 import {
   createPiggybank,
@@ -11,8 +18,15 @@ import ForeningHeader from "../components/foreningHeader";
 import Image from "next/image";
 import { convertBlobUrlToFile } from "@/app/_lib/utils";
 import { uploadImageClient } from "../_lib/clientFunctions";
+import LoadingSimple from "@/components/loadingSimple";
+import Loading from "@/components/loading";
+import SuccessPopup from "../popups/successPopup";
+import FailPopup from "../popups/failPopup";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const pathname = usePathname();
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [imageUrl, setImageUrl] = useState<string>();
 
@@ -52,122 +66,131 @@ export default function Home() {
 
   const [isPending, startTransition] = useTransition();
 
-  const uploadImageHandler = () => {
-    startTransition(async () => {
-      if (imageUrl) {
-        const imageFile = await convertBlobUrlToFile(imageUrl);
-        const { imageUrl: uploadedImageUrl, error } = await uploadImageClient({
-          file: imageFile,
-          foreningsId: foreningsId,
-        });
-        if (error) {
-          console.error(error);
-          return;
-        }
-        console.log(uploadedImageUrl);
-        setImageUrl("");
+  const uploadImageHandler = async () => {
+    if (imageUrl) {
+      const imageFile = await convertBlobUrlToFile(imageUrl);
+      const { imageUrl: uploadedImageUrl, error } = await uploadImageClient({
+        file: imageFile,
+        foreningsId: foreningsId,
+      });
+      if (error) {
+        console.error(error);
+        return;
       }
-    });
+      console.log(uploadedImageUrl);
+      setImageUrl("");
+    }
   };
 
   const updateProfile = () => {
-    uploadImageHandler();
-    if (name !== foreningsNamn) {
-      updateBossorGeneral(foreningsId, foreningsNamn, moneyCollected);
-    }
-    if (
-      sum !== swishSum ||
-      number !== swishNumber ||
-      description !== description_in
-    ) {
-      updateBossorDetailed(foreningsId, sum, number, description);
-    }
+    startTransition(async () => {
+      await uploadImageHandler();
+      if (name !== foreningsNamn) {
+        await updateBossorGeneral(foreningsId, foreningsNamn, moneyCollected);
+      }
+      if (
+        sum !== swishSum ||
+        number !== swishNumber ||
+        description !== description_in
+      ) {
+        await updateBossorDetailed(foreningsId, sum, number, description);
+      }
+    });
+    router.push(`${pathname}?success=true`);
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <ForeningHeader />
-      <div className="flex flex-col gap-10 items-center">
-        <h1 className="text-[#FFF0D9]">/forening/profil</h1>
-        <div className="flex h-52">
-          <input
-            type="file"
-            accept=".png"
-            hidden
-            multiple
-            ref={imageInputRef}
-            onChange={handleImageChange}
-            disabled={isPending}
-          />
-          <div
-            className="relative bg-[#FFF0D9] p-5 flex flex-col items-center text-center justify-center rounded-2xl outline-4 mr-10 shadow-xl/30 cursor-pointer
+    <>
+      <Loading />
+      {isPending && <LoadingSimple />}
+      <Suspense fallback={null}>
+        <SuccessPopup />
+        <FailPopup />
+      </Suspense>
+      <div className="flex flex-col items-center">
+        <ForeningHeader />
+        <div className="flex flex-col gap-10 items-center">
+          <h1 className="text-[#FFF0D9]">/forening/profil</h1>
+          <div className="flex h-52">
+            <input
+              type="file"
+              accept=".png"
+              hidden
+              multiple
+              ref={imageInputRef}
+              onChange={handleImageChange}
+              disabled={isPending}
+            />
+            <div
+              className="relative bg-[#FFF0D9] p-5 flex flex-col items-center text-center justify-center rounded-2xl outline-4 mr-10 shadow-xl/30 cursor-pointer
             transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25 font-bold"
-            style={{ width: "100%", aspectRatio: "1 / 1" }}
-            onClick={() => imageInputRef.current?.click()}
-          >
-            <div className="absolute inset-1 m-auto overflow-hidden">
-              <img
-                src={
-                  imageUrl ||
-                  `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${foreningsId}.png?t=${Date.now()}`
-                }
-                className="h-full rounded-2xl"
-              />
+              style={{ width: "100%", aspectRatio: "1 / 1" }}
+              onClick={() => imageInputRef.current?.click()}
+            >
+              <div className="absolute inset-1 m-auto overflow-hidden">
+                <img
+                  src={
+                    imageUrl ||
+                    `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${foreningsId}.png?t=${Date.now()}`
+                  }
+                  className="h-full rounded-2xl"
+                />
+              </div>
+              <h2 className="!text-3xl">
+                Byt
+                <br />
+                Profilbild
+              </h2>
             </div>
-            <h2 className="!text-3xl">
-              Byt
-              <br />
-              Profilbild
-            </h2>
+            <Details
+              name={name}
+              setNameFunc={setName}
+              sum={sum}
+              setSumFunc={setSum}
+              number={number}
+              setNumberFunc={setNumber}
+            />
           </div>
-          <Details
-            name={name}
-            setNameFunc={setName}
-            sum={sum}
-            setSumFunc={setSum}
-            number={number}
-            setNumberFunc={setNumber}
+          <Description
+            description={description}
+            setDescriptionFunc={setDescription}
           />
+          {foreningsNamn ? (
+            <button
+              className="px-16 py-3 rounded-xl text-black bg-[#D06224] outline-4 w-fit font-bold shadow-xl/30 text-shadow-sm cursor-pointer 
+            transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
+              onClick={() => updateProfile()}
+            >
+              Spara
+            </button>
+          ) : (
+            <button
+              className="px-16 py-3 rounded-xl text-black bg-[#D06224] outline-4 w-fit font-bold shadow-xl/30 text-shadow-sm cursor-pointer 
+            transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
+              onClick={async () => {
+                try {
+                  await createPiggybank(
+                    foreningsId,
+                    name,
+                    0,
+                    sum,
+                    number,
+                    description
+                  );
+                  window.location.href = "/forening";
+                  // e.g. show success message or redirect
+                } catch (error) {
+                  console.error("Failed to create piggy bank:", error);
+                  // Optionally show a toast or alert
+                }
+              }}
+            >
+              Skapa
+            </button>
+          )}
         </div>
-        <Description
-          description={description}
-          setDescriptionFunc={setDescription}
-        />
-        {foreningsNamn ? (
-          <button
-            className="px-16 py-3 rounded-xl text-black bg-[#D06224] outline-4 w-fit font-bold shadow-xl/30 text-shadow-sm cursor-pointer 
-            transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
-            onClick={() => updateProfile()}
-          >
-            Spara
-          </button>
-        ) : (
-          <button
-            className="px-16 py-3 rounded-xl text-black bg-[#D06224] outline-4 w-fit font-bold shadow-xl/30 text-shadow-sm cursor-pointer 
-            transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
-            onClick={async () => {
-              try {
-                await createPiggybank(
-                  foreningsId,
-                  name,
-                  0,
-                  sum,
-                  number,
-                  description
-                );
-                window.location.href = "/forening";
-                // e.g. show success message or redirect
-              } catch (error) {
-                console.error("Failed to create piggy bank:", error);
-                // Optionally show a toast or alert
-              }
-            }}
-          >
-            Skapa
-          </button>
-        )}
       </div>
-    </div>
+    </>
   );
 }
 

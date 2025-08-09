@@ -6,6 +6,7 @@ import LogInPopup from "./login/logInpopup";
 import { verifySession } from "../_lib/authentication";
 import { useRouter } from "next/navigation"; // ✅ correct for App Router
 import ForeningHeader from "./components/foreningHeader";
+import Loading from "@/components/loading";
 
 export default function Home() {
   const router = useRouter();
@@ -32,6 +33,7 @@ export default function Home() {
 
   return (
     <>
+      <Loading />
       {/* Popups */}
       <Suspense fallback={null}>
         <LogInPopup />

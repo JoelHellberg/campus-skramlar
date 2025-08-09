@@ -10,41 +10,47 @@ import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
 import Bossa from "@/components/popups/bossa/bossa";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Bossa2 from "@/components/popups/bossa/bossa2";
+import LoadingSimple from "@/components/loadingSimple";
+import Loading from "@/components/loading";
 
 export default function Home() {
   // Sammanställning av innehållet som utgör hela sidan
   return (
-    <div>
-      {/* Popups */}
-      <Suspense fallback={null}>
-        <Bossa2 />
-      </Suspense>
+    <>
+      <Loading/>
 
-      {/* Main Content */}
-      <Header />
-      <Hello />
-      <About />
+      <div>
+        {/* Popups */}
+        <Suspense fallback={null}>
+          <Bossa2 />
+        </Suspense>
 
-      <div className="mx-20 my-10">
-        {/* Övre sidan av det "rivna pappret" */}
-        <div className="relative z-10 w-full bg-[#FFF0D9] rounded-t-3xl border-t-3 border-l-3 border-r-3">
-          <PiggyBanks />
+        {/* Main Content */}
+        <Header />
+        <Hello />
+        <About />
+
+        <div className="mx-20 my-10">
+          {/* Övre sidan av det "rivna pappret" */}
+          <div className="relative z-10 w-full bg-[#FFF0D9] rounded-t-3xl border-t-3 border-l-3 border-r-3">
+            <PiggyBanks />
+          </div>
+
+          <Group />
+
+          {/* Nedre sidan av det "rivna pappret" */}
+          <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl border-b-3 border-l-3 border-r-3">
+            <Members />
+            <History />
+            <Thanks />
+          </div>
+
+          <Sponsors />
         </div>
-
-        <Group />
-
-        {/* Nedre sidan av det "rivna pappret" */}
-        <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl border-b-3 border-l-3 border-r-3">
-          <Members />
-          <History />
-          <Thanks />
-        </div>
-
-        <Sponsors />
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }

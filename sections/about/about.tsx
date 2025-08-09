@@ -28,8 +28,7 @@ export default function About() {
         <motion.div
           className="absolute flex inset-0 flex-col justify-between my-auto
         w-full aspect-square
-        bg-[url('/tempAbout.png')] bg-contain"
-          ref={ref}
+        bg-[url('/tempAbout.png')] bg-cover"
           style={{ y }}
         />
         {/* Den beiga och gröna övvergången mellan "hello" och "piggyBanks" */}

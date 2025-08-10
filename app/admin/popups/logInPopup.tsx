@@ -1,5 +1,5 @@
 "use client";
-import { logIn } from "@/app/_lib/supabase/accountFunctions";
+import { login } from "@/app/_lib/supabase/accountFunctions";
 import DefaultPopup from "@/components/popups/defaultPopup";
 import { useState } from "react";
 
@@ -8,7 +8,7 @@ export default function LogInPopup() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const signIn = async () => {
-    const status = await logIn(email, password);
+    const status = await login(email, password);
     if (status) {
       window.location.href = "/admin";
     } else {
@@ -16,7 +16,7 @@ export default function LogInPopup() {
     }
   };
   return (
-    <DefaultPopup popupRef_in="logIn" title="Sign in" close={false}>
+    <DefaultPopup title="Sign in" close={false}>
       <p>{message}</p>
       <label htmlFor="Email:" className="block mb-2 font-medium">
         Email:

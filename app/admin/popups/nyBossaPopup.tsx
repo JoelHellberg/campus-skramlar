@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import generator from "generate-password";
-import supabase from "../../_lib/supabase/supabaseClient";
+import { createClient } from "../../_lib/supabase/supabaseClient";
 import DefaultPopup from "@/components/popups/defaultPopup";
+import { useSearchParams } from "next/navigation";
 
 function generatePassword() {
   const password = generator.generate({
@@ -17,6 +18,9 @@ function generatePassword() {
 }
 
 export default function NyBossaPopup() {
+  const supabase = createClient();
+  const searchParams = useSearchParams();
+  const isActive = searchParams.get("nyBossa");
   const [name, setName] = useState("");
 
   const create = async () => {
@@ -66,29 +70,33 @@ export default function NyBossaPopup() {
   };
 
   return (
-    <DefaultPopup popupRef_in="nyBossa" title="Skapa ny bössa">
-      <div className="flex flex-col items-center">
-        <label htmlFor="name" className="block mb-2 font-medium">
-          Namn på föreningen:
-        </label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Skriv namnet här"
-        />
-        <button
-          disabled={name == ""}
-          className={`px-4 py-2 rounded text-white ${
-            name == ""
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-green-500 hover:bg-green-600 cursor-pointer"
-          }`}
-          onClick={() => create()}
-        >
-          Skapa
-        </button>
-      </div>
-    </DefaultPopup>
+    <>
+      {isActive && (
+        <DefaultPopup title="Skapa ny bössa">
+          <div className="flex flex-col items-center">
+            <label htmlFor="name" className="block mb-2 font-medium">
+              Namn på föreningen:
+            </label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Skriv namnet här"
+            />
+            <button
+              disabled={name == ""}
+              className={`px-4 py-2 rounded text-white ${
+                name == ""
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-green-500 hover:bg-green-600 cursor-pointer"
+              }`}
+              onClick={() => create()}
+            >
+              Skapa
+            </button>
+          </div>
+        </DefaultPopup>
+      )}
+    </>
   );
 }

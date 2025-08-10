@@ -72,10 +72,21 @@ export async function createSession(password: string): Promise<string | null> {
       const session = await encrypt(sessionData);
 
       const cookieStore = await cookies();
+      // Set your encrypted session cookie
       cookieStore.set(SESSION_COOKIE.name, session, {
         ...SESSION_COOKIE.options,
         expires,
       });
+
+      // Set the plain 'foreningsId' cookie
+      cookieStore.set("foreningsId", id, {
+        path: "/",
+        httpOnly: false,
+        secure: true,
+        sameSite: "lax",
+        expires,
+      });
+
       return id;
     } catch (error) {
       console.error("Error creating session:", error);
@@ -97,7 +108,7 @@ export async function verifySession(): Promise<string | null> {
     if (password) {
       const cookieId = session.id;
       const id = await checkPassword(password);
-      if(id == cookieId) {
+      if (id == cookieId) {
         return id;
       }
     }

@@ -1,4 +1,5 @@
-import supabase from "./supabaseClient";
+import { createClient } from "./supabaseClient";
+const supabase = createClient();
 import { BossaDetailed, BossaGeneral, BossaUpdate } from "../types";
 
 // -- user functions

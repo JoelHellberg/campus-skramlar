@@ -1,7 +1,6 @@
-"use client"
 import { PaperTear } from "@/assets/vectorGraphics";
 import { Papersheet } from "@/assets/vectorGraphics";
-import { motion } from "framer-motion";
+import Gruppbild from "./gruppbild";
 
 export default function Group() {
   return (
@@ -23,14 +22,7 @@ export default function Group() {
       <div className="relative mt-10 w-2/3">
         <div className="absolute -inset-6 bg-white -z-1 shadow-2xl/55 rounded-md outline-4" />
         <div className="relative bg-gray-400">
-          <motion.img
-            src="/photos/gruppbild.png"
-            className="w-full -mb-[5vw] shadow-xl/55 rounded-md bg-pink-900 outline-4"
-            initial={{ opacity: 0.2, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 2.0, ease: "easeOut" }}
-          />
+          <Gruppbild />
         </div>
       </div>
 

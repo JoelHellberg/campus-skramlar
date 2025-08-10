@@ -5,79 +5,83 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ReactNode } from "react";
 
 type Props = {
-  popupRef_in: string;
-  title: string;
+  title?: string;
   children: ReactNode;
+  primaryColor?: string;
+  secondaryColor?: string;
   close?: boolean;
 };
 export default function ({
-  popupRef_in,
   title,
   children,
   close = true,
+  primaryColor,
+  secondaryColor,
 }: Props) {
+  if (!primaryColor && !secondaryColor) {
+    primaryColor = "red-400";
+    secondaryColor = "yellow-400";
+  } else if (primaryColor && !secondaryColor) {
+    secondaryColor = primaryColor;
+  }
+  console.log("close is: ", close)
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const popupRef = searchParams.get(popupRef_in);
   const onCloseFunc = () => {
     router.replace(window.location.pathname, { scroll: false });
   };
   return (
-    <>
-      {popupRef && (
-        <Modal onClose={close ? onCloseFunc : undefined}>
-          <div className="relative">
-            <motion.div
-              className="relative w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4 flex flex-col"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1.0 }}
-              transition={{ duration: 0.4, ease: "backOut" }}
-            >
-              {/* Header */}
-              <div className="w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8 bg-red-400">
-                {close && (
-                  <div className="w-fit h-full flex items-center gap-4">
-                    <div
-                      className="group h-1/3 aspect-square bg-red-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
-                      onClick={onCloseFunc}
-                    >
-                      <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        x
-                      </p>
-                    </div>
-                    <div
-                      className="group h-1/3 aspect-square bg-yellow-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
-                      onClick={onCloseFunc}
-                    >
-                      <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        -
-                      </p>
-                    </div>
-                    <div className="group h-1/3 aspect-square bg-green-400 outline-4 rounded-full flex items-center justify-center" />
-                  </div>
-                )}
-                <div className="flex-1 h-full flex flex-row-reverse items-center">
-                  <h2></h2>
-                </div>
+    <Modal onClose={close ? onCloseFunc : undefined}>
+      <div className="relative">
+        <motion.div
+          className="relative w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl rounded-br-md shadow-2xl outline-4 flex flex-col"
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1.0 }}
+          transition={{ duration: 0.4, ease: "backOut" }}
+        >
+          {/* Header */}
+          <div
+            className={`w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8 bg-${primaryColor}`}
+          >
+            {close && (
+            <div className="w-fit h-full flex items-center gap-4">
+              <div
+                className="group h-1/3 aspect-square bg-red-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
+                onClick={onCloseFunc}
+              >
+                <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  x
+                </p>
               </div>
-              {/* Main Content */}
-              <div className="p-5">
-                <h1 className=" flex-1">{title}</h1>
-                {children}
+              <div
+                className="group h-1/3 aspect-square bg-yellow-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
+                onClick={onCloseFunc}
+              >
+                <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  -
+                </p>
               </div>
-            </motion.div>
-            {/* Backdrop */}
-            <motion.div
-              className="absolute top-8 right-8 -z-10 w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1.0 }}
-              transition={{ delay: 0.1, duration: 0.4, ease: "backOut" }}
-            >
-              <div className="w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8 bg-yellow-400" />
-            </motion.div>
+              <div className="group h-1/3 aspect-square bg-green-400 outline-4 rounded-full flex items-center justify-center" />
+            </div>
+            )}
+            <div className="flex-1 h-full flex flex-row-reverse items-center">
+              <h2>{title}</h2>
+            </div>
           </div>
-        </Modal>
-      )}
-    </>
+          {/* Main Content */}
+          <div className="h-11/12 w-full">{children}</div>
+        </motion.div>
+        {/* Backdrop */}
+        <motion.div
+          className="absolute top-8 right-8 -z-10 w-[70vw] h-[80vh] bg-[#FFF0D9] rounded-2xl shadow-2xl outline-4"
+          initial={{ scale: 0.9 }} // Start below, invisible
+          animate={{ scale: 1.0 }} // Move up, fade in
+          transition={{ delay: 0.1, duration: 0.4, ease: "backOut" }} // Go over, then in
+        >
+          <div
+            className={`w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8 bg-${secondaryColor}`}
+          ></div>
+        </motion.div>
+      </div>
+    </Modal>
   );
 }

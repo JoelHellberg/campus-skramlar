@@ -1,8 +1,9 @@
-import PiggyBank from "./piggyBank";
-import supabase from "@/app/_lib/supabase/supabaseClient";
-import NeedleDot from "./needleDot";
+import PiggyBank from "./piggyBank/piggyBank";
+import NeedleDot from "./piggyBank/needleDot";
+import { createClient } from "@/app/_lib/supabase/supabaseClient";
 
 export default async function PiggyBanks() {
+  const supabase = createClient();
   const { data, error } = await supabase.from("bossorGeneral").select();
   if (error || !data) {
     return <h2>Error fetching piggy bank data</h2>;
@@ -11,7 +12,7 @@ export default async function PiggyBanks() {
   return (
     <div id="piggyBanks" className="px-10 py-10">
       <div className="flex">
-          <NeedleDot />
+        <NeedleDot />
         {/* Rubrik */}
         <div className="flex grow items-center justify-center text-center">
           <h3 className="!text-7xl my-5">Bössor</h3>

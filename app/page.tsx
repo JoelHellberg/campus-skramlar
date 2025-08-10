@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import Hello from "@/sections/hello/hello";
 import About from "@/sections/about/about";
 import PiggyBanks from "@/sections/piggyBanks/piggyBanks";
-import Group from "@/sections/group";
+import Group from "@/sections/group/group";
 import Members from "@/sections/members/members";
 import History from "@/sections/history/history";
 import Thanks from "@/sections/thanks";
@@ -10,7 +10,7 @@ import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
 import { Suspense } from "react";
 import Loading from "@/components/loading";
-import PiggyBankPopup from "@/sections/piggyBanks/piggyBankPopup";
+import PiggyBankPopup from "@/sections/piggyBanks/popup/piggyBankPopup";
 
 export default async function Home() {
   // Sammanställning av innehållet som utgör hela sidan

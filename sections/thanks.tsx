@@ -1,28 +1,18 @@
-"use client";
 import { fetchAllIds } from "@/app/_lib/supabase/clientFunctions";
-import { useEffect, useState } from "react";
 
-
-export default function Thanks() {
-  const [logoUrls, setLogoUrl] = useState<string[]>();
-
-  useEffect(() => {
-    const fetchIds = async () => {
-      const data = (await fetchAllIds("bossorGeneral")) as string[] | null;
-      if (data) {
-        var urlList: string[] = [];
-        for (const bossa of data) {
-          console.log("bossa data: ", bossa)
-          const url = `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${bossa}.png`;
-          if (await urlExists(url)) {
-            urlList.push(url);
-          }
-        }
-        setLogoUrl(urlList);
-      }
-    };
-    fetchIds();
-  }, []);
+export default async function Thanks() {
+  const data = (await fetchAllIds("bossorGeneral")) as string[] | null;
+  if (!data) {
+    return <h2>Error fetching piggy bank data</h2>;
+  }
+  const urlList: string[] = [];
+  for (const bossa of data) {
+    console.log("bossa data: ", bossa);
+    const url = `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${bossa}.png`;
+    if (await urlExists(url)) {
+      urlList.push(url);
+    }
+  }
 
   async function urlExists(url: string): Promise<boolean> {
     try {
@@ -48,8 +38,8 @@ export default function Thanks() {
             </h1>
             {/* Positionering av loggor */}
             <div className="flex flex-wrap justify-center gap-12 w-full p-15">
-              {logoUrls &&
-                logoUrls.map((logoUrl, i) => (
+              {urlList &&
+                urlList.map((logoUrl, i) => (
                   <div key={i} className="flex justify-center w-[30%] p-6">
                     <img src={logoUrl} />
                   </div>

@@ -1,15 +1,45 @@
-import supabase from "./supabaseClient";
+"use server";
 
-export const logIn = async (email: string, password: string) => {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+
+import { createSupabaseServer } from "./supabaseServer";
+
+export async function login(email_in: string, password_in: string) {
+  const supabase = await createSupabaseServer();
+
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const data = {
+    email: email_in,
+    password: password_in,
+  };
+
+  const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
-    console.log("Login failed:", error.message);
-  } else {
-    console.log("Login successful:", data);
-    return "success";
+    return false;
   }
-};
+
+  return true;
+}
+
+/*export async function signup(formData: FormData) {
+  const supabase = await createClient();
+
+  // type-casting here for convenience
+  // in practice, you should validate your inputs
+  const data = {
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
+  };
+
+  const { error } = await supabase.auth.signUp(data);
+
+  if (error) {
+    redirect("/error");
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/");
+}*/

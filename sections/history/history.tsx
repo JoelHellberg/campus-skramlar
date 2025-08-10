@@ -1,5 +1,4 @@
 import Paper from "./paper";
-import { motion } from "framer-motion";
 
 const years = [
   { year: "2024", amount: "56 616" },
@@ -32,14 +31,7 @@ export default function History() {
       <div className="flex flex-wrap justify-center gap-12 w-full py-20">
         {years.map((team, i) => (
           <div key={i} className="flex justify-center w-[30%] py-4">
-            <motion.div
-              initial={{ scale: "150%", rotate: "-130deg" }}
-              whileInView={{ scale: "100%", rotate: 0 }}
-              transition={{ duration: 0.4, ease: "easeIn" }}
-              viewport={{ once: true, amount: 0.2 }}
-            >
               <Paper year={team.year} amount={team.amount} position={i} />
-            </motion.div>
           </div>
         ))}
       </div>

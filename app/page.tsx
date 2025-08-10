@@ -1,4 +1,3 @@
-"use client";
 import Header from "@/components/header";
 import Hello from "@/sections/hello/hello";
 import About from "@/sections/about/about";
@@ -9,11 +8,11 @@ import History from "@/sections/history/history";
 import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import Loading from "@/components/loading";
 import PiggyBankPopup from "@/sections/piggyBanks/piggyBankPopup";
 
-export default function Home() {
+export default async function Home() {
   // Sammanställning av innehållet som utgör hela sidan
   return (
     <>

@@ -1,5 +1,3 @@
-import { Papersheet } from "@/assets/vectorGraphics";
-
 type Props = {
   name: string;
   post: string;

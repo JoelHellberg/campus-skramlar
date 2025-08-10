@@ -1,3 +1,4 @@
+"use client"
 import { PaperTear } from "@/assets/vectorGraphics";
 import { Papersheet } from "@/assets/vectorGraphics";
 import { motion } from "framer-motion";

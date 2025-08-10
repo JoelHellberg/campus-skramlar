@@ -1,6 +1,14 @@
-import { BossaDetailed } from "@/app/_lib/types";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
+async function urlExists(url: string): Promise<boolean> {
+  try {
+    const response = await fetch(url, { method: "HEAD" });
+    return response.ok; // true if status is 200–299
+  } catch (error) {
+    console.error("Error checking URL:", error);
+    return false;
+  }
+}
 
 // PiggyBank.tsx
 type Props = {
@@ -8,7 +16,7 @@ type Props = {
   position: number;
 };
 
-export default function PiggyBank(props: Props) {
+export default async function PiggyBank(props: Props) {
   const baseColors = ["#D06224", "#ACCAB2", "#8A8635"];
 
   const row = Math.floor(props.position / 3);
@@ -19,6 +27,9 @@ export default function PiggyBank(props: Props) {
   const mainColor = colors[column];
   const secondaryColor = colors[(column + 1) % 3];
   const thirdColor = colors[(column + 2) % 3];
+
+  const logoUrl = `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${props.bossa.id}.png`;
+  const logoExists = await urlExists(logoUrl);
 
   return (
     <Link
@@ -57,13 +68,9 @@ export default function PiggyBank(props: Props) {
             {/* logo */}
             <div className="absolute flex h-full items-center p-2 right-2">
               <img
-                src={`https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${props.bossa.id}.png`}
+                src={logoExists ? logoUrl : "/logo.svg"}
                 alt="logo"
                 className="h-10/12 opacity-40 rounded-2xl"
-                onError={(e) => {
-                  e.currentTarget.onerror = null; // Prevent infinite loop in case fallback fails
-                  e.currentTarget.src = "/logo.svg";
-                }}
               />
             </div>
           </div>

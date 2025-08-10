@@ -1,4 +1,5 @@
 import { fetchAllIds } from "@/app/_lib/supabase/clientFunctions";
+import { urlExists } from "@/app/_lib/utils";
 
 export default async function Thanks() {
   const data = (await fetchAllIds("bossorGeneral")) as string[] | null;
@@ -11,16 +12,6 @@ export default async function Thanks() {
     const url = `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${bossa}.png`;
     if (await urlExists(url)) {
       urlList.push(url);
-    }
-  }
-
-  async function urlExists(url: string): Promise<boolean> {
-    try {
-      const response = await fetch(url, { method: "HEAD" });
-      return response.ok; // true if status is 200–299
-    } catch (error) {
-      console.error("Error checking URL:", error);
-      return false;
     }
   }
 

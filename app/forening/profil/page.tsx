@@ -13,11 +13,14 @@ import {
   fetchBossaGeneral,
 } from "@/app/_lib/supabase/clientFunctions";
 import { cookies } from "next/headers";
+import { urlExists } from "@/app/_lib/utils";
 
 export default async function Home() {
   const foreningsId = (await cookies()).get("foreningsId")?.value as
     | string
     | undefined;
+  const urlDummy = `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${foreningsId}.png?t=${Date.now()}`;
+  const imgUrl = (await urlExists(urlDummy)) ? urlDummy : "";
   var foreningsNamn: string = "";
   var moneyAmount: number = 0;
   var swishSum: number = 0;
@@ -55,7 +58,7 @@ export default async function Home() {
         <div className="flex flex-col gap-10 items-center">
           <h1 className="text-[#FFF0D9]">/forening/profil</h1>
           <div className="flex h-52">
-            <ImageSelect foreningsId_in={foreningsId} />
+            <ImageSelect imgUrl_in={imgUrl} foreningsId_in={foreningsId} />
             <Details
               name_in={foreningsNamn}
               sum_in={swishSum}

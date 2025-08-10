@@ -1,8 +1,3 @@
-import {
-  fetchBossaDetailed,
-  fetchBossaGeneral,
-} from "@/app/_lib/supabase/clientFunctions";
-import { BossaDetailed, BossaGeneral } from "@/app/_lib/types";
 import { create } from "zustand";
 
 type ProfileData = {

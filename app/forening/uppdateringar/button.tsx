@@ -17,9 +17,10 @@ export default function Button(props: ButtonProps) {
     }
   }, [description]);
   const [isPending, startTransition] = useTransition();
-  const upload = async () => {
+  const upload = () => {
     startTransition(async () => {
       await uploadUpdate(props.foreningsId_in, description);
+      window.location.reload();
     });
   };
   return (

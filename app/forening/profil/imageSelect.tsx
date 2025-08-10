@@ -4,6 +4,7 @@ import { useProfileData } from "./data";
 
 type ImageSelectProps = {
   foreningsId_in: string;
+  imgUrl_in: string;
 };
 export default function ImageSelect(props: ImageSelectProps) {
   const setImageUrlZustand = useProfileData((state) => state.setImageUrl);
@@ -33,22 +34,20 @@ export default function ImageSelect(props: ImageSelectProps) {
         style={{ width: "100%", aspectRatio: "1 / 1" }}
         onClick={() => imageInputRef.current?.click()}
       >
-        <div className="absolute inset-1 m-auto overflow-hidden">
-          <img
-            src={
-              imageUrl ||
-              `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${
-                props.foreningsId_in
-              }.png?t=${Date.now()}`
-            }
-            className="h-full rounded-2xl"
-          />
-        </div>
-        <h2 className="!text-3xl">
-          Byt
-          <br />
-          Profilbild
-        </h2>
+        {imageUrl || props.imgUrl_in ? (
+          <div className="absolute inset-1 m-auto overflow-hidden">
+            <img
+              src={imageUrl || props.imgUrl_in}
+              className="h-full rounded-2xl"
+            />
+          </div>
+        ) : (
+          <h2 className="!text-3xl">
+            Byt
+            <br />
+            Profilbild
+          </h2>
+        )}
       </div>
     </>
   );

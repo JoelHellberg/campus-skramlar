@@ -1,14 +1,5 @@
+import { urlExists } from "@/app/_lib/utils";
 import Link from "next/link";
-
-async function urlExists(url: string): Promise<boolean> {
-  try {
-    const response = await fetch(url, { method: "HEAD" });
-    return response.ok; // true if status is 200–299
-  } catch (error) {
-    console.error("Error checking URL:", error);
-    return false;
-  }
-}
 
 // PiggyBank.tsx
 type Props = {

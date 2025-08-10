@@ -8,3 +8,13 @@ export async function convertBlobUrlToFile(blobUrl: string) {
   });
   return file;
 }
+
+export async function urlExists(url: string): Promise<boolean> {
+  try {
+    const response = await fetch(url, { method: "HEAD" });
+    return response.ok; // true if status is 200–299
+  } catch (error) {
+    console.error("Error checking URL:", error);
+    return false;
+  }
+}

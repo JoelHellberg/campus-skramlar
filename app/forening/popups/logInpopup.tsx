@@ -5,8 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export default function LogInPopup() {
-  const searchParams = useSearchParams();
-  const isActive = searchParams.get("logIn");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const signIn = async () => {
@@ -18,25 +16,21 @@ export default function LogInPopup() {
     }
   };
   return (
-    <>
-      {isActive && (
-        <DefaultPopup title="Alert" close={false}>
-          <p>{message}</p>
-          <input
-            suppressHydrationWarning
-            type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter password here"
-          />
-          <button
-            className={"px-4 py-2 rounded text-white bg-black cursor-pointer"}
-            onClick={signIn}
-          >
-            logga in
-          </button>
-        </DefaultPopup>
-      )}
-    </>
+    <DefaultPopup title="Alert" close={false}>
+      <p>{message}</p>
+      <input
+        suppressHydrationWarning
+        type="text"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter password here"
+      />
+      <button
+        className={"px-4 py-2 rounded text-white bg-black cursor-pointer"}
+        onClick={signIn}
+      >
+        logga in
+      </button>
+    </DefaultPopup>
   );
 }

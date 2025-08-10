@@ -1,15 +1,5 @@
-"use client";
-import {
-  ChangeEvent,
-  Suspense,
-  useEffect,
-  useRef,
-  useState,
-  useTransition,
-} from "react";
-import { useBossaData } from "../_lib/data";
+import { Suspense } from "react";
 import ForeningHeader from "../components/foreningHeader";
-import LoadingSimple from "@/components/loadingSimple";
 import Loading from "@/components/loading";
 import SuccessPopup from "../popups/successPopup";
 import FailPopup from "../popups/failPopup";
@@ -17,40 +7,45 @@ import Details from "./details";
 import Description from "./description";
 import Button from "./button";
 import ImageSelect from "./imageSelect";
+import { BossaDetailed, BossaGeneral } from "@/app/_lib/types";
+import {
+  fetchBossaDetailed,
+  fetchBossaGeneral,
+} from "@/app/_lib/supabase/clientFunctions";
+import { cookies } from "next/headers";
 
-export default function Home() {
-  const [imageUrl, setImageUrl] = useState<string>();
+export default async function Home() {
+  const foreningsId = (await cookies()).get("foreningsId")?.value as
+    | string
+    | undefined;
+  var foreningsNamn: string = "";
+  var moneyAmount: number = 0;
+  var swishSum: number = 0;
+  var swishNumber: string = "";
+  var description: string = "";
 
-  const initialize = useBossaData((state) => state.initialize);
-  const foreningsId: string = useBossaData((state) => state.foreningsId);
-  const foreningsNamn = useBossaData((state) => state.foreningsNamn);
-  const swishSum = useBossaData((state) => state.swishSum);
-  const swishNumber = useBossaData((state) => state.swishNumber);
-  const description_in = useBossaData((state) => state.description);
+  if (foreningsId) {
+    const bossaGeneral: BossaGeneral | null = await fetchBossaGeneral(
+      foreningsId
+    );
+    if (bossaGeneral) {
+      const bossaDetailed: BossaDetailed = await fetchBossaDetailed(
+        foreningsId
+      );
 
-  const [name, setName] = useState<string>(foreningsNamn);
-  const [sum, setSum] = useState<number>(swishSum);
-  const [number, setNumber] = useState<string>(swishNumber);
-  const [description, setDescription] = useState<string>(description_in);
-
-  useEffect(() => {
-    initialize();
-  }, []);
-
-  useEffect(() => {
-    if (foreningsNamn) {
-      setName(foreningsNamn);
-      setSum(swishSum);
-      setNumber(swishNumber);
-      setDescription(description_in);
+      foreningsNamn = bossaGeneral.forenings_namn;
+      moneyAmount = bossaGeneral.pengar_insamlat;
+      swishSum = bossaDetailed.swish_sum;
+      swishNumber = bossaDetailed.phone_number;
+      description = bossaDetailed.description;
     }
-  }, [foreningsNamn]);
-  const [isPending, startTransition] = useTransition();
+  } else {
+    return <h2>Error</h2>;
+  }
 
   return (
     <>
       <Loading />
-      {isPending && <LoadingSimple />}
       <Suspense fallback={null}>
         <SuccessPopup />
         <FailPopup />
@@ -60,38 +55,21 @@ export default function Home() {
         <div className="flex flex-col gap-10 items-center">
           <h1 className="text-[#FFF0D9]">/forening/profil</h1>
           <div className="flex h-52">
-            <ImageSelect
-              imageUrl={imageUrl}
-              setImageUrl={setImageUrl}
-              isPending={isPending}
-              foreningsId={foreningsId}
-            />
+            <ImageSelect foreningsId_in={foreningsId} />
             <Details
-              name={name}
-              setNameFunc={setName}
-              sum={sum}
-              setSumFunc={setSum}
-              number={number}
-              setNumberFunc={setNumber}
+              name_in={foreningsNamn}
+              sum_in={swishSum}
+              number_in={swishNumber}
             />
           </div>
-          <Description
-            description={description}
-            setDescriptionFunc={setDescription}
-          />
+          <Description description_in={description} />
           <Button
-            imageUrl={imageUrl}
-            setImageUrl={setImageUrl}
-            foreningsId={foreningsId}
-            name={name}
-            foreningsNamn={foreningsNamn}
-            sum={sum}
-            swishSum={swishSum}
-            number={number}
-            swishNumber={swishNumber}
-            description={description}
-            description_in={description_in}
-            startTransition={startTransition}
+            foreningsId_in={foreningsId}
+            foreningsNamn_in={foreningsNamn}
+            swishSum_in={swishSum}
+            swishNumber_in={swishNumber}
+            moneyAmount_in={moneyAmount}
+            description_in={description}
           />
         </div>
       </div>

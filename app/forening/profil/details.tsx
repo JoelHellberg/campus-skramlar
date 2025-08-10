@@ -1,13 +1,35 @@
+"use client";
+
+import { useState } from "react";
+import { useProfileData } from "./data";
+
 type DetailsProps = {
-  name: string;
-  setNameFunc: (value: string) => void;
-  sum: number;
-  setSumFunc: (value: number) => void;
-  number: string;
-  setNumberFunc: (value: string) => void;
+  name_in: string;
+  sum_in: number;
+  number_in: string;
 };
 
 export default function Details(props: DetailsProps) {
+  const setNameZustand = useProfileData((state) => state.setForeningsNamn);
+  const setSumZustand = useProfileData((state) => state.setSwishSum);
+  const setNumberZustand = useProfileData((state) => state.setSwishNumber);
+  const [name, setName] = useState(props.name_in);
+  const [sum, setSum] = useState(props.sum_in);
+  const [number, setNumber] = useState(props.number_in);
+
+  const setNameFunc = (newName: string) => {
+    setNameZustand(newName);
+    setName(newName);
+  };
+  const setSumFunc = (newSum: number) => {
+    setSumZustand(newSum);
+    setSum(newSum);
+  };
+  const setNumberFunc = (newNumber: string) => {
+    setNumberZustand(newNumber);
+    setNumber(newNumber);
+  };
+
   return (
     <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4 shadow-xl/25">
       <label htmlFor="name" className="block mb-2 font-bold">
@@ -15,8 +37,8 @@ export default function Details(props: DetailsProps) {
       </label>
       <input
         type="text"
-        value={props.name}
-        onChange={(e) => props.setNameFunc(e.target.value)}
+        value={name}
+        onChange={(e) => setNameFunc(e.target.value)}
         placeholder="Skriv namnet här"
         className="bg-white p-1 outline-1 rounded-sm w-full"
       />
@@ -27,9 +49,9 @@ export default function Details(props: DetailsProps) {
           </label>
           <input
             type="number"
-            value={props.sum}
-            onChange={(e) => props.setSumFunc(Number(e.target.value))}
-            placeholder="Skriv namnet här"
+            value={sum != 0 ? sum : ""}
+            onChange={(e) => setSumFunc(Number(e.target.value))}
+            placeholder="Ange summa"
             className="bg-white p-1 outline-1 rounded-sm w-30"
           />
         </div>
@@ -39,11 +61,11 @@ export default function Details(props: DetailsProps) {
           </label>
           <input
             type="tel"
-            value={props.number}
+            value={number}
             onChange={(e) => {
               const value = e.target.value;
               if (/^[\d+]*$/.test(value)) {
-                props.setNumberFunc(value);
+                setNumberFunc(value);
               }
             }}
             placeholder="Skriv namnet här"

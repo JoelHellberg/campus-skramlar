@@ -1,18 +1,20 @@
-import { ChangeEvent, Dispatch, SetStateAction, useRef } from "react";
+"use client";
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
+import { useProfileData } from "./data";
 
 type ImageSelectProps = {
-  imageUrl: string | undefined;
-  setImageUrl: Dispatch<SetStateAction<string | undefined>>;
-  isPending: boolean;
-  foreningsId: string;
+  foreningsId_in: string;
 };
 export default function ImageSelect(props: ImageSelectProps) {
+  const setImageUrlZustand = useProfileData((state) => state.setImageUrl);
+  const [imageUrl, setImageUrl] = useState<string>();
   const imageInputRef = useRef<HTMLInputElement>(null);
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const firstFile = e.target.files[0];
       const newImageUrl = URL.createObjectURL(firstFile);
-      props.setImageUrl(newImageUrl);
+      setImageUrlZustand(newImageUrl);
+      setImageUrl(newImageUrl);
     }
   };
   return (
@@ -24,7 +26,6 @@ export default function ImageSelect(props: ImageSelectProps) {
         multiple
         ref={imageInputRef}
         onChange={handleImageChange}
-        disabled={props.isPending}
       />
       <div
         className="relative bg-[#FFF0D9] p-5 flex flex-col items-center text-center justify-center rounded-2xl outline-4 mr-10 shadow-xl/30 cursor-pointer
@@ -35,9 +36,9 @@ export default function ImageSelect(props: ImageSelectProps) {
         <div className="absolute inset-1 m-auto overflow-hidden">
           <img
             src={
-              props.imageUrl ||
+              imageUrl ||
               `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${
-                props.foreningsId
+                props.foreningsId_in
               }.png?t=${Date.now()}`
             }
             className="h-full rounded-2xl"

@@ -1,47 +1,36 @@
-"use client";
-import { useBossaData } from "../_lib/data";
-import { Suspense, useEffect, useState, useTransition } from "react";
-import { updateBossorGeneral } from "../_lib/serverFunctions";
+import { Suspense } from "react";
 import ForeningHeader from "../components/foreningHeader";
-import LoadingSimple from "@/components/loadingSimple";
 import Loading from "@/components/loading";
 import SuccessPopup from "../popups/successPopup";
 import FailPopup from "../popups/failPopup";
-import { usePathname, useRouter } from "next/navigation";
+import Input from "./input";
+import Button from "./button";
+import { cookies } from "next/headers";
+import { BossaGeneral } from "@/app/_lib/types";
+import { fetchBossaGeneral } from "@/app/_lib/supabase/clientFunctions";
 
-export default function Home() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const initialize = useBossaData((state) => state.initialize);
-  const foreningsId = useBossaData((state) => state.foreningsId);
-  const foreningsNamn = useBossaData((state) => state.foreningsNamn);
-  const moneyCollected = useBossaData((state) => state.moneyCollected);
-  const [sum, setSum] = useState(moneyCollected);
-  useEffect(() => {
-    initialize();
-  }, []);
+export default async function Home() {
+  const foreningsId = (await cookies()).get("foreningsId")?.value as
+    | string
+    | undefined;
+  var foreningsNamn: string = "";
+  var moneyAmount: number = 0;
 
-  useEffect(() => {
-    if (moneyCollected) {
-      setSum(moneyCollected);
+  if (foreningsId) {
+    const bossaGeneral: BossaGeneral | null = await fetchBossaGeneral(
+      foreningsId
+    );
+    if (bossaGeneral) {
+      foreningsNamn = bossaGeneral.forenings_namn;
+      moneyAmount = bossaGeneral.pengar_insamlat;
     }
-  }, [moneyCollected]);
-  const [isPending, startTransition] = useTransition();
-  const updateBossa = () => {
-    startTransition(async () => {
-      try {
-        await updateBossorGeneral(foreningsId, foreningsNamn, sum);
-      } catch (error) {
-        console.error("Failed to create piggy bank:", error);
-      }
-    });
-    router.push(`${pathname}?success=true`);
-  };
+  } else {
+    return <h2>Error</h2>;
+  }
 
   return (
     <>
       <Loading />
-      {isPending && <LoadingSimple />}
       <Suspense fallback={null}>
         <SuccessPopup />
         <FailPopup />
@@ -53,21 +42,13 @@ export default function Home() {
           <label htmlFor="name" className="block mb-2 font-bold text-3xl w-100">
             Ange hur mycket pengar ni har i er bössa nedanför:
           </label>
-          <input
-            type="number"
-            value={sum}
-            onChange={(e) => setSum(Number(e.target.value))}
-            placeholder="Skriv namnet här"
-            className="bg-white w-100 outline-1 rounded-sm text-6xl my-5 p-3"
-          />
+          <Input moneyAmount_in={moneyAmount} />
         </div>
-        <button
-          className="px-16 py-3 rounded-xl text-black bg-[#8A8635] outline-4 w-fit font-bold shadow-xl/30 text-shadow-sm cursor-pointer 
-            transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25"
-          onClick={updateBossa}
-        >
-          Spara
-        </button>
+        <Button
+          foreningsId_in={foreningsId}
+          foreningsNamn_in={foreningsNamn}
+          moneyAmount_in={moneyAmount}
+        />
       </div>
     </>
   );

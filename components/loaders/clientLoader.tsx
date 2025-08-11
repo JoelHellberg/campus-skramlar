@@ -1,6 +1,6 @@
 "use client";
 import DefaultLoader from "@/components/loaders/defaultLoader";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLoaderData } from "./loaderData";
 
 type Props = { delay?: number };
@@ -8,17 +8,28 @@ type Props = { delay?: number };
 export default function ClientLoader({ delay = 0 }: Props) {
   const loading = useLoaderData((state) => state.loading);
   const [isActive, setIsActive] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
     if (loading) {
-      timeoutId = setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setIsActive(true);
       }, delay * 1000);
     } else {
-      if (timeoutId) clearTimeout(timeoutId);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
       setIsActive(false);
     }
-    return () => clearTimeout(timeoutId);
-  }, [loading]);
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+  }, [loading, delay]);
+
   return <>{isActive && <DefaultLoader />}</>;
 }

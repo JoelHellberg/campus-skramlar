@@ -18,7 +18,7 @@ export default async function Home() {
   return (
     <>
       <LayoutLoader />
-      <ClientLoader />
+      <ClientLoader delay={0.2} />
 
       <div>
         {/* Popups */}

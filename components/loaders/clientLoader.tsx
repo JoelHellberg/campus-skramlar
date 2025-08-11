@@ -9,11 +9,16 @@ export default function ClientLoader({ delay = 0 }: Props) {
   const loading = useLoaderData((state) => state.loading);
   const [isActive, setIsActive] = useState(false);
   useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
     if (loading) {
-      setIsActive(true);
+      timeoutId = setTimeout(() => {
+        setIsActive(true);
+      }, delay * 1000);
     } else {
+      if (timeoutId) clearTimeout(timeoutId);
       setIsActive(false);
     }
+    return () => clearTimeout(timeoutId);
   }, [loading]);
   return <>{isActive && <DefaultLoader />}</>;
 }

@@ -2,7 +2,8 @@
 import { Modal } from "@/components/modal";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
+import { useLoaderData } from "../loaders/loaderData";
 
 type Props = {
   title?: string;
@@ -18,13 +19,17 @@ export default function ({
   primaryColor,
   secondaryColor,
 }: Props) {
+  const stopLoader = useLoaderData((state) => state.stopLoader);
+  useEffect(() => {
+    stopLoader();
+  }, []);
   if (!primaryColor && !secondaryColor) {
     primaryColor = "red-400";
     secondaryColor = "yellow-400";
   } else if (primaryColor && !secondaryColor) {
     secondaryColor = primaryColor;
   }
-  console.log("close is: ", close)
+  console.log("close is: ", close);
   const router = useRouter();
   const onCloseFunc = () => {
     router.replace(window.location.pathname, { scroll: false });
@@ -43,25 +48,25 @@ export default function ({
             className={`w-full h-1/12 rounded-t-2xl border-b-4 flex px-6 gap-8 bg-${primaryColor}`}
           >
             {close && (
-            <div className="w-fit h-full flex items-center gap-4">
-              <div
-                className="group h-1/3 aspect-square bg-red-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
-                onClick={onCloseFunc}
-              >
-                <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  x
-                </p>
+              <div className="w-fit h-full flex items-center gap-4">
+                <div
+                  className="group h-1/3 aspect-square bg-red-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
+                  onClick={onCloseFunc}
+                >
+                  <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    x
+                  </p>
+                </div>
+                <div
+                  className="group h-1/3 aspect-square bg-yellow-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
+                  onClick={onCloseFunc}
+                >
+                  <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    -
+                  </p>
+                </div>
+                <div className="group h-1/3 aspect-square bg-green-400 outline-4 rounded-full flex items-center justify-center" />
               </div>
-              <div
-                className="group h-1/3 aspect-square bg-yellow-400 outline-4 rounded-full flex items-center justify-center cursor-pointer"
-                onClick={onCloseFunc}
-              >
-                <p className="font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  -
-                </p>
-              </div>
-              <div className="group h-1/3 aspect-square bg-green-400 outline-4 rounded-full flex items-center justify-center" />
-            </div>
             )}
             <div className="flex-1 h-full flex flex-row-reverse items-center">
               <h2>{title}</h2>

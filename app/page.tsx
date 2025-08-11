@@ -9,14 +9,16 @@ import Thanks from "@/sections/thanks";
 import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
 import { Suspense } from "react";
-import Loading from "@/components/loading";
+import LayoutLoader from "@/components/loaders/layoutLoader";
 import PiggyBankPopup from "@/sections/piggyBanks/popup/piggyBankPopup";
+import ClientLoader from "@/components/loaders/clientLoader";
 
 export default async function Home() {
   // Sammanställning av innehållet som utgör hela sidan
   return (
     <>
-      <Loading />
+      <LayoutLoader />
+      <ClientLoader />
 
       <div>
         {/* Popups */}

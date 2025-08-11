@@ -9,6 +9,7 @@ import { uploadImageClient } from "../_lib/clientFunctions";
 import { useEffect, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useProfileData } from "./data";
+import { useLoaderData } from "@/components/loaders/loaderData";
 
 type ButtonProps = {
   foreningsId_in: string;
@@ -19,6 +20,7 @@ type ButtonProps = {
   description_in: string;
 };
 export default function Button(props: ButtonProps) {
+  const startLoader = useLoaderData((state) => state.startLoader);
   const foreningsNamn = useProfileData((state) => state.foreningsNamn);
   const swishSum = useProfileData((state) => state.swishSum);
   const swishNumber = useProfileData((state) => state.swishNumber);
@@ -44,6 +46,7 @@ export default function Button(props: ButtonProps) {
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
   const updateProfile = async () => {
+    startLoader();
     const uploadImageHandler = async () => {
       if (imageUrl) {
         const imageFile = await convertBlobUrlToFile(imageUrl);

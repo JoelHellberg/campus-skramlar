@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import LogInPopup from "./popups/logInpopup";
 import { verifySession } from "../_lib/authentication";
 import ForeningHeader from "./components/foreningHeader";
-import Loading from "@/components/loading";
+import LayoutLoader from "@/components/loaders/layoutLoader";
 import SignOutPopup from "./popups/signOutPopup";
 import { BossaGeneral } from "../_lib/types";
 import { fetchBossaGeneral } from "../_lib/supabase/clientFunctions";
@@ -22,7 +22,6 @@ export default async function Home() {
 
   return (
     <>
-      <Loading />
       {/* Popups */}
       <Suspense fallback={null}>
         <SignOutPopup />

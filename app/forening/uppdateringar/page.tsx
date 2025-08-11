@@ -2,10 +2,11 @@ import ForeningHeader from "../components/foreningHeader";
 import Update from "@/components/popups/update";
 import { BossaUpdate } from "@/app/_lib/types";
 import { fetchBossaUpdates } from "@/app/_lib/supabase/clientFunctions";
-import Loading from "@/components/loading";
+import LayoutLoader from "@/components/loaders/layoutLoader";
 import Input from "./input";
 import Button from "./button";
 import { cookies } from "next/headers";
+import ClientLoader from "@/components/loaders/clientLoader";
 
 export default async function Home() {
   const foreningsId = (await cookies()).get("foreningsId")?.value as
@@ -20,7 +21,7 @@ export default async function Home() {
   }
   return (
     <>
-      <Loading />
+      <ClientLoader />
       <div className="flex flex-col items-center bg-[#EDA277] h-screen gap-10">
         <ForeningHeader />
         <h1 className="text-[#FFF0D9]">/forening/uppdateringar</h1>

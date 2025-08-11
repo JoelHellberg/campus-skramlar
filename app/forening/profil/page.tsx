@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import ForeningHeader from "../components/foreningHeader";
-import Loading from "@/components/loading";
 import SuccessPopup from "../popups/successPopup";
 import FailPopup from "../popups/failPopup";
 import Details from "./details";
@@ -14,6 +13,7 @@ import {
 } from "@/app/_lib/supabase/clientFunctions";
 import { cookies } from "next/headers";
 import { urlExists } from "@/app/_lib/utils";
+import ClientLoader from "@/components/loaders/clientLoader";
 
 export default async function Home() {
   const foreningsId = (await cookies()).get("foreningsId")?.value as
@@ -48,7 +48,7 @@ export default async function Home() {
 
   return (
     <>
-      <Loading />
+      <ClientLoader />
       <Suspense fallback={null}>
         <SuccessPopup />
         <FailPopup />

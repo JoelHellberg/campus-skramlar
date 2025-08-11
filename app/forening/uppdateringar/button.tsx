@@ -3,10 +3,12 @@
 import { useEffect, useState, useTransition } from "react";
 import { uploadUpdate } from "../_lib/serverFunctions";
 import { useUpdateData } from "./data";
+import { useLoaderData } from "@/components/loaders/loaderData";
 
 type ButtonProps = { foreningsId_in: string };
 
 export default function Button(props: ButtonProps) {
+  const startLoader = useLoaderData((state) => state.startLoader);
   const description = useUpdateData((state) => state.description);
   const [isUpdated, setIsUpdated] = useState<boolean>(false);
   useEffect(() => {
@@ -18,6 +20,7 @@ export default function Button(props: ButtonProps) {
   }, [description]);
   const [isPending, startTransition] = useTransition();
   const upload = () => {
+    startLoader();
     startTransition(async () => {
       await uploadUpdate(props.foreningsId_in, description);
       window.location.reload();

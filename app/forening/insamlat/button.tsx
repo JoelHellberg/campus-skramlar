@@ -4,6 +4,7 @@ import { useEffect, useState, useTransition } from "react";
 import { updateBossorGeneral } from "../_lib/serverFunctions";
 import { usePathname, useRouter } from "next/navigation";
 import { useInsamlatData } from "./data";
+import { useLoaderData } from "@/components/loaders/loaderData";
 
 type ButtonProps = {
   foreningsId_in: string;
@@ -12,6 +13,7 @@ type ButtonProps = {
 };
 
 export default function Button(props: ButtonProps) {
+  const startLoader = useLoaderData((state) => state.startLoader);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -27,6 +29,7 @@ export default function Button(props: ButtonProps) {
 
   const [isPending, startTransition] = useTransition();
   const updateBossa = () => {
+    startLoader();
     startTransition(async () => {
       try {
         await updateBossorGeneral(

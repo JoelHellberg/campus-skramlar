@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function Loading() {
+export default function LayoutLoader() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   // After first render, wait a bit then show content

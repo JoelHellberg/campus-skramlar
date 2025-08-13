@@ -1,11 +1,14 @@
 import PiggyBank from "./piggyBank/piggyBank";
 import NeedleDot from "./piggyBank/needleDot";
 import { createClient } from "@/app/_lib/supabase/supabaseClient";
+import { BossaGeneral } from "@/app/_lib/types";
+import React from "react";
 
 export default async function PiggyBanks() {
   const supabase = createClient();
   const { data, error } = await supabase.from("bossorGeneral").select();
-  if (error || !data) {
+  const piggyBankList = data as BossaGeneral[] | undefined;
+  if (error || !piggyBankList) {
     return <h2>Error fetching piggy bank data</h2>;
   }
 
@@ -27,12 +30,16 @@ export default async function PiggyBanks() {
       </div>
       {/* Positionering av alla bössor */}
       <div className="flex flex-wrap justify-center gap-12 w-full py-15">
-        {data && (
+        {piggyBankList && (
           <>
-            {data.map((bossa: any, index: number) => (
-              <div key={index} className="w-[30%] py-8">
-                <PiggyBank bossa={bossa} position={index} />
-              </div>
+            {piggyBankList.map((bossa: BossaGeneral, index: number) => (
+              <React.Fragment key={index}>
+                {!bossa.banned && (
+                  <div key={index} className="w-[30%] py-8">
+                    <PiggyBank bossa={bossa} position={index} />
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </>
         )}

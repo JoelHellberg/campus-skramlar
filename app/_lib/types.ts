@@ -2,6 +2,7 @@ export type BossaGeneral = {
   id: string;
   forenings_namn: string;
   pengar_insamlat: number;
+  banned: boolean;
 };
 
 export type BossaDetailed = {

@@ -5,6 +5,7 @@ import Link from "next/link";
 import NyBossaPopup from "./popups/nyBossaPopup";
 import { createSupabaseServer } from "../_lib/supabase/supabaseServer";
 import EditPopup from "./popups/editPopup";
+import DeletePopup from "./popups/deletePopup";
 
 export default async function SomePage() {
   // Await the client since createSupabaseServer is async
@@ -28,6 +29,7 @@ export default async function SomePage() {
       <Suspense fallback={null}>
         <NyBossaPopup />
         <EditPopup />
+        <DeletePopup />
       </Suspense>
       <div className="flex flex-col items-center w-4/5 mx-auto h-screen bg-blue">
         <div className="flex items-center w-full">

@@ -1,5 +1,5 @@
 import { createSupabaseServer } from "../../_lib/supabase/supabaseServer";
-import AssociationRow from "./associationRow";
+import AssociationRow from "./associationRow/associationRow";
 
 export default async function ForeningarDisplay() {
   const supabase = await createSupabaseServer();
@@ -13,7 +13,7 @@ export default async function ForeningarDisplay() {
       <div className="bg-gray-200/70 w-full flex py-3 rounded-xl">
         <h5 className="w-1/3 text-center">ID</h5>
         <h5 className="w-1/3 text-center">Nickname</h5>
-        <h5 className="w-1/3 text-center">Password</h5>
+        <h5 className="w-1/3 text-center">Name</h5>
       </div>
       <div className="w-full overflow-auto my-4">
         {error && <p>{"Could not fetch foreningar"}</p>}

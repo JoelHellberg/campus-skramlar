@@ -67,6 +67,7 @@ export default function NyBossaPopup() {
     } else {
       console.log("Inserted into bossorDetailed:", detailedData);
     }
+    window.location.href = "/admin";
   };
 
   return (

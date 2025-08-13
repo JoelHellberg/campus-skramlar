@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import LogInPopup from "./popups/logInPopup";
-import ForeningarDisplay from "./foreningarDisplay";
+import ForeningarDisplay from "./bossor/foreningarDisplay";
 import Link from "next/link";
 import NyBossaPopup from "./popups/nyBossaPopup";
 import { createSupabaseServer } from "../_lib/supabase/supabaseServer";
+import EditPopup from "./popups/editPopup";
 
 export default async function SomePage() {
   // Await the client since createSupabaseServer is async
@@ -22,23 +23,23 @@ export default async function SomePage() {
   }
 
   return (
-    <>
+    <div className="bg-gradient-to-r from-white to-blue-50">
       {/* Popup */}
       <Suspense fallback={null}>
         <NyBossaPopup />
+        <EditPopup />
       </Suspense>
-      <div className="flex flex-col items-center bg-[#FFF0D9] min-h-screen">
-        <div className="flex">
-          <h1>/admin</h1>
+      <div className="flex flex-col items-center w-4/5 mx-auto h-screen bg-blue">
+        <div className="flex items-center w-full">
+          <h1 className="mx-auto">/admin</h1>
+          <Link className="mx-auto" href="/admin/?nyBossa=true">
+            <div className="bg-white h-fit p-3 rounded-xl outline-4">
+              <h2>Skapa ny bössa</h2>
+            </div>
+          </Link>
         </div>
-        <h2>Bössor: </h2>
         <ForeningarDisplay />
-        <Link href="/admin/?nyBossa=true">
-          <div className="bg-white h-fit p-3 rounded-xl outline-4">
-            <h2>Skapa ny bössa</h2>
-          </div>
-        </Link>
       </div>
-    </>
+    </div>
   );
 }

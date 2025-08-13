@@ -17,6 +17,10 @@
   to { opacity: 1; }
 }
 
+@utility no-scrollbar {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
 
 body {
   background: var(--background);

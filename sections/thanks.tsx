@@ -8,7 +8,6 @@ export default async function Thanks() {
   }
   const urlList: string[] = [];
   for (const bossa of data) {
-    console.log("bossa data: ", bossa);
     const url = `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${bossa}.png`;
     if (await urlExists(url)) {
       urlList.push(url);

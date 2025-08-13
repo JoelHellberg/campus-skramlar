@@ -31,8 +31,8 @@ export default async function SomePage() {
         <EditPopup />
         <DeletePopup />
       </Suspense>
-      <div className="flex flex-col items-center w-4/5 mx-auto h-screen bg-blue">
-        <div className="flex items-center w-full">
+      <div className="flex flex-col items-center w-full mx-auto h-screen">
+        <div className="flex items-center w-4/5">
           <h1 className="mx-auto">/admin</h1>
           <Link className="mx-auto" href="/admin/?nyBossa=true">
             <div className="bg-white h-fit p-3 rounded-xl outline-4">

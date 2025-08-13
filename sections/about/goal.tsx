@@ -31,12 +31,8 @@ export default function Goal() {
             </p>
           </div>
           {/* Icon positioned on the bottom right */}
-          <div className="flex flex-col-reverse -ml-8">
-            <img
-              src="/vectorGraphics/icon1Dummy.png"
-              alt="logo"
-              className="w-40"
-            />
+          <div className="flex flex-col-reverse">
+            <img src="/vectorGraphics/goal.svg" alt="logo" className="w-40" />
           </div>
         </div>
       </div>

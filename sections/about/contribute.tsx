@@ -1,4 +1,4 @@
-import Cloud from "./cloud"
+import Cloud from "./cloud";
 
 export default function Contribute() {
   return (
@@ -18,16 +18,12 @@ export default function Contribute() {
       items-center justify-center
       w-lg h-64"
       >
-        <Cloud/>
+        <Cloud />
         {/* Main content */}
         <div className="flex">
           {/* Icon positioned on the bottom left */}
           <div className="flex flex-col-reverse">
-            <img
-              src="/vectorGraphics/icon2Dummy.png"
-              alt="logo"
-              className="w-30"
-            />
+            <img src="/vectorGraphics/heart2.svg" alt="logo" className="w-30" />
           </div>
           {/* Text positionerad på högersidan */}
           <div className="flex flex-col flex-1 justify-center items-center text-center -ml-3">
@@ -42,9 +38,11 @@ export default function Contribute() {
               Är du en förening eller företag som vill sammarbeta med oss?
               <br />
               <br />
-              Hör gärna av dig till oss på: 
-              <br />forening@campusskramlar.se
-              <br />foretag@campusskramlar.se
+              Hör gärna av dig till oss på:
+              <br />
+              forening@campusskramlar.se
+              <br />
+              foretag@campusskramlar.se
             </p>
           </div>
         </div>

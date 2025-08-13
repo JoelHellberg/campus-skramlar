@@ -21,34 +21,37 @@ export default async function Home() {
       <ClientLoader delay={0.2} />
 
       <div>
-        {/* Popups */}
-        <Suspense fallback={null}>
-          <PiggyBankPopup />
-        </Suspense>
+        <div className="relative z-10">
+          {/* Popups */}
+          <Suspense fallback={null}>
+            <PiggyBankPopup />
+          </Suspense>
 
-        {/* Main Content */}
-        <Header />
-        <Hello />
-        <About />
-
-        <div className="mx-20 my-10">
-          {/* Övre sidan av det "rivna pappret" */}
-          <div className="relative z-10 w-full bg-[#FFF0D9] rounded-t-3xl border-t-3 border-l-3 border-r-3">
-            <PiggyBanks />
-          </div>
-
-          <Group />
-
-          {/* Nedre sidan av det "rivna pappret" */}
-          <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl border-b-3 border-l-3 border-r-3">
-            <Members />
-            <History />
-            <Thanks />
-          </div>
-
-          <Sponsors />
+          {/* Main Content */}
+          <Header />
+          <Hello />
         </div>
-        <Footer />
+        <About />
+        <div className="relative bg-[#9CAF88] z-10 pt-10">
+          <div className="mx-20 mb-10">
+            {/* Övre sidan av det "rivna pappret" */}
+            <div className="relative z-10 w-full bg-[#FFF0D9] rounded-t-3xl border-t-3 border-l-3 border-r-3">
+              <PiggyBanks />
+            </div>
+
+            <Group />
+
+            {/* Nedre sidan av det "rivna pappret" */}
+            <div className="relative z-10 w-full bg-[#FFF0D9] rounded-b-3xl border-b-3 border-l-3 border-r-3">
+              <Members />
+              <History />
+              <Thanks />
+            </div>
+
+            <Sponsors />
+          </div>
+          <Footer />
+        </div>
       </div>
     </>
   );

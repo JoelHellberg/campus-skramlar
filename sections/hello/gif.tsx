@@ -17,7 +17,14 @@ export default function Gif() {
       />
 
       {/* The Animated GIF */}
-      <img src="/animation.gif" alt="" className="w-full relative z-0" />
+      <motion.img
+        initial={{ y: 200 }} // Start below, invisible
+        animate={{ y: 0 }} // Move up, fade in
+        transition={{ duration: 0.8, ease: "backOut" }}
+        src="/animation.gif"
+        alt=""
+        className="w-full relative z-0"
+      />
 
       {/* Beige Overlay to dimm gif intensity */}
       <div className="absolute -inset-10 bg-[#FFF0D9] opacity-50" />

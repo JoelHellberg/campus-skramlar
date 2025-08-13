@@ -30,8 +30,11 @@ export default async function Thanks() {
             <div className="flex flex-wrap justify-center gap-12 w-full p-15">
               {urlList &&
                 urlList.map((logoUrl, i) => (
-                  <div key={i} className="flex justify-center w-[30%] p-6">
-                    <img src={logoUrl} />
+                  <div
+                    key={i}
+                    className="flex justify-center w-[30%] aspect-square p-6"
+                  >
+                    <img className="object-contain" src={logoUrl} />
                   </div>
                 ))}
             </div>

@@ -63,7 +63,7 @@ export default async function PiggyBank(props: Props) {
                 <img
                   src={logoExists ? logoUrl : "/logo.svg"}
                   alt="logo"
-                  className="h-10/12 opacity-40 rounded-2xl"
+                  className="h-10/12 aspect-square object-contain opacity-40 rounded-2xl"
                 />
               </div>
             </div>

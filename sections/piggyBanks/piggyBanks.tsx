@@ -37,7 +37,7 @@ export default async function PiggyBanks() {
                 {!bossa.banned && (
                   <div
                     key={index}
-                    className="w-[95%] md:w-[45%] xl:w-[30%] py-8 mx-auto"
+                    className="w-[100%] md:w-[45%] xl:w-[30%] py-8 mx-auto"
                   >
                     <PiggyBank bossa={bossa} position={index} />
                   </div>

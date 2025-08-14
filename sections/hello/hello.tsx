@@ -4,9 +4,9 @@ import Logo from "./logo";
 
 export default function Hello() {
   return (
-    <div className="w-full bg-[#FFF0D9] px-20 py-16 pb-20 flex flex-col h-[70vh] sm:h-auto">
+    <div className="w-full bg-[#FFF0D9] xl:px-20 py-16 pb-20 flex flex-col h-[70vh] sm:h-auto">
       {/* Wrapper */}
-      <div className="relative w-full flex">
+      <div className="relative w-full h-full flex">
         {/* Logo & Text */}
         <div className="flex flex-col items-center justify-center absolute inset-0 z-20">
           {/* Logga & bakgrund */}

@@ -1,6 +1,6 @@
 export default function Goal() {
   return (
-    <div className="relative w-fit mx-auto">
+    <div className="relative w-full">
       {/* Shadow copy behind */}
       <div
         className="absolute top-5 right-5 w-full h-full z-0 
@@ -14,7 +14,7 @@ export default function Goal() {
       <div
         className="relative z-10 flex flex-col bg-white outline-4 rounded-3xl p-4
       items-center justify-center
-      w-lg h-64"
+      w-full aspect-[2/1]"
       >
         <h2 className="!text-lg !font-bold mb-4 text-[#ACCAB2]">
           LiUs STUDENTDRIVNA INSAMLING!

@@ -16,7 +16,7 @@ export default function Logo() {
         }}
         src="/logo.svg"
         alt="logo"
-        className="w-82"
+        className="w-[60vw] sm:w-[25vw] xl:w-[20vw]"
       />
       {/* Logo frame */}
       <motion.div

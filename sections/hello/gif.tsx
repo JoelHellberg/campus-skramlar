@@ -8,7 +8,7 @@ export default function Gif() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2.0, ease: "easeInOut" }}
-      className="relative w-full"
+      className="relative w-full overflow-hidden lg:overflow-visible"
     >
       {/* White Background */}
       <img
@@ -23,7 +23,7 @@ export default function Gif() {
         transition={{ duration: 0.8, ease: "backOut" }}
         src="/animation.gif"
         alt=""
-        className="w-full relative z-0"
+        className="object-cover h-full sm:w-full sm:h-auto relative z-0"
       />
 
       {/* Beige Overlay to dimm gif intensity */}

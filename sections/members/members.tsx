@@ -62,7 +62,7 @@ export default function Members() {
         className="flex flex-wrap justify-center gap-y-12 w-full py-15"
       >
         {members.map((member, i) => (
-          <div key={i} className="w-[45%] xl:w-[30%] py-2">
+          <div key={i} className="w-[95%] sm:w-[45%] xl:w-[30%] py-2">
             <Member
               name={member.name}
               post={member.post}

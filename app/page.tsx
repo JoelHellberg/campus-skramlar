@@ -35,7 +35,7 @@ export default async function Home() {
         </div>
         <About />
         <div className="relative bg-[#9CAF88] z-10 pt-10">
-          <div className="mx-20 mb-10">
+          <div className="mx-1 lg:mx-5 xl:mx-20 mb-10">
             {/* Övre sidan av det "rivna pappret" */}
             <div className="relative z-10 w-full bg-[#FFF0D9] rounded-t-3xl border-t-3 border-l-3 border-r-3">
               <PiggyBanks />

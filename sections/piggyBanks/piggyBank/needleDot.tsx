@@ -20,7 +20,7 @@ export default function NeedleDot() {
     }
   }
   return (
-    <div>
+    <div className="hidden lg:block">
       <div className="relative" onClick={handleNeedleClick}>
         {/* Animation för att på "coolare" sätt ta bort nålen när den klickas på */}
         <AnimatePresence>

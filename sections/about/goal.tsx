@@ -1,6 +1,6 @@
 export default function Goal() {
   return (
-    <div className="relative w-fit">
+    <div className="relative w-fit mx-auto">
       {/* Shadow copy behind */}
       <div
         className="absolute top-5 right-5 w-full h-full z-0 

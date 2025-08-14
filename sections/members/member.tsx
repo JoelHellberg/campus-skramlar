@@ -15,7 +15,7 @@ export default function Member(props: Props) {
     angle = "rotate-3";
   }
   return (
-    <div className="w-full flex flex-col items-center p-5">
+    <div className="w-full flex flex-col items-center p-5 mx-auto">
       <div
         className={
           "relative flex flex-col w-4/5 aspect-[9/10] bg-white p-6 shadow-2xl/30 outline-4 " +

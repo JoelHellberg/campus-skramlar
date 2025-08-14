@@ -29,13 +29,16 @@ export default async function PiggyBanks() {
         <h3 className="!text-4xl">(Klicka på en bössa för att se mer)</h3>
       </div>
       {/* Positionering av alla bössor */}
-      <div className="flex flex-wrap justify-center gap-12 w-full py-15">
+      <div className="flex flex-wrap justify-center gap-y-12 w-full py-15">
         {piggyBankList && (
           <>
             {piggyBankList.map((bossa: BossaGeneral, index: number) => (
               <React.Fragment key={index}>
                 {!bossa.banned && (
-                  <div key={index} className="w-[30%] py-8">
+                  <div
+                    key={index}
+                    className="w-[95%] md:w-[45%] xl:w-[30%] py-8 mx-auto"
+                  >
                     <PiggyBank bossa={bossa} position={index} />
                   </div>
                 )}

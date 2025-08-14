@@ -2,7 +2,7 @@ import Cloud from "./cloud";
 
 export default function Contribute() {
   return (
-    <div className="relative w-fit">
+    <div className="relative mx-auto w-fit">
       {/* Shadow copy behind */}
       <div
         className="absolute top-5 right-5 w-full h-full z-0 

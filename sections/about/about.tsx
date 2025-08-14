@@ -33,9 +33,9 @@ export default function About() {
       </div>
 
       {/* Main Content */}
-      <div className="flex justify-center items-center gap-[15vw] py-20">
-        <Goal />
+      <div className="flex flex-col gap-20 md:flex-row-reverse md:gap-0 justify-center items-center py-20">
         <Contribute />
+        <Goal />
       </div>
     </div>
   );

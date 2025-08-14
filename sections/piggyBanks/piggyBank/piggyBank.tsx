@@ -75,11 +75,11 @@ export default async function PiggyBank(props: Props) {
                 textShadow: `0 4px 10px rgba(0,0,0,0.25), -3px 4px 0 ${secondaryColor}`,
               }}
             >
-              <h2 className="inline-block !font-bold !text-5xl text-left max-w-9/12 leading-14">
+              <h4 className="inline-block !font-bold !text-5xl text-left max-w-9/12 leading-14">
                 {props.bossa.forenings_namn}s
                 <br />
                 Bössa
-              </h2>
+              </h4>
             </div>
             {/* Positionering av summan */}
             <div className="absolute -top-6 right-0">

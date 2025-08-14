@@ -1,6 +1,6 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import Update from "../../../components/popups/update";
+import Update from "../../components/update";
 import { useEffect, useState } from "react";
 import { BossaDetailed, BossaUpdate } from "@/app/_lib/types";
 import {
@@ -8,7 +8,7 @@ import {
   fetchBossaUpdates,
 } from "@/app/_lib/supabase/clientFunctions";
 import { motion } from "framer-motion";
-import DefaultPopup from "@/components/popups/defaultPopup";
+import DefaultPopup from "@/components/defaultPopup";
 
 export default function PiggyBankPopup() {
   const router = useRouter();
@@ -67,9 +67,14 @@ export default function PiggyBankPopup() {
                     }}
                   />
                 </div>
-                <h1 className="!text-5xl !font-bold my-auto">
-                  {foreningsNamn} har samlat in &nbsp;{collectedSum}&nbsp;kr
-                </h1>
+                <h4
+                  className="!text-5xl !font-bold my-auto"
+                  style={{
+                    textShadow: `2px 2px 0 white`,
+                  }}
+                >
+                  {foreningsNamn} har samlat in {collectedSum} kr
+                </h4>
               </motion.div>
               <motion.div
                 className="bg-orange-300 h-fit w-5/6 rounded-4xl rounded-bl-sm outline-2 border-b-2 border-r-2 p-5"

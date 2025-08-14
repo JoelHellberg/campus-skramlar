@@ -44,12 +44,18 @@ h3 {
 }
 
 h4 {
-  font-family: var(--font-caveat);
+  font-family: var(--font-concert-one);
   font-weight: 600;
+  word-spacing: -8px;
 }
 
 p {
   font-family: var(--font-inter);
+}
+
+.hand-written-font {
+  font-family: var(--font-caveat);
+  font-weight: 600;
 }
 
 .sketch-text-one {

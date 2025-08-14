@@ -3,7 +3,7 @@ import { Modal } from "@/components/modal";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect } from "react";
-import { useLoaderData } from "../loaders/loaderData";
+import { useLoaderData } from "./loaders/loaderData";
 
 type Props = {
   title?: string;
@@ -69,7 +69,7 @@ export default function ({
               </div>
             )}
             <div className="flex-1 h-full flex flex-row-reverse items-center">
-              <h2>{title}</h2>
+              <h4 className="text-4xl italic">{title}</h4>
             </div>
           </div>
           {/* Main Content */}

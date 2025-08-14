@@ -3,7 +3,7 @@
 import { useState } from "react";
 import generator from "generate-password";
 import { createClient } from "../../_lib/supabase/supabaseClient";
-import DefaultPopup from "@/components/popups/defaultPopup";
+import DefaultPopup from "@/components/defaultPopup";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 

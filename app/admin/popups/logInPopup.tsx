@@ -1,6 +1,6 @@
 "use client";
 import { login } from "@/app/_lib/supabase/accountFunctions";
-import DefaultPopup from "@/components/popups/defaultPopup";
+import DefaultPopup from "@/components/defaultPopup";
 import { useState } from "react";
 
 export default function LogInPopup() {

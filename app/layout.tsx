@@ -11,6 +11,7 @@ import {
   Cabin_Sketch,
   Redacted_Script,
   Marck_Script,
+  Concert_One,
 } from "next/font/google";
 import "./globals.css";
 
@@ -64,6 +65,12 @@ const redactedScript = Redacted_Script({
   subsets: ["latin"],
 });
 
+const concertOne = Concert_One({
+  variable: "--font-concert-one",
+  weight: ["400"],
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Campus Skramlar - Linköpings Universitet för Musikhjälpen!",
   description: "Hemsidan för studentföreningen Campus Skramlar",
@@ -77,7 +84,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  ${inter.variable} ${lilyScriptOne.variable} ${caveat.variable} ${londrinaSketch.variable} ${cabinSketch.variable} ${redactedScript.variable} ${marcScript.variable} 
+        className={`${geistSans.variable} ${geistMono.variable}  ${inter.variable} ${lilyScriptOne.variable} ${caveat.variable} ${londrinaSketch.variable} ${cabinSketch.variable} ${redactedScript.variable} ${marcScript.variable} ${concertOne.variable}
         antialiased overscroll-none`}
       >
         {children}

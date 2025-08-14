@@ -10,8 +10,9 @@ import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
 import { Suspense } from "react";
 import LayoutLoader from "@/components/loaders/layoutLoader";
-import PiggyBankPopup from "@/sections/piggyBanks/popup/piggyBankPopup";
+import PiggyBankPopup from "@/app/popups/piggyBankPopup";
 import ClientLoader from "@/components/loaders/clientLoader";
+import HeyTherePopup from "./popups/heyTherePopup";
 
 export default async function Home() {
   // Sammanställning av innehållet som utgör hela sidan
@@ -25,6 +26,7 @@ export default async function Home() {
           {/* Popups */}
           <Suspense fallback={null}>
             <PiggyBankPopup />
+            <HeyTherePopup />
           </Suspense>
 
           {/* Main Content */}

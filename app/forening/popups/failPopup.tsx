@@ -1,5 +1,5 @@
 "use client";
-import DefaultPopup from "@/components/popups/defaultPopup";
+import DefaultPopup from "@/components/defaultPopup";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function FailPopup() {

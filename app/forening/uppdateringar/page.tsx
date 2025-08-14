@@ -1,5 +1,5 @@
 import ForeningHeader from "../components/foreningHeader";
-import Update from "@/components/popups/update";
+import Update from "@/components/update";
 import { BossaUpdate } from "@/app/_lib/types";
 import { fetchBossaUpdates } from "@/app/_lib/supabase/clientFunctions";
 import LayoutLoader from "@/components/loaders/layoutLoader";

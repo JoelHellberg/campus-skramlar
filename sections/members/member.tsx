@@ -39,7 +39,7 @@ export default function Member(props: Props) {
         />
         {/* Namn */}
         <div className="w-full flex-1 flex justify-center items-center text-center pt-3">
-          <h4 className="!text-3xl">{props.name}</h4>
+          <p className="!text-3xl hand-written-font">{props.name}</p>
         </div>
       </div>
 

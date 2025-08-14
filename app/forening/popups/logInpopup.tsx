@@ -1,6 +1,6 @@
 "use client";
 import { createSession } from "@/app/_lib/authentication";
-import DefaultPopup from "@/components/popups/defaultPopup";
+import DefaultPopup from "@/components/defaultPopup";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 

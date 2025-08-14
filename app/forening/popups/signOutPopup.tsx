@@ -1,6 +1,6 @@
 "use client";
 import { deleteSession } from "@/app/_lib/authentication";
-import DefaultPopup from "@/components/popups/defaultPopup";
+import DefaultPopup from "@/components/defaultPopup";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SignOutPopup() {

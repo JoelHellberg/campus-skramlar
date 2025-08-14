@@ -8,7 +8,7 @@ export default function Gif() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2.0, ease: "easeInOut" }}
-      className="relative w-full overflow-hidden lg:overflow-visible"
+      className="relative w-full overflow-hidden xl:overflow-visible"
     >
       {/* White Background */}
       <img

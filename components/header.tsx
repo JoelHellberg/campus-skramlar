@@ -5,7 +5,8 @@ export default function Header() {
     <div className="w-full py-4 px-15 bg-[#FFF0D9] flex justify-center">
       {/* Område för menyknapparna med animationer för texten */}
       <div
-        className="flex w-8/12 items-center justify-between px-10 ml-10 [&>h2]:cursor-pointer
+        className="flex items-center [&>a]:mx-auto [&>h2]:cursor-pointer
+        w-full xl:w-9/12 2xl:w-8/12
 
         [&>a]:relative
         [&>a::after]:content-['']

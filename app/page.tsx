@@ -21,7 +21,7 @@ export default async function Home() {
       <LayoutLoader />
       <ClientLoader delay={0.2} />
 
-      <div>
+      <div className="overflow-hidden">
         <div className="relative z-10">
           {/* Popups */}
           <Suspense fallback={null}>

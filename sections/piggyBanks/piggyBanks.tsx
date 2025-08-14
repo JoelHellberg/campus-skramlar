@@ -13,7 +13,7 @@ export default async function PiggyBanks() {
   }
 
   return (
-    <div id="piggyBanks" className="px-10 py-10">
+    <div id="piggyBanks" className="px-5 sm:px-10 py-10">
       <div className="flex">
         <NeedleDot />
         {/* Rubrik */}

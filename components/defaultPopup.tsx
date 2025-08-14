@@ -32,7 +32,7 @@ export default function ({
   console.log("close is: ", close);
   const router = useRouter();
   const onCloseFunc = () => {
-    router.replace(window.location.pathname, { scroll: false });
+    router.back();
   };
   return (
     <Modal onClose={close ? onCloseFunc : undefined}>

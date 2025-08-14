@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import generator from "generate-password";
 import { createClient } from "../../_lib/supabase/supabaseClient";
-import DefaultPopup from "@/components/defaultPopup";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import PopupButton from "@/components/popup/popupButton";
+import DefaultPopup from "@/components/popup/defaultPopup";
 
 export default function DeletePopup() {
   const router = useRouter();
@@ -14,27 +14,26 @@ export default function DeletePopup() {
   const isActive = searchParams.get("delete");
   const id = searchParams.get("id");
   const [name, setName] = useState("");
+  const buttons = (
+    <>
+      <PopupButton className="text-white bg-red-500 hover:bg-red-600">
+        Ja
+      </PopupButton>
+      <PopupButton
+        className="text-white bg-green-500 hover:bg-green-600"
+        onClick={() => router.back()}
+      >
+        Nej
+      </PopupButton>
+    </>
+  );
 
   return (
-    <>
-      {isActive && (
-        <DefaultPopup title="Edit">
-          <div className="flex flex-col items-center">
-            <h2>Är du säker på att du vill radera bössa {id}?</h2>
-            <div className="flex">
-              <button className="px-4 py-2 rounded text-white bg-red-500 hover:bg-red-600 cursor-pointer">
-                Ja
-              </button>
-              <button
-                className="px-4 py-2 rounded text-white bg-green-500 hover:bg-green-600 cursor-pointer"
-                onClick={() => router.back()}
-              >
-                Nej
-              </button>
-            </div>
-          </div>
-        </DefaultPopup>
-      )}
-    </>
+    <DefaultPopup
+      type="Delete"
+      title={`Är du säker på att du vill radera bössa ${id}?`}
+      param="delete"
+      buttons={buttons}
+    />
   );
 }

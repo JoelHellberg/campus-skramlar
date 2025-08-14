@@ -1,9 +1,9 @@
 "use client";
-import { Modal } from "@/components/modal";
+import { Modal } from "@/components/popup/modal";
 import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ReactNode, useEffect } from "react";
-import { useLoaderData } from "./loaders/loaderData";
+import { useLoaderData } from "../loaders/loaderData";
 
 type Props = {
   title?: string;
@@ -12,7 +12,7 @@ type Props = {
   secondaryColor?: string;
   close?: boolean;
 };
-export default function ({
+export default function PopupTemplate({
   title,
   children,
   close = true,
@@ -23,11 +23,11 @@ export default function ({
   useEffect(() => {
     stopLoader();
   }, []);
-  if (!primaryColor && !secondaryColor) {
+  if (!primaryColor) {
     primaryColor = "red-400";
+  }
+  if (!secondaryColor) {
     secondaryColor = "yellow-400";
-  } else if (primaryColor && !secondaryColor) {
-    secondaryColor = primaryColor;
   }
   console.log("close is: ", close);
   const router = useRouter();

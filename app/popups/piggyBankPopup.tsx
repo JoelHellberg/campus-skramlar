@@ -8,7 +8,7 @@ import {
   fetchBossaUpdates,
 } from "@/app/_lib/supabase/clientFunctions";
 import { motion } from "framer-motion";
-import DefaultPopup from "@/components/defaultPopup";
+import DefaultPopup from "@/components/popup/popupTemplate";
 
 export default function PiggyBankPopup() {
   const router = useRouter();
@@ -44,6 +44,7 @@ export default function PiggyBankPopup() {
         <DefaultPopup
           title={`${foreningsNamn}s bössa`}
           primaryColor={`[${color}]`}
+          secondaryColor={`[${color}]`}
         >
           <div className="flex h-full w-full">
             {/* Left side content */}

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import generator from "generate-password";
 import { createClient } from "../../_lib/supabase/supabaseClient";
-import DefaultPopup from "@/components/defaultPopup";
 import { useSearchParams } from "next/navigation";
+import DefaultPopup from "@/components/popup/defaultPopup";
 
 function generatePassword() {
   const password = generator.generate({
@@ -69,35 +69,40 @@ export default function NyBossaPopup() {
     }
     window.location.href = "/admin";
   };
+  const buttons = (
+    <button
+      disabled={name == ""}
+      className={`px-4 py-2 rounded text-white ${
+        name == ""
+          ? "bg-gray-400 cursor-not-allowed"
+          : "bg-green-500 hover:bg-green-600 cursor-pointer"
+      }`}
+      onClick={() => create()}
+    >
+      Skapa
+    </button>
+  );
 
   return (
-    <>
-      {isActive && (
-        <DefaultPopup title="Skapa ny bössa">
-          <div className="flex flex-col items-center">
-            <label htmlFor="name" className="block mb-2 font-medium">
-              Namn på föreningen:
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Skriv namnet här"
-            />
-            <button
-              disabled={name == ""}
-              className={`px-4 py-2 rounded text-white ${
-                name == ""
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-green-500 hover:bg-green-600 cursor-pointer"
-              }`}
-              onClick={() => create()}
-            >
-              Skapa
-            </button>
-          </div>
-        </DefaultPopup>
-      )}
-    </>
+    <DefaultPopup
+      type="Create"
+      param="nyBossa"
+      title="Skapa ny bössa"
+      buttons={buttons}
+      primaryColor="green-400"
+    >
+      <div>
+        <label htmlFor="name" className="block mb-2 font-medium">
+          Namn på föreningen:
+        </label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Skriv namnet här"
+          className="bg-white"
+        />
+      </div>
+    </DefaultPopup>
   );
 }

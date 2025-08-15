@@ -14,7 +14,8 @@ export function Modal({ onClose = () => {}, children }: PopUpProps) {
       open={true}
       onClose={onClose}
       initialFocus={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center"
+      className="fixed inset-0 z-50 flex
+      flex-col-reverse lg:flex-row lg:items-center lg:justify-center"
     >
       <div
         ref={overlayRef}

@@ -1,6 +1,6 @@
 export default function Goal() {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full ml-2.5">
       {/* Shadow copy behind */}
       <div
         className="absolute top-5 right-5 w-full h-full z-0 
@@ -14,12 +14,12 @@ export default function Goal() {
       <div
         className="relative z-10 flex flex-col bg-white outline-4 rounded-3xl p-4
       items-center justify-center
-      w-full aspect-[2/1]"
+      w-full h-fit sm:aspect-[2/1]"
       >
-        <h2 className="!text-lg !font-bold mb-4 text-[#ACCAB2]">
+        <h2 className="hidden sm:block !text-lg !font-bold mb-4 text-[#ACCAB2]">
           LiUs STUDENTDRIVNA INSAMLING!
         </h2>
-        <div className="flex">
+        <div className="sm:flex">
           {/* Rubrik och brödtext placerad på högersidan */}
           <div className="flex flex-col flex-1 justify-center items-center text-center">
             <h2 className="!text-2xl !font-bold">Vad är vårt mål?</h2>
@@ -31,8 +31,12 @@ export default function Goal() {
             </p>
           </div>
           {/* Icon positioned on the bottom right */}
-          <div className="flex flex-col-reverse">
-            <img src="/vectorGraphics/goal.svg" alt="logo" className="w-40" />
+          <div className="flex-col-reverse flex items-center">
+            <img
+              src="/vectorGraphics/goal.svg"
+              alt="logo"
+              className="w-25 sm:w-40"
+            />
           </div>
         </div>
       </div>

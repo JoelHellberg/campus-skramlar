@@ -33,11 +33,11 @@ export default function About() {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col gap-y-20 lg:flex-row-reverse justify-center items-center py-20">
-        <div className="w-[70vw] lg:w-[40vw] xl:w-[35vw] mx-auto">
+      <div className="flex flex-col-reverse sm:flex-col gap-y-20 lg:flex-row-reverse justify-center items-center py-20">
+        <div className="w-[90vw] sm:w-[70vw] lg:w-[40vw] xl:w-[35vw] mx-auto">
           <Contribute />
         </div>
-        <div className="w-[70vw] lg:w-[40vw] xl:w-[35vw] mx-auto">
+        <div className="w-[90vw] sm:w-[70vw] lg:w-[40vw] xl:w-[35vw] mx-auto">
           <Goal />
         </div>
       </div>

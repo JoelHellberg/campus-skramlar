@@ -3,6 +3,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PopupTemplate from "./popupTemplate";
 import { ReactNode } from "react";
 import PopupButton from "./popupButton";
+import { AnimatePresence } from "framer-motion";
 
 type Props = {
   type?: string;
@@ -34,7 +35,7 @@ export default function DefaultPopup({ close = true, ...props }: Props) {
   );
 
   return (
-    <>
+    <AnimatePresence>
       {isActive && (
         <PopupTemplate
           title={props.type}
@@ -58,6 +59,6 @@ export default function DefaultPopup({ close = true, ...props }: Props) {
           </div>
         </PopupTemplate>
       )}
-    </>
+    </AnimatePresence>
   );
 }

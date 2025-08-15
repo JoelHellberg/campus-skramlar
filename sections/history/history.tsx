@@ -10,13 +10,23 @@ const years = [
 
 export default function History() {
   return (
-    <div className="w-full p-10">
-      <div className="w-full h-fit p-10 rounded-4xl">
+    <div
+      className="w-full p-5 
+    lg:p-10 2xl:p-20"
+    >
+      <div className="w-full h-fit">
         {/* Rubrik & Hjärtan */}
-        <div className="flex items-center justify-center text-center px-20 mb-10 bg-[#FFFCF8] rounded-xl outline-4 shadow-[0_0_20px_rgba(0,0,0,0.3)]">
-          <img src="\vectorGraphics\heart.svg" className="w-40" />
+        <div
+          className="flex items-center justify-center text-center aspect-[6/1] mb-10 bg-[#FFFCF8] rounded-xl outline-4 shadow-[0_0_20px_rgba(0,0,0,0.3)]
+        px-5 md:px-10"
+        >
+          <img
+            src="\vectorGraphics\heart.svg"
+            className="hidden xl:block w-40"
+          />
           <h3
-            className="flex-1 text-[#1d0e05] !font-extrabold !text-6xl leading-tight mx-10 py-6 rounded-4xl"
+            className="flex-1 text-[#1d0e05] !font-extrabold leading-tight xl:px-10 py-6 rounded-4xl
+            text-4xl sm:text-5xl md:!text-6xl"
             style={{
               textShadow:
                 "-0px 0px 0 white, -4px 4px 0 white, 1px -1px 0 white",
@@ -26,7 +36,10 @@ export default function History() {
             <span> </span>
             <span className="underline">501 735 kronor</span> till musikhjälpen
           </h3>
-          <img src="\vectorGraphics\heart.svg" className="w-40" />
+          <img
+            src="\vectorGraphics\heart.svg"
+            className="hidden xl:block w-40"
+          />
         </div>
         {/* Positionering av tidningarna */}
         <div className="flex flex-wrap justify-center gap-12 w-full py-20 outline-2 [background-image:repeating-conic-gradient(#ACCAB2_0_25%,#FFF0D9_0_50%)] [background-size:200px_200px] shadow-[0_0_20px_rgba(0,0,0,0.3)] rounded-xl">

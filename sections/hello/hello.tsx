@@ -4,7 +4,7 @@ import Logo from "./logo";
 
 export default function Hello() {
   return (
-    <div className="w-full bg-[#FFF0D9] xl:px-20 py-16 pb-20 flex flex-col h-[70vh] sm:h-auto">
+    <div className="w-full bg-[#FFF0D9] xl:px-20 py-16 pb-20 flex flex-col h-[85vh] sm:h-auto">
       {/* Wrapper */}
       <div className="relative w-full h-full flex">
         {/* Logo & Text */}

@@ -7,7 +7,7 @@ import {
   fetchBossaDetailed,
   fetchBossaUpdates,
 } from "@/app/_lib/supabase/clientFunctions";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import DefaultPopup from "@/components/popup/popupTemplate";
 
 export default function PiggyBankPopup() {
@@ -39,7 +39,7 @@ export default function PiggyBankPopup() {
   }, [bossa]);
 
   return (
-    <>
+    <AnimatePresence>
       {bossa && color && foreningsNamn && collectedSum && (
         <DefaultPopup
           title={`${foreningsNamn}s bössa`}
@@ -126,6 +126,6 @@ export default function PiggyBankPopup() {
           </div>
         </DefaultPopup>
       )}
-    </>
+    </AnimatePresence>
   );
 }

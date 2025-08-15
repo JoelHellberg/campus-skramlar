@@ -42,9 +42,15 @@ export default function History() {
           />
         </div>
         {/* Positionering av tidningarna */}
-        <div className="flex flex-wrap justify-center gap-12 w-full py-20 outline-2 [background-image:repeating-conic-gradient(#ACCAB2_0_25%,#FFF0D9_0_50%)] [background-size:200px_200px] shadow-[0_0_20px_rgba(0,0,0,0.3)] rounded-xl">
+        <div
+          className="flex flex-wrap justify-center gap-y-12 w-full py-20 
+          sm:outline-2 sm:[background-image:repeating-conic-gradient(#ACCAB2_0_25%,#FFF0D9_0_50%)] sm:[background-size:200px_200px] sm:shadow-[0_0_20px_rgba(0,0,0,0.3)] sm:rounded-xl"
+        >
           {years.map((team, i) => (
-            <div key={i} className="flex justify-center w-[30%] py-4">
+            <div
+              key={i}
+              className="flex justify-center w-[100%] sm:w-[50%] lg:w-[30%] py-4"
+            >
               <Paper year={team.year} amount={team.amount} position={i} />
             </div>
           ))}

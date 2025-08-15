@@ -22,7 +22,7 @@ export default function PhonePopup({
   };
   return (
     <motion.div
-      className="relative w-screen h-[90vh] bg-[#FFF0D9] rounded-t-2xl rounded-br-md shadow-2xl outline-4 flex flex-col"
+      className="relative w-screen h-[80vh] bg-[#FFF0D9] rounded-t-2xl rounded-br-md shadow-2xl outline-4 flex flex-col"
       initial={{ y: "100%" }}
       animate={{ y: 0 }}
       exit={{ y: "100%" }}

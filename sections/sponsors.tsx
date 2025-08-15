@@ -1,14 +1,37 @@
+const sponsors = [
+  { name: "dummySponsor1" },
+  { name: "dummySponsor2" },
+  { name: "dummySponsor1" },
+  { name: "dummySponsor2" },
+  { name: "dummySponsor1" },
+  { name: "dummySponsor2" },
+  { name: "dummySponsor2" },
+  { name: "dummySponsor1" },
+];
+
 export default function Sponsors() {
   return (
     <div className="flex flex-col content-center justify-center text-center">
       <h1 className="text-white mt-20">
         Och ett jättestort tack till årets <br /> sponsorer!
       </h1>
-      <div className="flex justify-center gap-32 my-24">
-        <img src={"/sponsors/dummySponsor1.png"} alt="" className="w-64" />
-        <img src={"/sponsors/dummySponsor2.png"} alt="" className="w-64" />
+      <div className="flex flex-wrap justify-center w-full">
+        {sponsors.map((sponsor: any, index: number) => (
+          <div
+            key={index}
+            className="flex justify-center aspect-square mx-auto my-8
+                    w-[45%] md:w-[26%]"
+          >
+            <img
+              className="object-contain mx-auto"
+              src={`/sponsors/${sponsor.name}.png`}
+            />
+          </div>
+        ))}
       </div>
-      <h1 className="text-[#BECBB0] !text-6xl mb-16">Det hade inte varit möjligt utan er</h1>
+      <h1 className="text-[#BECBB0] !text-6xl mb-16">
+        Det hade inte varit möjligt utan er
+      </h1>
     </div>
   );
 }

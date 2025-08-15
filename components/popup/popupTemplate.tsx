@@ -53,9 +53,7 @@ export default function PopupTemplate({
     <Modal onClose={close ? onCloseFunc : undefined}>
       <div className="relative">
         {isIPadPortrait ? (
-          <PhonePopup title={title} color={primaryColor}>
-            {children}
-          </PhonePopup>
+          <PhonePopup color={primaryColor}>{children}</PhonePopup>
         ) : (
           <>
             <motion.div

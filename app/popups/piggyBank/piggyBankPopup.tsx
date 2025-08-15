@@ -1,7 +1,7 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import Update from "../../components/update";
-import { useEffect, useState } from "react";
+import Update from "../../../components/update";
+import { useEffect, useRef, useState } from "react";
 import { BossaDetailed, BossaUpdate } from "@/app/_lib/types";
 import {
   fetchBossaDetailed,
@@ -9,9 +9,11 @@ import {
 } from "@/app/_lib/supabase/clientFunctions";
 import { AnimatePresence, motion } from "framer-motion";
 import DefaultPopup from "@/components/popup/popupTemplate";
+import UpdateView from "./updateView";
 
 export default function PiggyBankPopup() {
   const router = useRouter();
+  const [showingUpdateView, setShowingUpdateView] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const bossa = searchParams.get("bossa");
   const color = searchParams.get("hex");
@@ -19,6 +21,28 @@ export default function PiggyBankPopup() {
   const collectedSum = searchParams.get("sum");
   const onCloseFunc = () => {
     router.replace("/", { scroll: false });
+  };
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX = e.changedTouches[0].clientX;
+    handleSwipe();
+  };
+
+  const handleSwipe = () => {
+    const swipeDistance = touchEndX - touchStartX;
+    const swipeThreshold = 50; // px to count as swipe
+    if (swipeDistance > swipeThreshold) {
+      setShowingUpdateView(false);
+    } else if (swipeDistance < swipeThreshold) {
+      setShowingUpdateView(true);
+    }
   };
 
   const [details, setDetails] = useState<BossaDetailed>();
@@ -36,6 +60,7 @@ export default function PiggyBankPopup() {
       fetchDetails();
       fetchUpdates();
     }
+    setShowingUpdateView(false);
   }, [bossa]);
 
   return (
@@ -48,8 +73,43 @@ export default function PiggyBankPopup() {
         >
           <div className="flex h-full w-full">
             {/* Left side content */}
-            <div className="relative h-full w-3/4 flex flex-col items-center gap-10 py-10">
-              <div className="absolute right-0 my-auto bg-black h-5/6 w-1 rounded-4xl opacity-80" />
+            <div
+              className="relative h-full flex flex-col items-center gap-10 py-10 
+            w-full lg:w-3/4 overflow-y-auto"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className="flex lg:hidden -mt-8 w-2/5 [&>p]:hover:cursor-pointer">
+                <p
+                  className="mx-auto "
+                  style={{
+                    textDecorationLine: showingUpdateView
+                      ? "none"
+                      : "underline",
+                  }}
+                  onClick={() => setShowingUpdateView(false)}
+                >
+                  Profil
+                </p>
+                <p
+                  className="mx-auto"
+                  style={{
+                    textDecorationLine: showingUpdateView
+                      ? "underline"
+                      : "none",
+                  }}
+                  onClick={() => setShowingUpdateView(true)}
+                >
+                  Updates
+                </p>
+              </div>
+              <AnimatePresence>
+                {showingUpdateView && <UpdateView updates={updates} />}
+              </AnimatePresence>
+              <div
+                className="absolute right-0 my-auto bg-black h-5/6 w-1 rounded-4xl opacity-80
+              hidden lg:block"
+              />
               {/* "Header" */}
               <motion.div
                 className="bg-orange-300 h-3/12 w-5/6 rounded-3xl outline-2 border-b-2 flex p-5 gap-5"
@@ -91,7 +151,8 @@ export default function PiggyBankPopup() {
                 </p>
               </motion.div>
               <motion.div
-                className="bg-orange-200 flex-1 w-5/6 rounded-l-3xl rounded-r-sm outline-2 p-5 overflow-y-auto max-h-full"
+                className="bg-orange-200 w-5/6 rounded-l-3xl rounded-r-sm outline-2 p-5
+                lg:max-h-full lg:flex-1 lg:overflow-y-auto"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.5, ease: "easeIn" }}
@@ -103,7 +164,7 @@ export default function PiggyBankPopup() {
             </div>
             {/* Right side content */}
             <motion.div
-              className="flex flex-1 flex-col items-center overflow-y-auto pt-10"
+              className="hidden lg:flex flex-1 flex-col items-center overflow-y-auto pt-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.5, ease: "easeIn" }}

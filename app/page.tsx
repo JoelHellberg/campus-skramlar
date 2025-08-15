@@ -10,7 +10,7 @@ import Sponsors from "@/sections/sponsors";
 import Footer from "@/components/footer";
 import { Suspense } from "react";
 import LayoutLoader from "@/components/loaders/layoutLoader";
-import PiggyBankPopup from "@/app/popups/piggyBankPopup";
+import PiggyBankPopup from "@/app/popups/piggyBank/piggyBankPopup";
 import ClientLoader from "@/components/loaders/clientLoader";
 import HeyTherePopup from "./popups/heyTherePopup";
 

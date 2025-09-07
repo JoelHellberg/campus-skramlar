@@ -10,7 +10,7 @@ const members = [
     mail: "skramlarmail@gmail.com",
   },
   {
-    name: "Ebba Norén Arvidsson",
+    name: "Ebba Arvidsson Norén",
     post: "Kassör & Sekreterare",
     mail: "skramlarmail@gmail.com",
   },

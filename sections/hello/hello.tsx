@@ -19,7 +19,7 @@ export default function Hello() {
                 "-5px 5px 0 white, -12px 12px 0 #D06224, -18px 18px 0 #8A8635",
             }}
           >
-            <Counter target={11000} />
+            <Counter target={1269} />
             <h1 className="!text-6xl">Insamlat</h1>
           </div>
         </div>

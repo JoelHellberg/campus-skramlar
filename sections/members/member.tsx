@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 type Props = {
   name: string;
   post: string;
@@ -8,8 +10,13 @@ type Props = {
 
 export default function Member(props: Props) {
   var angle = "-rotate-3";
+
   const imgName = props.name.replace(/\s+/g, "");
-  const imgSrc = "/photos/" + imgName + ".png";
+  const jpgPath = path.join(process.cwd(), "public/photos", `${imgName}.jpg`);
+  const pngPath = `/photos/${imgName}.png`;
+  const jpgExists = fs.existsSync(jpgPath);
+  const src = jpgExists ? `/photos/${imgName}.jpg` : pngPath;
+
   const posIsEven = props.position % 2 != 0;
   if (posIsEven) {
     angle = "rotate-3";
@@ -34,7 +41,7 @@ export default function Member(props: Props) {
         />
         {/* Profilbild */}
         <img
-          src={imgSrc}
+          src={src}
           className="w-full aspect-square bg-blue-400 object-cover outline-4"
         />
         {/* Namn */}

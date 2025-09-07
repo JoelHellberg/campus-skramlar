@@ -23,13 +23,13 @@ export default function InteractiveRow({
             ? generalData.banned
               ? "bg-red-300/70 cursor-pointer"
               : "bg-green-300/70 cursor-pointer"
-            : "bg-yellow-200/70")
+            : "bg-yellow-200/70 cursor-pointer")
         }
         onClick={() => setShowDropdown((prev) => !prev)}
       >
         {children}
       </div>
-      {generalData && showDropdown && (
+      {showDropdown && (
         <Dropdown privateData={privateData} generalData={generalData} />
       )}
     </>

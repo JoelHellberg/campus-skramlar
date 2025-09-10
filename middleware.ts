@@ -12,7 +12,7 @@ export async function middleware(request: NextRequest) {
   const isProtectedRoute = protectedRoutes.some((route) =>
     currentPath.startsWith(route)
   );
-
+ 
   if (isProtectedRoute) {
     const session = await verifySession();
 

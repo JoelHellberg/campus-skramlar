@@ -3,7 +3,7 @@ import { verifySession } from "./app/_lib/authentication";
  
 export async function middleware(request: NextRequest) {
   const currentPath = request.nextUrl.pathname;
-
+ 
   const protectedRoutes = [
     "/forening/profil",
     "/forening/insamlat",

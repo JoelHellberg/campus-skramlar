@@ -112,7 +112,8 @@ export default function PiggyBankPopup() {
               />
               {/* "Header" */}
               <motion.div
-                className="bg-orange-300 h-3/12 w-5/6 rounded-3xl outline-2 border-b-2 flex p-5 gap-5"
+                className="bg-orange-300 h-3/12 rounded-3xl outline-2 border-b-2 flex p-5 gap-5
+                w-11/12 sm:w-5/6 items-center justify-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5, ease: "easeIn" }}
@@ -129,7 +130,8 @@ export default function PiggyBankPopup() {
                   />
                 </div>
                 <h4
-                  className="!text-5xl !font-bold my-auto"
+                  className="!font-bold
+                  text-3xl sm:text-4xl 2xl:!text-5xl"
                   style={{
                     textShadow: `2px 2px 0 white`,
                   }}
@@ -138,7 +140,8 @@ export default function PiggyBankPopup() {
                 </h4>
               </motion.div>
               <motion.div
-                className="bg-orange-300 h-fit w-5/6 rounded-4xl rounded-bl-sm outline-2 border-b-2 border-r-2 p-5"
+                className="bg-orange-300 h-fit rounded-4xl rounded-bl-sm outline-2 border-b-2 border-r-2 p-5
+                w-11/12 sm:w-5/6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5, ease: "easeIn" }}
@@ -151,8 +154,8 @@ export default function PiggyBankPopup() {
                 </p>
               </motion.div>
               <motion.div
-                className="bg-orange-200 w-5/6 rounded-l-3xl rounded-r-sm outline-2 p-5
-                lg:max-h-full lg:flex-1 lg:overflow-y-auto"
+                className="bg-orange-200 rounded-l-3xl rounded-r-sm outline-2 p-5
+                lg:max-h-full lg:flex-1 lg:overflow-y-auto w-11/12 sm:w-5/6 mb-20 sm:mb-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.5, ease: "easeIn" }}

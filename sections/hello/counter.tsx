@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 type Props = {
-  target: number,
+  target: number;
 };
 
-export default function Counter(props : Props) {
+export default function Counter(props: Props) {
   const [count, setCount] = useState(0);
   // Definiera här hur lång tid effekten ska ta
   const duration = 3000; // in ms
@@ -26,7 +26,7 @@ export default function Counter(props : Props) {
   }, []);
 
   return (
-    <h1 className="text-5xl font-bold">
+    <h1 className="text-5xl xl:!text-8xl 2xl:!text-9xl font-bold">
       {count.toLocaleString("sv-SE")} kr
     </h1>
   );

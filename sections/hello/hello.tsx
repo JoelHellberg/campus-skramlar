@@ -13,14 +13,16 @@ export default function Hello() {
           <Logo />
           {/* Mängden pengar insamlat */}
           <div
-            className="-mt-10 text-[#ACCAB2] flex flex-col items-center"
+            className="-mt-10 xl:-mt-15 2xl:-mt-20 text-[#ACCAB2] flex flex-col items-center text-center"
             style={{
               textShadow:
                 "-5px 5px 0 white, -12px 12px 0 #D06224, -18px 18px 0 #8A8635",
             }}
           >
             <Counter target={1269} />
-            <h1 className="!text-6xl">Insamlat</h1>
+            <h1 className="!text-6xl xl:!text-7xl 2xl:!text-8xl 2xl:-mt-4">
+              Insamlat
+            </h1>
           </div>
         </div>
         {/* GIF */}

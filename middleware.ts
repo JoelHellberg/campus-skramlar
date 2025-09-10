@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifySession } from "./app/_lib/authentication";
-
+ 
 export async function middleware(request: NextRequest) {
   const currentPath = request.nextUrl.pathname;
 

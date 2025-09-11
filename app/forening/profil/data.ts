@@ -16,7 +16,7 @@ type ProfileData = {
 
 export const useProfileData = create<ProfileData>((set, get) => ({
   foreningsNamn: "",
-  swishSum: 0,
+  swishSum: 10,
   swishNumber: "",
   description: "",
   imageUrl: "",

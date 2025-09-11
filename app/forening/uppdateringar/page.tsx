@@ -24,8 +24,10 @@ export default async function Home() {
       <ClientLoader />
       <div className="flex flex-col items-center bg-[#EDA277] h-screen gap-10">
         <ForeningHeader />
-        <h1 className="text-[#FFF0D9]">/forening/uppdateringar</h1>
-        <div className="flex items-center justify-center gap-20 w-3/5 h-3/5">
+        <h1 className="text-[#FFF0D9] !text-4xl sm:!text-7xl">
+          /forening/uppdateringar
+        </h1>
+        <div className="flex items-center justify-center gap-20 w-11/12 sm:w-3/5 h-3/5">
           <div className="flex flex-col items-center gap-10">
             <div className="bg-[#FFF0D9] p-10 rounded-2xl outline-4 shadow-xl/25">
               <label htmlFor="name" className="block mb-2 font-bold text-3xl">
@@ -35,7 +37,7 @@ export default async function Home() {
             </div>
             <Button foreningsId_in={foreningsId} />
           </div>
-          <div className="bg-[#FFF0D9] pt-10 outline-4 rounded-2xl rounded-r-sm shadow-xl/25 overflow-y-auto flex flex-col items-center w-2/6 h-full">
+          <div className="hidden bg-[#FFF0D9] pt-10 outline-4 rounded-2xl rounded-r-sm shadow-xl/25 overflow-y-auto sm:flex flex-col items-center w-2/6 h-full">
             {updates && updates.length > 0 ? (
               updates?.map((update: BossaUpdate, index: number) => (
                 <Update key={index} update={update} />

@@ -29,9 +29,9 @@ export default function ImageSelect(props: ImageSelectProps) {
         onChange={handleImageChange}
       />
       <div
-        className="relative bg-[#FFF0D9] p-5 flex flex-col items-center text-center justify-center rounded-2xl outline-4 mr-10 shadow-xl/30 cursor-pointer
-                  transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25 font-bold"
-        style={{ width: "100%", aspectRatio: "1 / 1" }}
+        className="relative bg-[#FFF0D9] p-5 flex flex-col items-center text-center justify-center rounded-2xl outline-4 sm:mr-10 shadow-xl/30 cursor-pointer
+                  transition-all duration-300 transform hover:scale-105 hover:shadow-xl/25 font-bold
+                  w-1/2 sm:w-full aspect-square"
         onClick={() => imageInputRef.current?.click()}
       >
         {imageUrl || props.imgUrl_in ? (

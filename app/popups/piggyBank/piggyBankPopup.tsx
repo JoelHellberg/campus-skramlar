@@ -131,7 +131,7 @@ export default function PiggyBankPopup() {
                 </div>
                 <h4
                   className="!font-bold
-                  text-3xl sm:text-4xl 2xl:!text-5xl"
+                  text-3xl sm:text-4xl 2xl:!text-5xl leading-8 sm:leading-[normal]"
                   style={{
                     textShadow: `2px 2px 0 white`,
                   }}
@@ -148,7 +148,7 @@ export default function PiggyBankPopup() {
               >
                 <p>
                   <span className="underline font-bold">
-                    Swisha {details?.swish_sum} kr till {details?.phone_number}
+                    Swisha till {details?.phone_number}
                   </span>{" "}
                   för att vara med och tävla i {foreningsNamn}s bössa!
                 </p>

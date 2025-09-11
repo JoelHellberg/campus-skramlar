@@ -56,8 +56,10 @@ export default async function Home() {
       <div className="flex flex-col items-center">
         <ForeningHeader />
         <div className="flex flex-col gap-10 items-center">
-          <h1 className="text-[#FFF0D9]">/forening/profil</h1>
-          <div className="flex h-52">
+          <h1 className="text-[#FFF0D9] !text-4xl sm:!text-7xl">
+            /forening/profil
+          </h1>
+          <div className="flex flex-col sm:flex-row sm:h-52 gap-10 w-[80vw] sm:w-auto items-center sm:items-stretch">
             <ImageSelect imgUrl_in={imgUrl} foreningsId_in={foreningsId} />
             <Details
               name_in={foreningsNamn}

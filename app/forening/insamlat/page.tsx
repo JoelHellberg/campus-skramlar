@@ -37,9 +37,14 @@ export default async function Home() {
       </Suspense>
       <div className="flex flex-col items-center bg-[#ACCAB2] min-h-screen text-center gap-10">
         <ForeningHeader />
-        <h1 className="text-[#FFF0D9]">/forening/insamlat</h1>
+        <h1 className="text-[#FFF0D9] !text-4xl sm:!text-7xl">
+          /forening/insamlat
+        </h1>
         <div className="bg-[#FFF0D9] p-10 text-left outline-4 rounded-2xl shadow-xl/25">
-          <label htmlFor="name" className="block mb-2 font-bold text-3xl w-100">
+          <label
+            htmlFor="name"
+            className="block mb-2 font-bold text-3xl w-[70vw] sm:w-100"
+          >
             Ange hur mycket pengar ni har i er bössa nedanför:
           </label>
           <Input moneyAmount_in={moneyAmount} />

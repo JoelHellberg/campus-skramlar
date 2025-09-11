@@ -22,7 +22,7 @@ export default function Input(props: InputProps) {
       value={moneyAmount !== 0 ? moneyAmount : ""}
       onChange={(e) => setMoneyAmountFunc(Number(e.target.value))}
       placeholder="Ange summa"
-      className="bg-white w-100 outline-1 rounded-sm text-6xl my-5 p-3"
+      className="bg-white w-[70vw] sm:w-100 outline-1 rounded-sm text-4xl sm:text-6xl my-5 p-3"
     />
   );
 }

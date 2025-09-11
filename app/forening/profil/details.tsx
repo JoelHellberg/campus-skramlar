@@ -31,7 +31,7 @@ export default function Details(props: DetailsProps) {
   };
 
   return (
-    <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4 shadow-xl/25">
+    <div className="bg-[#FFF0D9] p-5 rounded-2xl outline-4 shadow-xl/25 w-full sm:w-auto">
       <label htmlFor="name" className="block mb-2 font-bold">
         Namn på föreningen:
       </label>
@@ -43,7 +43,7 @@ export default function Details(props: DetailsProps) {
         className="bg-white p-1 outline-1 rounded-sm w-full"
       />
       <div className="flex my-4">
-        <div className="mr-4">
+        {/*<div className="mr-4">
           <label htmlFor="name" className="block mb-2 font-bold">
             Swish summa:
           </label>
@@ -54,8 +54,8 @@ export default function Details(props: DetailsProps) {
             placeholder="Ange summa"
             className="bg-white p-1 outline-1 rounded-sm w-30"
           />
-        </div>
-        <div>
+        </div>*/}
+        <div className="w-full">
           <label htmlFor="name" className="block mb-2 font-bold">
             Swish nummer:
           </label>
@@ -69,7 +69,7 @@ export default function Details(props: DetailsProps) {
               }
             }}
             placeholder="Skriv namnet här"
-            className="bg-white p-1 outline-1 rounded-sm"
+            className="bg-white p-1 outline-1 rounded-sm w-full sm:w-auto"
           />
         </div>
       </div>

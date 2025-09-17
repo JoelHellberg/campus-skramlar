@@ -54,6 +54,21 @@ export default function Button(props: ButtonProps) {
     }
   }, [foreningsNamn, swishSum, swishNumber, description, imageUrl]);
 
+  const uploadImageHandler = async () => {
+    if (imageUrl) {
+      const imageFile = await convertBlobUrlToFile(imageUrl);
+      const { imageUrl: uploadedImageUrl, error } = await uploadImageClient({
+        file: imageFile,
+        foreningsId: props.foreningsId_in,
+      });
+      if (error) {
+        console.error(error);
+        return;
+      }
+      setImageUrl("");
+    }
+  };
+
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
@@ -61,20 +76,6 @@ export default function Button(props: ButtonProps) {
   const updateProfile = async () => {
     console.log("CLENTLOG2: isPending: ", isPending);
     startLoader();
-    const uploadImageHandler = async () => {
-      if (imageUrl) {
-        const imageFile = await convertBlobUrlToFile(imageUrl);
-        const { imageUrl: uploadedImageUrl, error } = await uploadImageClient({
-          file: imageFile,
-          foreningsId: props.foreningsId_in,
-        });
-        if (error) {
-          console.error(error);
-          return;
-        }
-        setImageUrl("");
-      }
-    };
     startTransition(async () => {
       await uploadImageHandler();
       if (foreningsNamn !== props.foreningsNamn_in) {
@@ -91,13 +92,13 @@ export default function Button(props: ButtonProps) {
       ) {
         await updateBossorDetailed(
           props.foreningsId_in,
-          swishSum,
-          swishNumber,
-          description
+          swishSum ? swishSum : props.swishSum_in,
+          swishNumber ? swishNumber : props.swishNumber_in,
+          description ? description : props.description_in
         );
       }
     });
-    router.push(`${pathname}?success=true`);
+    window.location.href = `${pathname}?success=true`;
   };
   return (
     <>
@@ -125,6 +126,7 @@ export default function Button(props: ButtonProps) {
                 swishNumber,
                 description
               );
+              await uploadImageHandler();
               window.location.href = "/forening";
               // e.g. show success message or redirect
             } catch (error) {

@@ -41,7 +41,8 @@ export default function Button(props: ButtonProps) {
         console.error("Failed to create piggy bank:", error);
       }
     });
-    router.push(`${pathname}?success=true`);
+    //router.push(`${pathname}?success=true`);
+    window.location.href = `${pathname}?success=true`;
   };
   return (
     <button

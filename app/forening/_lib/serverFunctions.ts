@@ -34,7 +34,7 @@ export async function updateBossorGeneral(
   foreningsNamn: string,
   moneyCollected: number
 ) {
-  const isValidInput = foreningsId && foreningsNamn && moneyCollected != 0;
+  const isValidInput = foreningsId && foreningsNamn;
   const isAuthenticated = await checkAuthentication(foreningsId);
 
   if (isAuthenticated && isValidInput) {

@@ -38,7 +38,7 @@ export default function ImageSelect(props: ImageSelectProps) {
           <div className="absolute inset-1 m-auto overflow-hidden">
             <img
               src={imageUrl || props.imgUrl_in}
-              className="h-full rounded-2xl"
+              className="h-full rounded-2xl m-auto"
             />
           </div>
         ) : (

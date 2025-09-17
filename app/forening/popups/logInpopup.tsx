@@ -34,11 +34,11 @@ export default function LogInPopup() {
       <p>{message}</p>
       <input
         suppressHydrationWarning
-        type="text"
+        type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Enter password here"
-        className="bg-white"
+        className="bg-white px-2"
       />
     </DefaultPopup>
   );

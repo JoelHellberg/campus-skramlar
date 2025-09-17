@@ -12,10 +12,7 @@ export default function Member(props: Props) {
   var angle = "-rotate-3";
 
   const imgName = props.name.replace(/\s+/g, "");
-  const jpgPath = path.join(process.cwd(), "public/photos", `${imgName}.jpg`);
-  const pngPath = `/photos/${imgName}.png`;
-  const jpgExists = fs.existsSync(jpgPath);
-  const src = jpgExists ? `/photos/${imgName}.jpg` : pngPath;
+  const src = `/photos/${imgName}.webp`;
 
   const posIsEven = props.position % 2 != 0;
   if (posIsEven) {

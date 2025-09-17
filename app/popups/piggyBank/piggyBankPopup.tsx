@@ -37,7 +37,7 @@ export default function PiggyBankPopup() {
 
   const handleSwipe = () => {
     const swipeDistance = touchEndX - touchStartX;
-    const swipeThreshold = 300; // px to count as swipe
+    const swipeThreshold = 200; // px to count as swipe
     if (swipeDistance > swipeThreshold) {
       setShowingUpdateView(false);
     } else if (-swipeDistance > swipeThreshold) {

@@ -35,7 +35,8 @@ export default function History() {
           >
             I 5 år har Campus Skramlar tillsammans med er samlat in{" "}
             <span> </span>
-            <span className="underline">501 735 kronor</span> till musikhjälpen
+            <span className="text-[#D06224]">501 735 kronor</span> till
+            musikhjälpen
           </h3>
           <img
             src="\vectorGraphics\heart.svg"

@@ -31,8 +31,7 @@ export default function HeyTherePopup() {
   return (
     <DefaultPopup
       type="Warning"
-      //title="Hörru!"
-      title="Snyggt!"
+      title="Hörru!"
       param="heythere"
       buttons={buttons}
       primaryColor="yellow-400"

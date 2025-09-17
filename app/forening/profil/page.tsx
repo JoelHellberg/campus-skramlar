@@ -23,7 +23,7 @@ export default async function Home() {
   const imgUrl = (await urlExists(urlDummy)) ? urlDummy : "";
   var foreningsNamn: string = "";
   var moneyAmount: number = 0;
-  var swishSum: number = 0;
+  var swishSum: number = 10;
   var swishNumber: string = "";
   var description: string = "";
 

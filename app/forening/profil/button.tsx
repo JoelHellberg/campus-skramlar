@@ -27,8 +27,20 @@ export default function Button(props: ButtonProps) {
   const description = useProfileData((state) => state.description);
   const imageUrl = useProfileData((state) => state.imageUrl);
   const setImageUrl = useProfileData((state) => state.setImageUrl);
+  console.log("props.foreningsNamn_in: ", props.foreningsNamn_in);
   const [isUpdated, setIsUpdated] = useState<boolean>(false);
   useEffect(() => {
+    console.log("CLENTLOG: props.foreningsNamn_in: ", props.foreningsNamn_in);
+    console.log("CLENTLOG: foreningsNamn: ", foreningsNamn);
+
+    console.log("CLENTLOG: props.swishSum_in: ", props.swishSum_in);
+    console.log("CLENTLOG: swishSum: ", swishSum);
+
+    console.log("CLENTLOG: props.swishNumber_in: ", props.swishNumber_in);
+    console.log("CLENTLOG: swishNumber: ", swishNumber);
+
+    console.log("CLENTLOG: props.description_in: ", props.description_in);
+    console.log("CLENTLOG: description: ", description);
     if (
       (foreningsNamn && foreningsNamn !== props.foreningsNamn_in) ||
       (swishSum && swishSum !== props.swishSum_in) ||
@@ -45,7 +57,9 @@ export default function Button(props: ButtonProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
+  console.log("CLENTLOG1: isPending: ", isPending);
   const updateProfile = async () => {
+    console.log("CLENTLOG2: isPending: ", isPending);
     startLoader();
     const uploadImageHandler = async () => {
       if (imageUrl) {

@@ -23,8 +23,8 @@ export default async function Thanks() {
       >
         {/* Outline div 2 */}
         <div
-          className="w-full rounded-2xl border-[#7C745C] 
-        border-b-2 border-t-2 sm:border-8 sm:p-3"
+          className="w-full border-[#7C745C] 
+        border-b-4 border-t-4 sm:border-8 sm:p-3 rounded-lg sm:rounded-2xl"
         >
           {/* Main Content */}
           <div

@@ -26,7 +26,7 @@ export default function History() {
           />
           <h3
             className="flex-1 text-[#1d0e05] !font-bold leading-tight xl:px-10 py-6 rounded-4xl
-            text-4xl sm:text-5xl md:!text-6xl 
+            text-3xl sm:text-5xl md:!text-6xl 
             !font-sans italic"
             style={{
               textShadow:

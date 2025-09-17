@@ -4,6 +4,8 @@ import { createClient } from "@/app/_lib/supabase/supabaseClient";
 import { BossaGeneral } from "@/app/_lib/types";
 import React from "react";
 
+export const revalidate = 0;
+
 export default async function PiggyBanks() {
   const supabase = createClient();
   const { data, error } = await supabase.from("bossorGeneral").select();

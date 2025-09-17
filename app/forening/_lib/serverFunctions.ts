@@ -51,11 +51,16 @@ export async function updateBossorDetailed(
   swishNumber: string,
   description: string
 ) {
-  const isValidInput =
-    foreningsId && description && swishNumber && swishSum != 0;
+  const isValidInput = foreningsId && description && swishNumber;
   const isAuthenticated = await checkAuthentication(foreningsId);
-
+  console.log("SERVERLOG: Trying to update bossa");
+  console.log("SERVERLOG: isAuthenticated: ", isAuthenticated);
+  console.log("SERVERLOG: isValidInput: ", isValidInput);
+  console.log("SERVERLOG: foreningsId: ", foreningsId);
+  console.log("SERVERLOG: foreningsId: ", description);
+  console.log("SERVERLOG: swishNumber: ", swishNumber);
   if (isAuthenticated && isValidInput) {
+    console.log("SERVERLOG: Is updating bossa");
     updateDataTable("bossorDetailed", foreningsId, {
       swish_sum: swishSum,
       phone_number: swishNumber,

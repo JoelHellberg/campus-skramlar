@@ -13,18 +13,34 @@ export default function Header() {
           <SidePanel setIsVisible={setShowPanel}>
             <div
               className="flex flex-col w-full items-center mt-5
-            [&>a]:bg-white/70 [&>a]:w-11/12 [&>a]:py-1 [&>a]:px-4 [&>a]:my-1 [&>a]:rounded-xl"
+              [&>a]:text-white [&>a]:w-11/12 [&>a]:py-1 [&>a]:px-4 [&>a]:my-1 [&>a]:rounded-lg"
             >
-              <a href="#about" onClick={() => setShowPanel(false)}>
+              <a
+                href="#about"
+                className="bg-[#D06224]"
+                onClick={() => setShowPanel(false)}
+              >
                 <h2>Bidra</h2>
               </a>
-              <a href="#piggyBanks" onClick={() => setShowPanel(false)}>
+              <a
+                href="#piggyBanks"
+                className="bg-[#ACCAB2]"
+                onClick={() => setShowPanel(false)}
+              >
                 <h2>Bössor</h2>
               </a>
-              <a href="#members" onClick={() => setShowPanel(false)}>
+              <a
+                href="#members"
+                className="bg-[#8A8635]"
+                onClick={() => setShowPanel(false)}
+              >
                 <h2>Kontakt</h2>
               </a>
-              <a href="#thanks" onClick={() => setShowPanel(false)}>
+              <a
+                href="#thanks"
+                className="bg-[#e6bfba]"
+                onClick={() => setShowPanel(false)}
+              >
                 <h2>Tack</h2>
               </a>
             </div>

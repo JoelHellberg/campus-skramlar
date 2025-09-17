@@ -73,6 +73,10 @@ p {
   font-weight: 300;
 }
 
+
+.concert-one {
+  font-family: var(--font-lily-script-one);
+}
 /* Skuggan som används för att få en div att se ut som en tidning */
 .paper-shadow {
   box-shadow:

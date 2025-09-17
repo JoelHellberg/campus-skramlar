@@ -29,9 +29,6 @@ export default function Sponsors() {
           </div>
         ))}
       </div>
-      <h1 className="text-[#BECBB0] !text-6xl mb-16">
-        Det hade inte varit möjligt utan er
-      </h1>
     </div>
   );
 }

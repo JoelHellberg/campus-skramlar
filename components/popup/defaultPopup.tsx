@@ -44,9 +44,12 @@ export default function DefaultPopup({ close = true, ...props }: Props) {
           secondaryColor={props.secondaryColor}
         >
           <div className="h-full w-full flex items-center justify-center">
-            <div className="flex flex-col items-center h-10/12 w-10/12 p-10 gap-14">
+            <div
+              className="flex flex-col items-center h-10/12 p-10 gap-14
+            w-full sm:w-10/12"
+            >
               <h4
-                className="!text-8xl text-center"
+                className="sm:!text-8xl !text-5xl text-center"
                 style={{
                   textShadow: `3px 3px 0 white`,
                 }}

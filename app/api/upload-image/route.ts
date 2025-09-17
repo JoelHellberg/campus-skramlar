@@ -16,6 +16,14 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  if (file.size > 0.5 * 1024 * 1024) {
+    // 0.5 MB in bytes
+    return NextResponse.json(
+      { imageUrl: "", error: "File too large!" },
+      { status: 413 }
+    );
+  }
+
   const isAuthenticated = await checkAuthentication(foreningsId);
   if (!isAuthenticated) {
     return NextResponse.json(
@@ -29,12 +37,11 @@ export async function POST(req: NextRequest) {
   const fileName = file.name;
 
   const { imageUrl, error } = await uploadBufferToSupabase({
-  buffer,
-  bucket: "loggor",
-  fileName,
-  foreningsId,
-});
-
+    buffer,
+    bucket: "loggor",
+    fileName,
+    foreningsId,
+  });
 
   return NextResponse.json({ imageUrl, error });
 }

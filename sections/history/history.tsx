@@ -25,8 +25,9 @@ export default function History() {
             className="hidden xl:block w-40"
           />
           <h3
-            className="flex-1 text-[#1d0e05] !font-extrabold leading-tight xl:px-10 py-6 rounded-4xl
-            text-4xl sm:text-5xl md:!text-6xl"
+            className="flex-1 text-[#1d0e05] !font-bold leading-tight xl:px-10 py-6 rounded-4xl
+            text-4xl sm:text-5xl md:!text-6xl 
+            !font-sans italic"
             style={{
               textShadow:
                 "-0px 0px 0 white, -4px 4px 0 white, 1px -1px 0 white",

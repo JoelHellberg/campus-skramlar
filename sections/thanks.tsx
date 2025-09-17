@@ -18,13 +18,19 @@ export default async function Thanks() {
     <div id="thanks" className="w-full py-24 flex justify-center">
       {/* Outline div 1 */}
       <div
-        className="p-3 rounded-2xl bg-[#DFCFA0]
-      mx-1 lg:mx-0 lg:w-5/6"
+        className="rounded-2xl sm:bg-[#DFCFA0]
+      sm:mx-1 lg:mx-0 lg:w-5/6 sm:p-3"
       >
         {/* Outline div 2 */}
-        <div className="w-full border-8 rounded-2xl border-[#7C745C] p-3">
+        <div
+          className="w-full rounded-2xl border-[#7C745C] 
+        border-b-2 border-t-2 sm:border-8 sm:p-3"
+        >
           {/* Main Content */}
-          <div className="flex flex-col w-full justify-center p-5 sm:p-10 rounded-2xl bg-[#EEDDC4] text-center">
+          <div
+            className="flex flex-col w-full justify-center p-5 sm:p-10 text-center bg-[#EEDDC4] 
+            sm:rounded-2xl"
+          >
             <h1
               className="mb-10
             !text-4xl sm:!text-5xl md:!text-6xl"
@@ -39,7 +45,7 @@ export default async function Thanks() {
                   <div
                     key={i}
                     className="flex justify-center aspect-square mx-auto my-8
-                    w-[40%] md:w-[26%]"
+                    w-[40%] xl:w-[26%]"
                   >
                     <img className="object-contain mx-auto" src={logoUrl} />
                   </div>

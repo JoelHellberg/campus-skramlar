@@ -2,54 +2,54 @@ const members = [
   {
     name: "Lovisa Granlund",
     post: "Projektledare",
-    mail: "skramlarmail@gmail.com",
+    mail: "projektledare@campusskramlar.se",
   },
   {
     name: "Joel Hellberg",
     post: "Vice Projektledare & Webb",
-    mail: "skramlarmail@gmail.com",
+    mail: "",
   },
   {
     name: "Ebba Arvidsson Norén",
     post: "Kassör & Sekreterare",
-    mail: "skramlarmail@gmail.com",
+    mail: "kassor@campusskramlar.se",
   },
 
   {
     name: "Johanna Dahl",
     post: "Företagskontakt",
-    mail: "skramlarmail@gmail.com",
+    mail: "foretag@campusskramlar.se",
   },
   {
     name: "Ludwig Boge",
     post: "Föreningskontakt & Fotograf",
-    mail: "skramlarmail@gmail.com",
+    mail: "forening@campusskramlar.se",
   },
   {
     name: "Elsa Rabe",
     post: "Föreningskontakt",
-    mail: "skramlarmail@gmail.com",
+    mail: "forening@campusskramlar.se",
   },
 
   {
     name: "Mirna Abboud",
     post: "Eventansvarig",
-    mail: "skramlarmail@gmail.com",
+    mail: "event@campusskramlar.se",
   },
   {
     name: "Hilda Åberg Rosell",
     post: "Eventansvarig",
-    mail: "skramlarmail@gmail.com",
+    mail: "event@campusskramlar.se",
   },
   {
     name: "Cornelia Johnson",
     post: "Marknadsföringsansvarig",
-    mail: "skramlarmail@gmail.com",
+    mail: "marknadsforing@campusskramlar.se",
   },
 
-  { name: "Helena Ejsing", post: "Formgivare", mail: "skramlarmail@gmail.com" },
-  { name: "Anna Lyrander", post: "Formgivare", mail: "skramlarmail@gmail.com" },
-  { name: "Stina Bard", post: "Formgivare", mail: "skramlarmail@gmail.com" },
+  { name: "Helena Ejsing", post: "Formgivare", mail: "" },
+  { name: "Anna Lyrander", post: "Formgivare", mail: "" },
+  { name: "Stina Bard", post: "Formgivare", mail: "" },
 ];
 import Member from "./member";
 

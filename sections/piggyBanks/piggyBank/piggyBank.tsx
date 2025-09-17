@@ -76,8 +76,8 @@ export default async function PiggyBank(props: Props) {
               }}
             >
               <h4
-                className="inline-block !font-bold text-left max-w-9/12 
-              !text-4xl md:!text-5xl leading-10 md:leading-14"
+                className="inline-block !font-bold text-left max-w-11/12 
+              !text-4xl md:!text-5xl leading-10 md:leading-14 whitespace-pre-wrap truncate"
               >
                 {props.bossa.forenings_namn}s
                 <br />

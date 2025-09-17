@@ -48,9 +48,9 @@ export default function Member(props: Props) {
       </div>
 
       {/* Post och mail lapp */}
-      <div className="w-4/5 mt-15 mb-10 px-10 py-5 bg-white outline-4 rounded-xs">
+      <div className="w-5/6 mt-15 mb-10 px-5 py-5 bg-white outline-4 rounded-xs">
         <p className="font-extrabold mb-1">{props.post}</p>
-        <p>{props.mail}</p>
+        <p className="xl:text-xs 2xl:text-base">{props.mail}</p>
       </div>
     </div>
   );

@@ -8,7 +8,10 @@ export const revalidate = 0;
 
 export default async function PiggyBanks() {
   const supabase = createClient();
-  const { data, error } = await supabase.from("bossorGeneral").select();
+  const { data, error } = await supabase
+    .from("bossorGeneral")
+    .select("*")
+    .limit(1000);
   const piggyBankList = data as BossaGeneral[] | undefined;
   if (error || !piggyBankList) {
     return <h2>Error fetching piggy bank data</h2>;

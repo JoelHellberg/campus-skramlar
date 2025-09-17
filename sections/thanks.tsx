@@ -35,8 +35,8 @@ export default async function Thanks() {
               className="mb-10
             !text-4xl sm:!text-5xl md:!text-6xl"
             >
-              Tack till alla föreningar som har hjälpt till och medverkat under
-              året!
+              Tack till alla föreningar och studenter som har hjälpt till att
+              medverka under året!
             </h1>
             {/* Positionering av loggor */}
             <div className="flex flex-wrap justify-center w-full">

@@ -1,13 +1,14 @@
 import PiggyBank from "./piggyBank/piggyBank";
 import NeedleDot from "./piggyBank/needleDot";
-import { createClient } from "@/app/_lib/supabase/supabaseClient";
+import { createClientNoCache } from "@/app/_lib/supabase/supabaseClient";
 import { BossaGeneral } from "@/app/_lib/types";
 import React from "react";
 
 export const revalidate = 0;
 
 export default async function PiggyBanks() {
-  const supabase = createClient();
+  const supabase = createClientNoCache();
+
   const { data, error } = await supabase
     .from("bossorGeneral")
     .select("*")

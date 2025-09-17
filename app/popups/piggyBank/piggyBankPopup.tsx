@@ -113,7 +113,7 @@ export default function PiggyBankPopup() {
               {/* "Header" */}
               <motion.div
                 className="bg-orange-300 h-3/12 rounded-3xl outline-2 border-b-2 flex p-5 gap-5
-                w-11/12 sm:w-5/6 items-center justify-center"
+                w-11/12 sm:w-5/6 items-center justify-left"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5, ease: "easeIn" }}

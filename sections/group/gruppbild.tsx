@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function Gruppbild() {
   return (
     <motion.img
-      src="/photos/gruppbild.png"
+      src="/photos/gruppbild.jpg"
       className="w-full -mb-[5vw] shadow-xl/55 rounded-md bg-pink-900 outline-4"
       initial={{ opacity: 0.2, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}

@@ -24,7 +24,7 @@ export default async function PiggyBanks() {
         <NeedleDot />
         {/* Rubrik */}
         <div className="flex grow items-center justify-center text-center">
-          <h3 className="!text-7xl my-5">Bössor</h3>
+          <h3 className="!text-7xl my-5">Insamlingar</h3>
         </div>
         {/* Div runt nålen så vi kan veta när alla nålar försvunnit */}
         <NeedleDot />
@@ -32,7 +32,7 @@ export default async function PiggyBanks() {
 
       {/* "Underrubrik" */}
       <div className="w-full flex items-center justify-center text-center text-[#707070] mt-4">
-        <h3 className="!text-4xl">(Klicka på en bössa för att se mer)</h3>
+        <h3 className="!text-4xl">(Klicka på en insamling för att se mer)</h3>
       </div>
       {/* Positionering av alla bössor */}
       <div className="flex flex-wrap justify-center gap-y-12 w-full py-15">
@@ -55,8 +55,8 @@ export default async function PiggyBanks() {
       </div>
       <div className="w-full flex justify-center">
         <h3 className="w-11/12 sm:w-5/6 xl:w-2/3 text-center text-xl sm:!text-3xl text-gray-500">
-          Hittar ni ingen bössa som faller er i smaken men ändå vill hjälpa till
-          får ni jättegärna donera direkt till{" "}
+          Hittar ni ingen insamling som faller er i smaken men ändå vill hjälpa
+          till får ni jättegärna donera direkt till{" "}
           <a
             href="https://bossan.musikhjalpen.se/campus-skramlar/?fbclid=IwY2xjawM4erxleHRuA2FlbQIxMQABHvDl0JnTLAEg_raoMjV_e4IcmzRXNMjFlPeZIhBlLsN6XWVEJD2hW0P5Y7mD_aem_3MIExDXONNPb9ryzRch5sQ"
             className="underline italic text-blue-400"

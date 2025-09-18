@@ -40,9 +40,9 @@ export default function Button(props: ButtonProps) {
       } catch (error) {
         console.error("Failed to create piggy bank:", error);
       }
+      window.location.href = `${pathname}?success=true`;
     });
     //router.push(`${pathname}?success=true`);
-    window.location.href = `${pathname}?success=true`;
   };
   return (
     <button

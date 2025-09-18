@@ -22,6 +22,10 @@ export default async function PiggyBank(props: Props) {
 
   const logoUrl = `https://xpdnuxdvwdgxdqwffgoy.supabase.co/storage/v1/object/public/loggor/${props.bossa.id}.png`;
   const logoExists = await urlExists(logoUrl);
+  const formatted_name =
+    props.bossa.forenings_namn.slice(-1).toLowerCase() !== "s"
+      ? props.bossa.forenings_namn + "s"
+      : props.bossa.forenings_namn;
 
   return (
     <LoaderTrigger>
@@ -79,9 +83,9 @@ export default async function PiggyBank(props: Props) {
                 className="inline-block !font-bold text-left max-w-11/12 
               !text-4xl md:!text-5xl leading-10 md:leading-14 whitespace-pre-wrap truncate"
               >
-                {props.bossa.forenings_namn}s
+                {formatted_name}
                 <br />
-                Bössa
+                Insamling
               </h4>
             </div>
             {/* Positionering av summan */}

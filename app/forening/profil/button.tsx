@@ -78,6 +78,11 @@ export default function Button(props: ButtonProps) {
     startLoader();
     startTransition(async () => {
       await uploadImageHandler();
+      console.log(
+        "CLENTLOG2: props.foreningsNamn_in: ",
+        props.foreningsNamn_in
+      );
+      console.log("CLENTLOG2: foreningsNamn: ", foreningsNamn);
       if (foreningsNamn !== props.foreningsNamn_in) {
         await updateBossorGeneral(
           props.foreningsId_in,
@@ -97,8 +102,8 @@ export default function Button(props: ButtonProps) {
           description ? description : props.description_in
         );
       }
+      window.location.href = `${pathname}?success=true`;
     });
-    window.location.href = `${pathname}?success=true`;
   };
   return (
     <>

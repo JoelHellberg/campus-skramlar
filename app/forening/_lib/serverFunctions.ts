@@ -36,6 +36,11 @@ export async function updateBossorGeneral(
 ) {
   const isValidInput = foreningsId && foreningsNamn;
   const isAuthenticated = await checkAuthentication(foreningsId);
+  console.log("SERVERLOG: Trying to update bossaGeneral");
+  console.log("SERVERLOG: isAuthenticated: ", isAuthenticated);
+  console.log("SERVERLOG: isValidInput: ", isValidInput);
+  console.log("SERVERLOG: foreningsId: ", foreningsId);
+  console.log("SERVERLOG: foreningsNamn: ", foreningsNamn);
 
   if (isAuthenticated && isValidInput) {
     updateDataTable("bossorGeneral", foreningsId, {

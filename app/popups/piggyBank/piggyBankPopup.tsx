@@ -18,6 +18,11 @@ export default function PiggyBankPopup() {
   const bossa = searchParams.get("bossa");
   const color = searchParams.get("hex");
   const foreningsNamn = searchParams.get("name");
+  const formatted_name = foreningsNamn
+    ? foreningsNamn.slice(-1).toLowerCase() !== "s"
+      ? foreningsNamn + "s"
+      : foreningsNamn
+    : "";
   const collectedSum = searchParams.get("sum");
   const onCloseFunc = () => {
     router.replace("/", { scroll: false });
@@ -67,7 +72,7 @@ export default function PiggyBankPopup() {
     <AnimatePresence>
       {bossa && color && foreningsNamn && collectedSum && (
         <DefaultPopup
-          title={`${foreningsNamn}s bössa`}
+          title={`${formatted_name} insamling`}
           primaryColor={`[${color}]`}
           secondaryColor={`[${color}]`}
         >
@@ -150,7 +155,7 @@ export default function PiggyBankPopup() {
                   <span className="underline font-bold">
                     Swisha till {details?.phone_number}
                   </span>{" "}
-                  för att vara med och tävla i {foreningsNamn}s bössa!
+                  för att vara med och tävla i {formatted_name} insamling!
                 </p>
               </motion.div>
               <motion.div

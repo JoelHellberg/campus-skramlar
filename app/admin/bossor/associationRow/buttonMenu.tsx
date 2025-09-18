@@ -9,7 +9,7 @@ type Props = {
 };
 export default function ButtonMenu(props: Props) {
   function copyInstructions() {
-    const instructions = `OBS: Ni kan nu även publicera er bössa på Campus Skramlars hemsida!\n\nFör att göra detta går ni till "https://campusskramlar.vercel.app/forening"\noch loggar in med lösenordet: "${props.password}".`;
+    const instructions = `OBS: Ni kan nu även publicera er bössa på Campus Skramlars hemsida!\n\nFör att göra detta går ni till "https://campusskramlar.se/forening"\noch loggar in med lösenordet: "${props.password}".`;
     navigator.clipboard
       .writeText(instructions)
       .then(() => {
@@ -23,7 +23,7 @@ export default function ButtonMenu(props: Props) {
     <div className="flex items-center my-2 gap-5">
       {props.generalData && (
         <>
-          <Link
+          {/*<Link
             className="bg-white shadow-2xs py-2 px-4 rounded-4xl group cursor-pointer"
             href={`/admin/?delete=true&id=${props.generalData.id}`}
           >
@@ -38,7 +38,7 @@ export default function ButtonMenu(props: Props) {
           <div className="bg-green-200 hover:bg-red-400 py-2 px-4 rounded-4xl group cursor-pointer">
             <p className="group-hover:hidden">Ej låst</p>
             <p className="hidden group-hover:block">Lås!</p>
-          </div>
+          </div>*/}
           {props.generalData.banned ? (
             <div className="bg-red-200 hover:bg-green-400 py-2 px-4 rounded-4xl group cursor-pointer">
               <p className="group-hover:hidden">Bannad</p>
@@ -53,7 +53,7 @@ export default function ButtonMenu(props: Props) {
         </>
       )}
       <div
-        className="bg-blue-200 py-2 px-4 rounded-4xl group cursor-pointer"
+        className="bg-blue-200 py-2 px-4 rounded-4xl group cursor-pointer hover:outline-4 hover:outline-blue-200 hover:bg-white"
         onClick={() => copyInstructions()}
       >
         <p>Vidarebefodra</p>

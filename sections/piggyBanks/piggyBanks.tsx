@@ -53,6 +53,18 @@ export default async function PiggyBanks() {
           </>
         )}
       </div>
+      <div className="w-full flex justify-center">
+        <h3 className="w-11/12 sm:w-5/6 xl:w-2/3 text-center text-xl sm:!text-3xl text-gray-500">
+          Hittar ni ingen bössa som faller er i smaken men ändå vill hjälpa till
+          får ni jättegärna donera direkt till{" "}
+          <a
+            href="https://bossan.musikhjalpen.se/campus-skramlar/?fbclid=IwY2xjawM4erxleHRuA2FlbQIxMQABHvDl0JnTLAEg_raoMjV_e4IcmzRXNMjFlPeZIhBlLsN6XWVEJD2hW0P5Y7mD_aem_3MIExDXONNPb9ryzRch5sQ"
+            className="underline italic text-blue-400"
+          >
+            vår bössa på musikhjälpen!
+          </a>
+        </h3>
+      </div>
     </div>
   );
 }

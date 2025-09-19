@@ -47,7 +47,7 @@ export default async function Thanks() {
                     className="flex justify-center aspect-square mx-auto my-8
                     w-[40%] xl:w-[26%]"
                   >
-                    <img className="object-contain mx-auto" src={logoUrl} />
+                    <img className="object-contain mx-auto rounded-2xl outline-4 outline-[#7C745C] bg-[#DFCFA0]" src={logoUrl} />
                   </div>
                 ))}
             </div>

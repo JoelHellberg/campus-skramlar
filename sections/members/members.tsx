@@ -18,7 +18,7 @@ const members = [
   {
     name: "Johanna Dahl",
     post: "Företagskontakt",
-    mail: "foretag@campusskramlar.se",
+    mail: "spons@campusskramlar.se",
   },
   {
     name: "Ludwig Boge",

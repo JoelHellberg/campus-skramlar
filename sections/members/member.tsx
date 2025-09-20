@@ -11,7 +11,10 @@ type Props = {
 export default function Member(props: Props) {
   var angle = "-rotate-3";
 
-  const imgName = props.name.replace(/\s+/g, "");
+  const imgName = props.name
+    .normalize("NFD") // Decompose accents
+    .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+    .replace(/\s+/g, ""); // Remove spaces
   const src = `/photos/${imgName}.webp`;
 
   const posIsEven = props.position % 2 != 0;

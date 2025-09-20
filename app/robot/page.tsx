@@ -1,12 +1,17 @@
 "use client";
 import { useState } from "react";
+import { updateMoney } from "./functions";
 
 export default function Home() {
   const [moneyAmount, setMoneyAmount] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
-  const updateMoneyAmount = () => {
+  const updateMoneyAmount = async () => {
     setStatus("Updated");
+    // Remove everything except digits
+    const moneyAmount_formated = moneyAmount.replace(/\D/g, "");
+    const sum = Number(moneyAmount_formated);
+    updateMoney(sum, password);
   };
   return (
     <div>
@@ -19,7 +24,7 @@ export default function Home() {
         className="bg-white p-1 outline-1 rounded-sm w-full"
       />
       <input
-        type="text"
+        type="password"
         value={password}
         id="password"
         onChange={(e) => setPassword(e.target.value)}

@@ -22,14 +22,34 @@ export async function fetchDataRow(
   return data;
 }
 
-export async function checkAuthentication(foreningsId: string): Promise<boolean> {
+export async function updateDataTableRow<T extends object>(
+  tableName: string,
+  idName: string,
+  id: string,
+  data: T
+) {
+  const supabaseAdmin = await getSupabaseAdmin();
+  const { error } = await supabaseAdmin
+    .from(tableName)
+    .update(data)
+    .eq(idName, id);
+
+  if (error) {
+    console.error(`Error updating ${tableName}:`, error.message);
+    return;
+  }
+}
+
+export async function checkAuthentication(
+  foreningsId: string
+): Promise<boolean> {
   const sessionForeningsId = await verifySession();
   // If the session is correct and the user has supplied the correct id,
   // then they are correctly authenticated
   if (sessionForeningsId && sessionForeningsId == foreningsId) {
     return true;
   }
-  console.log("!!! User not correctly authenticated !!!")
+  console.log("!!! User not correctly authenticated !!!");
   return false;
 }
 

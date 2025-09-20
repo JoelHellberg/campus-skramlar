@@ -1,8 +1,18 @@
+import { createClientNoCache } from "@/app/_lib/supabase/supabaseClient";
 import Counter from "./counter";
 import Gif from "./gif";
 import Logo from "./logo";
 
-export default function Hello() {
+export default async function Hello() {
+  const supabase = createClientNoCache();
+
+  const { data, error } = await supabase
+    .from("generalData")
+    .select("money_collected")
+    .eq("id", 0)
+    .single();
+  const moneyCollected: number | undefined = data?.money_collected as number;
+
   return (
     <div className="w-full bg-[#FFF0D9] xl:px-20 py-16 pb-20 flex flex-col h-[80vh] sm:h-auto">
       {/* Wrapper */}
@@ -19,7 +29,7 @@ export default function Hello() {
                 "-5px 5px 0 white, -12px 12px 0 #D06224, -18px 18px 0 #8A8635",
             }}
           >
-            <Counter target={2215} />
+            <Counter target={moneyCollected ? moneyCollected : 0} />
             <h1 className="!text-6xl xl:!text-7xl 2xl:!text-8xl 2xl:-mt-4">
               Insamlat
             </h1>

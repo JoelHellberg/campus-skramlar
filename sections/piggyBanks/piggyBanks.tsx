@@ -24,7 +24,7 @@ export default async function PiggyBanks() {
         <NeedleDot />
         {/* Rubrik */}
         <div className="flex grow items-center justify-center text-center">
-          <h3 className="!text-7xl my-5">Insamlingar</h3>
+          <h3 className="!text-6xl sm:!text-7xl my-5">Insamlingar</h3>
         </div>
         {/* Div runt nålen så vi kan veta när alla nålar försvunnit */}
         <NeedleDot />

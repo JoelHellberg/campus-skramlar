@@ -48,7 +48,7 @@ export default function Contribute() {
               <br />
               forening@campusskramlar.se
               <br />
-              foretag@campusskramlar.se
+              spons@campusskramlar.se
             </p>
           </div>
         </div>

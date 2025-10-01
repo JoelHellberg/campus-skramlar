@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Logo() {
   return (
-    <div className="relative -z-10">
+    <div className="relative -z-10 group">
       {/* Loggan */}
       <motion.img
         initial={{ scale: "80%" }}
@@ -18,6 +18,20 @@ export default function Logo() {
         alt="logo"
         className="w-[60vw] sm:w-[25vw] xl:w-[20vw]"
       />
+      {/* Hover image */}
+      <a
+        className="hidden sm:block"
+        href="https://bossan.musikhjalpen.se/campus-skramlar/?fbclid=IwY2xjawM4erxleHRuA2FlbQIxMQABHvDl0JnTLAEg_raoMjV_e4IcmzRXNMjFlPeZIhBlLsN6XWVEJD2hW0P5Y7mD_aem_3MIExDXONNPb9ryzRch5sQ"
+      >
+        <motion.img
+          src="https://images.ctfassets.net/75ay4e234rnk/2udNK3CEo2fm6RdbGGoOva/d52b4afc569efa787e2f64e0f16fdc71/f06d8ee4-4fcd-4236-bca2-9fde7c3bc382.png"
+          alt="logo hover"
+          className="absolute inset-0 w-full h-full object-contain bg-gray-900 rounded-full cursor-pointer"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        />
+      </a>
       {/* Logo frame */}
       <motion.div
         initial={{ scale: "80%" }}
@@ -27,7 +41,7 @@ export default function Logo() {
           stiffness: 400, // higher = snappier
           damping: 5,
         }}
-        className="absolute -inset-4 rounded-full -z-10 bg-white"
+        className="absolute -inset-4 rounded-full -z-10 bg-white group-hover:bg-blue-900 transition-colors duration-1000 ease-in-out"
       />
       {/* Logo shadow */}
       <motion.div

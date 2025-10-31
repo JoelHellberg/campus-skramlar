@@ -1,8 +1,5 @@
 import { BossaGeneral, BossaPrivate } from "@/app/_lib/types";
-import ButtonMenu from "./buttonMenu";
-import { createClient } from "@/app/_lib/supabase/supabaseClient";
 import { fetchBossaGeneral } from "@/app/_lib/supabase/clientFunctions";
-import Dropdown from "./dropDown";
 import InteractiveRow from "./interactiveRow";
 
 type Props = {

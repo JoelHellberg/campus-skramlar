@@ -1,10 +1,11 @@
 const sponsors = [
-  { name: "Latitude" },
-  { name: "PaperStreet" },
-  { name: "Varldens" },
-  { name: "Yakobs" },
-  { name: "EyBro" },
-  { name: "Returpack" },
+  { name: "Monster.svg" },
+  { name: "PaperStreet.PNG" },
+  { name: "Varldens.png" },
+  { name: "Latitude.png" },
+  { name: "Yakobs.png" },
+  { name: "EyBro.png" },
+  { name: "Returpack.png" },
 ];
 
 export default function Sponsors() {
@@ -22,7 +23,7 @@ export default function Sponsors() {
           >
             <img
               className="object-contain mx-auto"
-              src={`/sponsors/${sponsor.name}.png`}
+              src={`/sponsors/${sponsor.name}`}
             />
           </div>
         ))}

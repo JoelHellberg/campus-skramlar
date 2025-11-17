@@ -1,12 +1,10 @@
 const sponsors = [
-  { name: "dummySponsor1" },
-  { name: "dummySponsor2" },
-  { name: "dummySponsor1" },
-  { name: "dummySponsor2" },
-  { name: "dummySponsor1" },
-  { name: "dummySponsor2" },
-  { name: "dummySponsor2" },
-  { name: "dummySponsor1" },
+  { name: "Latitude" },
+  { name: "PaperStreet" },
+  { name: "Varldens" },
+  { name: "Yakobs" },
+  { name: "EyBro" },
+  { name: "Returpack" },
 ];
 
 export default function Sponsors() {

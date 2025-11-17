@@ -50,7 +50,7 @@ export default async function Home() {
               <Thanks />
             </div>
 
-            {/* <Sponsors /> */}
+            <Sponsors />
           </div>
           <Footer />
         </div>

@@ -21,6 +21,7 @@ export default function Dropdown(props: Props) {
       <div className="bg-green-100 mb-4 p-2">
         <ButtonMenu
           generalData={props.generalData}
+          nickname={props.privateData.forenings_namn.toString()}
           password={props.privateData.password}
         />
         <div className="w-full bg-green-100 p-2 mb-4 rounded-b-lg">

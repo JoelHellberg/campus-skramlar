@@ -6,13 +6,17 @@ import { useRouter } from "next/navigation";
 
 type Props = {
   generalData: BossaGeneral | null;
+  nickname: string;
   password: string;
 };
 export default function ButtonMenu(props: Props) {
   const router = useRouter();
 
   function copyInstructions() {
-    const instructions = `OBS: Ni kan nu även publicera er bössa på Campus Skramlars hemsida!\n\nFör att göra detta går ni till "https://campusskramlar.se/forening"\noch loggar in med lösenordet: "${props.password}".`;
+    const instructions = `Hej ${props.nickname}!
+    \nNi kan nu även publicera er insamling på Campus Skramlars hemsida, för att göra detta går ni till \n"https://campusskramlar.se/forening" och loggar in med lösenordet: "${props.password}".
+    \nOm ni har några frågor är ni mer än välkomna att skriva här eller höra av er till mig direkt.
+    \nVänliga hälsningar Joel Hellberg - Webbansvarig i Campus Skramlar`;
     navigator.clipboard
       .writeText(instructions)
       .then(() => {
